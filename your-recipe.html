@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>theJungleCook | Your Recipes</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="hero-wrapper browse">
+      <div class="browse-wrapper">
+        <nav>
+          <a href="index.html">
+            <div id="logo-title" class="page-title-norm">
+              <span class="circle blue"></span>
+              <span class="circle yellow"></span>
+              <span class="circle green"></span>
+              <span class="circle pink"></span>
+              <h1>The Jungle Cook</h1>
+            </div>
+          </a>
+          <div class="nav-holder">
+            <div class="bars">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+            <div class="links">
+              <a href="index.html">Home</a>
+              <a href="browse.html" class="not-current-link">Browse</a>
+              <a href="create-recipe.html">Create Recipe</a>
+              <a href="view-recipe.html" class="current-page">Your Recipe</a>
+              <a href="login.html" class="login-button">Login</a>
+            </div>
+          </div>
+        </nav>
+        <!-- <div class="browse-container"> -->
+        <div class="recipe-title">
+          <h2>Recipes: Try some today!</h2>
+        </div>
+        <div class="recipe-gallery">
+          <!-- --------------------------------------- -->
+          <!--                  PIZZA                  -->
+          <!-- --------------------------------------- -->
+          <div class="recipe-card pizza">
+            <div class="photo-and-description view">
+              <div class="card-image">
+                <div class="button view">View</div>
+              </div>
+              <div class="card-info">
+                <div class="info-content">
+                  <h2 class="card-info-title">
+                    <span>Supreme Pizza</span>
+                  </h2>
+                  <p class="card-info-text">
+                    Make pizza night super duper out of this world with homemade
+                    pizza. This recipe is supreme with vegetables and two types
+                    of meat. Yum!
+                  </p>
+                  <div class="card-icon time">
+                    <div class="card-icon-image">
+                      <img src="images/time.svg" alt="time" />
+                    </div>
+                    <div class="card-icon-text">1h 24min</div>
+                  </div>
+                  <div class="card-icon servings">
+                    <div class="card-icon-image">
+                      <img src="images/servings.svg" alt="servings" />
+                    </div>
+                    <div class="card-icon-text">4 servings</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="button-holder">
+              <div class="button view">
+                <a href="edit-recipe.html">
+                  <span> Edit Recipe</span>
+                </a>
+               </div>
+              <div class="button view">Delete</div>
+            </div>
+          </div>
+        <!-- ----------------------------------------- -->
+        <!-- -------------- end gallery -------------- -->
+
+        <!-- </div> -->
+      </div>
+      <footer>
+        <div class="footer-content">
+          <div class="copyright-footer">Copyright © 2019 The Jungle Cook</div>
+          <div class="footer-links">
+            <a href="login.html">Login</a>
+            <a href="browse.html">Recipes by Category</a>
+            <a href="#">Privacy and Copyright</a>
+            <a href="create-recipe.html">Create Recipe</a>
+            <a href="your-recipe.html">Your Recipes</a>
+          </div>
+          <div class="footer-social">
+            <div class="social facebook">
+              <a href="#"><img src="images/facebook.svg" alt="Facebook.com"></a>
+            </div>
+            <div class="social facebook">
+              <a href="#"><img src="images/instagram.svg" alt="instagram.com"></a>
+            </div>
+          </div>
+        </div>
+        </footer>
+    </div>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script src="app/app.js"></script>
+  </body>
+</html>

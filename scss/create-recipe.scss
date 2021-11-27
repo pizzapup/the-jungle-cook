@@ -1,0 +1,151 @@
+/* ------------------------------------------------------ */
+/*                 CREATE AND EDIT RECIPE                 */
+/* ------------------------------------------------------ */
+
+@media only screen and (max-width: 960px) {
+  .h1 {
+    text-align: center;
+  }
+  input {
+    // height: 50px;
+    border-width: 1px;
+  }
+  .create-form-section {
+  }
+}
+
+.create-recipe-content-wrapper {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  h1 {
+    width: 80%;
+    text-align: left;
+  }
+  form {
+    // margin-bottom: 100px;
+    padding-bottom: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    input[type="text"] {
+      padding-bottom: 1%;
+    }
+    input[type="text"]:focus {
+      outline: none;
+    }
+    .create-form-section {
+      margin-top: 7%;
+      margin-bottom: 7%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      input {
+        // height: 100px;
+
+        // min-height: 100px;
+        // height: 24%;
+        // height: 100px;
+        // height: 50%;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: solid black;
+        text-align: left;
+        font: normal normal normal 16px/21px Lato Light;
+        letter-spacing: 1.6px;
+        color: #000000;
+        opacity: 1;
+        width: 100%;
+        margin-top: 6%;
+
+        // height: 100px;
+        // height: 100px;
+        input::placeholder {
+          text-align: left;
+          font: normal normal normal 16px/21px Lato Light;
+          letter-spacing: 1.6px;
+          color: #000000;
+          opacity: 1;
+        }
+
+        h3 {
+          text-align: left;
+          font: normal normal normal 20px/27px Lato Black;
+          letter-spacing: 2px;
+          color: #000000;
+          opacity: 1;
+        }
+      }
+
+      /* ------------------------------------------------ */
+      /*                 ADD RECIPE IMAGE                 */
+      /* ------------------------------------------------ */
+      .file-button-wrap {
+        border-bottom: solid black;
+        width: 100%;
+        display: flex;
+        padding-bottom: 1%;
+        align-items: center;
+        // justify-content: flex-end;
+        justify-content: space-between;
+        text-align: center;
+        font: normal normal normal 16px/21px Lato;
+        letter-spacing: 1.6px;
+        color: #000000;
+        opacity: 1;
+        .add-image-placeholder {
+          text-align: left;
+          font: normal normal normal 16px/21px Lato Light;
+          letter-spacing: 1.6px;
+          color: #000000;
+          opacity: 1;
+        }
+        .file-button-holder {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 121px;
+          height: 36px;
+          background: #efa7a7 0% 0% no-repeat padding-box;
+          box-shadow: 0px 10px 6px #00000029;
+          border-radius: 26px;
+          opacity: 1;
+          input[type="file"] {
+            display: none;
+          }
+          input[type="file"]::file-selector-button {
+            display: none;
+          }
+        }
+      }
+    }
+
+    /* -------------------------------------------------- */
+    /*                 FORM SUBMIT BUTTON                 */
+    /* -------------------------------------------------- */
+    .recipe-submit-button {
+      text-align: center;
+      font: normal normal normal 25px/33px Lato;
+      // font: normal normal normal 25px/33px Lato;
+      font-size: 1.5vw;
+      letter-spacing: 2.5px;
+      color: #000000;
+      opacity: 1;
+      background: #efa7a7 0% 0% no-repeat padding-box;
+      box-shadow: 0px 10px 6px #00000029;
+      border-radius: 26px;
+      opacity: 1;
+      // width: 354px;
+      width: 27%;
+      height: 52px;
+      border: none;
+    }
+  }
+}

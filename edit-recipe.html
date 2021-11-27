@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>theJungleCook | Edit Recipe</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="hero-wrapper edit-recipe">
+      <div class="hero">
+        <div class="edit-recipe-wrapper">
+          <nav>
+            <!-- ---------------- logo ----------------- -->
+            <a href="index.html">
+              <div id="logo-title" class="page-title-norm">
+                <span class="circle blue"></span>
+                <span class="circle yellow"></span>
+                <span class="circle green"></span>
+                <span class="circle pink"></span>
+                <h1>The Jungle Cook</h1>
+              </div>
+            </a>
+            <div class="nav-holder">
+              <div class="bars">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+              <div class="links">
+                <a href="index.html" class="not-current-link">Home</a>
+                <a href="browse.html" class="not-current-link">Browse</a>
+                <a href="create-recipe.html" class="not-current-link">Create Recipe</a>
+                <a href="edit-recipe.html" class="current page">Your Recipes</a>
+                <a href="login.html" class="login-button" ><span>Logout</span></a>
+              </div>
+            </div>
+          </nav>
+          <!-- ----------------------------------------- -->
+          <!--               MAIN CONTENT                -->
+          <!-- ----------------------------------------- -->
+          <div class="create-recipe-content-wrapper">
+            <h1>Hey Michael, edit your recipe!</h1>
+            <form class="create-recipe-form">
+              <div class="create-form-section general-info">
+                <div class="file-button-wrap">
+                  <span class="add-image-placeholder">Edit Recipe Image</span>
+                  <div class="file-button-holder">
+                    <span>Attach File</span>
+                    <label for="editFileUpload" id="edit-file-label">
+                      <input type="file" id="editFileUpload" name="editFileUpload">
+                    </label>
+                  </div>
+                </div>
+                <input id="eRecipeName" type="text" name="eRecipeName" placeholder="Recipe Name">
+                <input id="eRecipeDescription" type="text" name="eRecipeDescription" placeholder="Recipe Description">
+                <input id="eTotalTime" type="text" name="eTotalTime" placeholder="Recipe Total Time">
+                <input id="eServingSize" type="text" name="eServingSize" placeholder="Recipe Serving Size">
+              </div>
+              <div class="create-form-section ingredients">
+                <h3>Edit Ingredients:</h3>
+                <input id="eIngredientOne" type="text" name="eIngredientOne" placeholder="Ingredient #1">
+                <input id="eIngredientTwo" type="text" name="eIngredientTwo" placeholder="Ingredient #2">
+                <input id="eIngredientThree" type="text" name="eIngredientThree" placeholder="Ingredient #3">
+              </div>
+              <div class="create-form-section instructionss">
+                <h3>Edit Instructions</h3>
+                <input id="eInstructionOne" type="text" name="eInstructionOne" placeholder="Instruction #1">
+                <input id="eInstructionTwo" type="text" name="eInstructionTwo" placeholder="Instruction #2">
+                <input id="eInstructionThree" type="text" name="eInstructionThree" placeholder="Instruction #3">
+              </div>
+              <a href="view-recipe.html" class="recipe-submit-button" >Submit Changes</a>
+              <!-- <input id="editRecipeSubmit" type="submit" value="Submit Changes" class="recipe-submit-button"/> -->
+            </form>
+          </div>
+          <footer>
+            <div class="footer-content">
+              <div class="copyright-footer">Copyright © 2019 The Jungle Cook</div>
+              <div class="footer-links">
+                <a href="login.html">Login</a>
+                <a href="browse.html">Recipes by Category</a>
+                <a href="#">Privacy and Copyright</a>
+                <a href="create-recipe.html">Create Recipe</a>
+                <a href="your-recipe.html">Your Recipes</a>
+              </div>
+              <div class="footer-social">
+                <div class="social facebook">
+                  <a href="#"><img src="images/facebook.svg" alt="Facebook.com"></a>
+                </div>
+                <div class="social facebook">
+                  <a href="#"><img src="images/instagram.svg" alt="instagram.com"></a>
+                </div>
+              </div>
+            </div>
+            </footer>
+          <!-- ----------------------------------------- -->
+
+            <div id="app">
+            <script src="lib/jquery-3.6.0.min.js"></script>
+            <script src="app/app.js"></script>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

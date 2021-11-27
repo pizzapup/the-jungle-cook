@@ -1,0 +1,49 @@
+/* ------------------------------------------------------ */
+/*                         FOOTER                         */
+/* ------------------------------------------------------ */
+footer {
+  // position: relative;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+
+  .footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* -------------------- copyright ------------------- */
+    .copyright-footer {
+      //
+    }
+    /* ---------------------- links --------------------- */
+    .footer-links {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      a {
+        text-decoration: none;
+      }
+    }
+    /* ------------------ social media ------------------ */
+    .footer-social {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      .social {
+        height: 19px;
+        width: 19px;
+      }
+      .facebook {
+        margin-left: 40px;
+        margin-right: 30px;
+      }
+      .instagram {
+        margin-left: 40px;
+        margin-right: 30px;
+      }
+    }
+  }
+}

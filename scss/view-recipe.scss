@@ -1,0 +1,135 @@
+/* ------------------------------------------------------ */
+/*                       view RECIPE                      */
+/* ------------------------------------------------------ */
+
+/* -------------------- media queries ------------------- */
+@media only screen and (max-width: 960px) {
+  .view-recipe-holder {
+    padding-top: 11%;
+    padding-bottom: 11%;
+  }
+  .des-top {
+    width: 80vw;
+  }
+}
+
+/* ------------------------------------------------------ */
+/*                          MAIN                          */
+/* ------------------------------------------------------ */
+.view-recipe-holder {
+  //   margin: 50px;
+  margin: 5%;
+
+  position: relative;
+}
+.img-and-description {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  .recipe-title-holder {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    .recipe-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      white-space: nowrap;
+      transform: rotate(-90deg);
+      position: relative;
+      span {
+        position: absolute;
+      }
+    }
+    .photo-holder {
+      .recipe-image {
+        width: 468px;
+      }
+    }
+  }
+  .description-holder {
+    // section class: section-holder description
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 40%;
+    // margin: 5%;
+    margin-left: 5%;
+
+    //
+    .des-top {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      h3 {
+        text-align: left;
+        font: normal normal normal 25px/33px Lato Black;
+        letter-spacing: 5px;
+        color: #000000;
+        opacity: 1;
+      }
+      p {
+        text-align: left;
+        font: normal normal normal 20px/27px Caveat;
+        letter-spacing: 4px;
+        color: #000000;
+        opacity: 1;
+      }
+    }
+    //
+    .des-bottom {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-evenly;
+      .time-serving-holder {
+        text-align: left;
+        font: normal normal normal 20px/27px Lato Black;
+        letter-spacing: 4px;
+        color: #000000;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+    }
+  }
+}
+
+.list-holder {
+  margin: 2.5%;
+  width: 100%;
+  //   margin-left: 50px;
+  text-align: left;
+  font: normal normal normal 25px/33px Lato Black;
+  letter-spacing: 5px;
+  color: #000000;
+  opacity: 1;
+
+  li {
+    text-align: left;
+    font: normal normal normal 20px/27px Caveat;
+    letter-spacing: 4px;
+    color: #000000;
+    opacity: 1;
+    list-style: none;
+  }
+}
+.button-holder {
+  width: 80%;
+  margin-left: 50px;
+  button {
+    width: 128px;
+    height: 42px;
+    background: #ffd972 0% 0% no-repeat padding-box;
+    border-radius: 26px;
+    opacity: 1;
+    text-align: center;
+    font: normal normal normal 20px/27px Caveat;
+    letter-spacing: 2px;
+    color: #000000;
+    opacity: 1;
+    border: none;
+  }
+}
