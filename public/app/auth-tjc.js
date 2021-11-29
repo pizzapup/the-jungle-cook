@@ -13,6 +13,8 @@ function initFirebase() {
       console.log("auth change logged in");
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
+      $(".login-button").html(`
+        <button onclick="signOut()">Logout</button>`);
       var uid = user.uid;
       if (user.displayName) {
         $(".name").html("Hello");
@@ -28,6 +30,9 @@ function initFirebase() {
       $(".load").prop("disabled", true);
       userExists = false;
       userFullName = "";
+      $(".login-button").html(
+        `<a href="login.html" class="login-button">Login</a>`
+      );
       // User is signed out
       // ...
     }

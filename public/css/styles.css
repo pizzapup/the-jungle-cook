@@ -905,165 +905,150 @@ a {
 /*                          LOGIN                         */
 /* ------------------------------------------------------ */
 @media only screen and (max-width: 960px) {
-  .login-content-wrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+  .login-page-wrapper {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .login-content-wrapper .form-login {
-    margin-bottom: 10%;
-  }
-  .login-content-wrapper .form-signup {
+    margin-top: 10%;
     margin-bottom: 10%;
   }
 }
-.hero-wrapper-login {
-  height: 100vh;
-  width: 100%;
+body {
   background-color: #ffd972;
-  margin: 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 
-.login-content-wrapper {
+.login-page-wrapper {
+  height: 100%;
+  background-color: blanchedalmond;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100%;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
 }
-.login-content-wrapper h2 {
+.login-page-wrapper .form-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.login-page-wrapper .form-holder h2 {
   text-align: left;
   font: normal normal normal 30px/40px Lato Black;
   letter-spacing: 3px;
   color: #000000;
   opacity: 1;
 }
-.login-content-wrapper form {
+.login-page-wrapper .form-holder .signup-heading-text {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
-.login-content-wrapper form input {
-  background-color: #ffd972;
-  height: 52px;
-  width: 200px;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: black solid;
-}
-.login-content-wrapper form input::-webkit-input-placeholder {
-  background-color: #ffd972;
-  text-align: left;
-  font: normal normal normal 12px/15px Lato;
-  letter-spacing: 1.2px;
-  color: #000000;
-  opacity: 1;
-}
-.login-content-wrapper form input::-moz-placeholder {
-  background-color: #ffd972;
-  text-align: left;
-  font: normal normal normal 12px/15px Lato;
-  letter-spacing: 1.2px;
-  color: #000000;
-  opacity: 1;
-}
-.login-content-wrapper form input:-ms-input-placeholder {
-  background-color: #ffd972;
-  text-align: left;
-  font: normal normal normal 12px/15px Lato;
-  letter-spacing: 1.2px;
-  color: #000000;
-  opacity: 1;
-}
-.login-content-wrapper form input::-ms-input-placeholder {
-  background-color: #ffd972;
-  text-align: left;
-  font: normal normal normal 12px/15px Lato;
-  letter-spacing: 1.2px;
-  color: #000000;
-  opacity: 1;
-}
-.login-content-wrapper form input::placeholder {
-  background-color: #ffd972;
-  text-align: left;
-  font: normal normal normal 12px/15px Lato;
-  letter-spacing: 1.2px;
-  color: #000000;
-  opacity: 1;
-}
-.login-content-wrapper form #loginSubmit {
-  background: #ffd972 0% 0% no-repeat padding-box;
-  -webkit-box-shadow: 0px 10px 6px #00000029;
-          box-shadow: 0px 10px 6px #00000029;
-  border-radius: 26px;
-  opacity: 1;
-  border-bottom: none;
-  font: normal normal normal 25px Lato;
-  letter-spacing: 2.5px;
-  color: #000000;
-  opacity: 1;
-  margin-top: 40px;
-}
-.login-content-wrapper form #signupSubmit {
-  background: #ffd972 0% 0% no-repeat padding-box;
-  -webkit-box-shadow: 0px 10px 6px #00000029;
-          box-shadow: 0px 10px 6px #00000029;
-  border-radius: 26px;
-  opacity: 1;
-  border-bottom: none;
-  font: normal normal normal 25px Lato;
-  letter-spacing: 2.5px;
-  color: #000000;
-  opacity: 1;
-  margin-top: 40px;
-}
-.login-content-wrapper .form-signup h2 {
-  text-align: left;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.login-content-wrapper .form-signup h2 .span-new-account {
+.login-page-wrapper .form-holder .signup-heading-text .span-signup-small {
   text-align: left;
   font: italic normal normal 12px/15px Lato;
   letter-spacing: 1.2px;
   color: #000000;
   opacity: 1;
 }
+.login-page-wrapper .form-holder .form-content-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.login-page-wrapper .form-holder .form-content-wrapper input {
+  background-color: #ffd972;
+  min-height: 52px;
+  width: 200px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: black solid;
+}
+.login-page-wrapper .form-holder .form-content-wrapper input::-webkit-input-placeholder {
+  text-align: left;
+  font: normal normal normal 12px/15px Lato;
+  letter-spacing: 1.2px;
+  color: #000000;
+  opacity: 1;
+}
+.login-page-wrapper .form-holder .form-content-wrapper input::-moz-placeholder {
+  text-align: left;
+  font: normal normal normal 12px/15px Lato;
+  letter-spacing: 1.2px;
+  color: #000000;
+  opacity: 1;
+}
+.login-page-wrapper .form-holder .form-content-wrapper input:-ms-input-placeholder {
+  text-align: left;
+  font: normal normal normal 12px/15px Lato;
+  letter-spacing: 1.2px;
+  color: #000000;
+  opacity: 1;
+}
+.login-page-wrapper .form-holder .form-content-wrapper input::-ms-input-placeholder {
+  text-align: left;
+  font: normal normal normal 12px/15px Lato;
+  letter-spacing: 1.2px;
+  color: #000000;
+  opacity: 1;
+}
+.login-page-wrapper .form-holder .form-content-wrapper input::placeholder {
+  text-align: left;
+  font: normal normal normal 12px/15px Lato;
+  letter-spacing: 1.2px;
+  color: #000000;
+  opacity: 1;
+}
+.login-page-wrapper .form-holder .form-content-wrapper .login-page-buttons {
+  background: #ffd972 0% 0% no-repeat padding-box;
+  -webkit-box-shadow: 0px 10px 6px #00000029;
+          box-shadow: 0px 10px 6px #00000029;
+  border-radius: 26px;
+  opacity: 1;
+  border-bottom: none;
+  border: none;
+  font: normal normal normal 25px Lato;
+  letter-spacing: 2.5px;
+  color: #000000;
+  opacity: 1;
+  margin-top: 40px;
+  width: 100%;
+  height: 52px;
+}
+
 /* ------------------------------------------------------ */
 /*                 CREATE AND EDIT RECIPE                 */
 /* ------------------------------------------------------ */
