@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>theJungleCook</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="index.html">
+        <div id="logo-title" class="page-title-norm">
+          <span class="circle blue"></span>
+          <span class="circle yellow"></span>
+          <span class="circle green"></span>
+          <span class="circle pink"></span>
+          <h1>The Jungle Cook</h1>
+        </div>
+      </a>
+      <div class="nav-holder">
+        <div class="bars">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <div class="links">
+          <a href="index.html" class="not-current-link">Home</a>
+          <a href="browse.html" class="not-current-link">Browse</a>
+          <a href="create-recipe.html" class="not-current-link"
+            >Create Recipe</a
+          >
+          <a href="login.html" class="login-button">Login</a>
+        </div>
+      </div>
+    </nav>
+    <input type="submit" value="sign out" onclick="signOut()" />
+    <div class="login-form">
+      <div class="login-greeting"></div>
+      <!-- --------------------------------------------- -->
+      <h2>Login Here!</h2>
+      <div>
+        <input
+          id="loginEmail"
+          type="email"
+          name="email"
+          placeholder="Email Address"
+        />
+        <input
+          id="loginPassword"
+          type="password"
+          name="password"
+          placeholder="Password"
+        />
+        <button id="loginSubmit" onclick="login()">Login</button>
+      </div>
+    </div>
+    <div class="signup-form">
+      <h2>
+        <span class="span-new-account">don't have an account?</span>
+        <span>Sign Up!</span>
+      </h2>
+      <div>
+        <input id="fName" type="text" name="fName" placeholder="First Name" />
+        <input id="lName" type="text" name="lName" placeholder="Last Name" />
+        <input
+          id="signupEmail"
+          type="email"
+          name="email"
+          placeholder="Email Address"
+        />
+        <input
+          id="signupPassword"
+          type="password"
+          name="password"
+          placeholder="Password"
+        />
+        <button id="signupSubmit" onclick="signUp()">Sign Up</button>
+      </div>
+    </div>
+    <div class="sign-out-holder"></div>
+    <!-- ----------------------------------------------- -->
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.5.0/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.5.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.5.0/firebase-database-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/9.5.0/firebase-firestore-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.5.0/firebase-functions-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.5.0/firebase-messaging-compat.js"
+    ></script>
+    <script defer src="/__/firebase/9.5.0/firebase-storage-compat.js"></script>
+    <script
+      defer
+      src="/__/firebase/9.5.0/firebase-analytics-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.5.0/firebase-remote-config-compat.js"
+    ></script>
+    <script
+      defer
+      src="/__/firebase/9.5.0/firebase-performance-compat.js"
+    ></script>
+    <!-- 
+          initialize the SDK after all desired features are loaded, set useEmulator to false
+          to avoid connecting the SDK to running emulators.
+        -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script src="app/auth-tjc.js"></script>
+    <!-- <script src="app/app.js"></script> -->
+  </body>
+</html>
