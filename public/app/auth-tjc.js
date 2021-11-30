@@ -2,34 +2,33 @@
 /* ------------------------------------------------------ */
 /*                        VARIABLES                       */
 /* ------------------------------------------------------ */
-
+var _db = "";
 var userExists = false;
-// var userFullName = "";
-// var user = firebase.auth().currentUser;
+var userFullName = "";
+var _userProfileInfo = {};
 /* ------------------------------------------------------ */
 function initFirebase() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
+      _db = firebase.firestore();
       console.log("auth change logged in");
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       $(".login-button").html(`
         <button onclick="signOut()">Logout</button>`);
       var uid = user.uid;
-      if (user.displayName) {
-        $(".name").html("Hello");
-        $(".login-greeting").html(`Hello, ${user.displayName}`);
-      }
+      //   if (user.displayName) {
+      // $(".login-greeting").html(`Hello, ${user.displayName}`);
+      //   }
       userExists = true;
-
-      // ...
     } else {
       console.log("auth change logged out");
-      $(".name").html("not signed in");
-
-      $(".load").prop("disabled", true);
+      //   $(".name").html("not signed in");
+      //   $(".load").prop("disabled", true);
       userExists = false;
       userFullName = "";
+      _db = "";
+      _userProfileInfo = {};
       $(".login-button").html(
         `<a href="login.html" class="login-button">Login</a>`
       );
@@ -48,7 +47,12 @@ function signUp() {
   console.log(lName);
   console.log(email);
   let fullName = fName + " " + lName;
-
+  let userObj = {
+    firstName: fName,
+    lastName: lName,
+    email: email,
+    recipes: [],
+  };
   firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
@@ -56,10 +60,27 @@ function signUp() {
       // Signed in
       var user = userCredential.user;
       console.log("created");
-
       firebase.auth().currentUser.updateProfile({
         displayName: fullName,
       });
+
+      _db
+        .collection("Users")
+        .doc(user.uid)
+        .set(userObj)
+        .then((doc) => {
+          console.log("doc added ");
+          _userProfileInfo = userObj;
+          console.log("create userinfo ", _userProfileInfo);
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log("error ", errorMessage);
+
+          // ..
+        });
+
       userFullName = fullName;
       $(".name2").html(userFullName);
       $("#fName").empty();
@@ -89,6 +110,15 @@ function login() {
       $("#loginEmail").empty();
       $("#loginPassword").empty();
       var user = userCredential.user;
+      _db
+        .collection("Users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+          console.log(doc.data());
+          /* -------------------------------------------- */
+          loadLists();
+        });
       // ...
     })
     .catch((error) => {
@@ -132,7 +162,6 @@ function signOut() {
       // ..
     });
 }
-
 $(document).ready(function () {
   try {
     initFirebase();
