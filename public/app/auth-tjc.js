@@ -17,12 +17,14 @@ function initFirebase() {
       var uid = user.uid;
       if (user.displayName) {
         $(".login-greeting").html(`Hello, ${user.displayName}`);
+        $(".login-button").html(
+          `<a href="login.html" class="login-button" onclick="signOut()">Logout</a>`
+        );
       }
       userExists = true;
     } else {
       console.log("auth change logged out");
-      //   $(".name").html("not signed in");
-      //   $(".load").prop("disabled", true);
+      $(".login-greeting").empty();
       userExists = false;
       userFullName = "";
       _db = "";
@@ -80,7 +82,6 @@ function signUp() {
         });
 
       userFullName = fullName;
-      $(".name2").html(userFullName);
       $("#fName").empty();
       $("#lName").empty();
       $("#signupEmail").empty();
@@ -115,7 +116,7 @@ function login() {
         .then((doc) => {
           console.log(doc.data());
           /* -------------------------------------------- */
-          loadLists();
+          // loadRecipes();
         });
       // ...
     })
