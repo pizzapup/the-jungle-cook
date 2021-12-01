@@ -249,10 +249,18 @@ nav #logo-title h1 {
 /* ------------------------------------------------------ */
 /*                         FOOTER                         */
 /* ------------------------------------------------------ */
+@media only screen and (max-width: 425px) {
+  footer {
+    position: sticky;
+  }
+
+  .footer-links {
+    display: block;
+  }
+}
 footer {
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
+  position: sticky;
+  bottom: 0;
 }
 footer .footer-content {
   width: 100%;
@@ -305,27 +313,6 @@ footer .footer-content .footer-social .facebook {
 footer .footer-content .footer-social .instagram {
   margin-left: 40px;
   margin-right: 30px;
-}
-
-/* ------------------------------------------------------ */
-/*                          HERO                          */
-/* ------------------------------------------------------ */
-.hero-wrapper {
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* ------------------- home page hero ------------------- */
-.home {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(242, 92, 82, 0.6)), to(rgba(242, 92, 82, 0.6))), url(../images/hero.png);
-  background-image: linear-gradient(to bottom, rgba(242, 92, 82, 0.6), rgba(242, 92, 82, 0.6)), url(../images/hero.png);
-}
-
-/* ------------------ browse page hero ------------------ */
-.browse {
-  min-height: 100%;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(167, 232, 189, 0.6)), to(rgba(167, 232, 189, 0.6))), url(../images/f967b1be89502f15f69bc109368673fc@2x.png);
-  background-image: linear-gradient(rgba(167, 232, 189, 0.6), rgba(167, 232, 189, 0.6)), url(../images/f967b1be89502f15f69bc109368673fc@2x.png);
 }
 
 /* ------------------------------------------------------ */
@@ -533,77 +520,15 @@ footer .footer-content .footer-social .instagram {
 }
 
 /* ------------------------------------------------------ */
-/*                         BUTTONS                        */
-/* ------------------------------------------------------ */
-@media only screen and (max-width: 960px) {
-  .recipe-card .view {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-  .recipe-card .view .button {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
-/* ------------------------------------------------------ */
-.button-holder {
-  height: 42px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 20px;
-}
-
-a {
-  text-decoration: none;
-}
-
-.button {
-  text-align: center;
-  font: normal normal normal 20px/27px;
-  letter-spacing: 2px;
-  color: #000000;
-  opacity: 1;
-  background: #ffd972 0% 0% no-repeat;
-  -webkit-box-shadow: 0px 10px 6px #00000029;
-          box-shadow: 0px 10px 6px #00000029;
-  border-radius: 26px;
-  opacity: 1;
-  cursor: pointer;
-  width: 128px;
-  height: 42px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin: 10px;
-  text-decoration: none;
-}
-
-/* --------- hides and displays buttons on hover -------- */
-.view {
-  display: none;
-}
-
-.recipe-card:hover .view {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-/* ------------------------------------------------------ */
 /*                 HOME | THE JUNGLE COOK                 */
 /* ------------------------------------------------------ */
+.home-hero-wrapper {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(242, 92, 82, 0.6)), to(rgba(242, 92, 82, 0.6))), url(../images/hero.png);
+  background-image: linear-gradient(to bottom, rgba(242, 92, 82, 0.6), rgba(242, 92, 82, 0.6)), url(../images/hero.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .home-center-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -691,7 +616,7 @@ a {
 /* ------------------------------------------------------ */
 /*                    BROWSE | RECIPES                    */
 /* ------------------------------------------------------ */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 425px) {
   .bars {
     display: block;
   }
@@ -705,20 +630,7 @@ a {
             flex-direction: column;
   }
 
-  .recipe-gallery {
-    margin: 0 auto;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-
-  .photo-and-description {
+  .recipe-card {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -726,10 +638,9 @@ a {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    margin-bottom: 5%;
-  }
-  .photo-and-description .card-info {
-    min-width: 300px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    max-width: 298px;
   }
 }
 @media only screen and (max-width: 960px) {
@@ -759,82 +670,106 @@ a {
             justify-content: center;
   }
 }
+@media only screen and (max-width: 960px) {
+  .recipe-card .view {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .recipe-card .view .button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
 /* ------------------------------------------------------ */
 /*                          MAIN                          */
 /* ------------------------------------------------------ */
-.recipe-title {
-  width: 80%;
-  padding: 20px;
-  margin: 0 auto;
-  /* -------------- page title/heading ------------- */
-}
-.recipe-title h2 {
-  text-align: left;
-  font: normal normal bold 25px/33px;
-  letter-spacing: 2.5px;
-  color: black;
-  opacity: 1;
-}
-
-/* ---------------------------------------------------- */
-/*                        GALLERY                       */
-/* ---------------------------------------------------- */
-.recipe-gallery {
+#browse-hero-wrapper {
+  background-attachment: fixed;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(167, 232, 189, 0.6)), to(rgba(167, 232, 189, 0.6))), url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
+  background-image: linear-gradient(rgba(167, 232, 189, 0.6), rgba(167, 232, 189, 0.6)), url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
+  background-position: center;
+  background-size: cover !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   min-height: 100vh;
-  min-height: 350px;
-  display: flex;
 }
-.recipe-gallery .photo-and-description {
-  width: 100%;
-  height: 263px;
+
+.recipe-page-title {
+  width: 80%;
+  margin: 0 auto;
+  /* -------------- page title/heading ------------- */
+}
+.recipe-page-title h2 {
+  font-size: 33px;
+  letter-spacing: 2.5px;
+  color: black;
+}
+
+/* ------- recipe gallery (holds all recipe cards) ------ */
+.recipe-gallery {
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-bottom: 100px;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left: 30px;
-  margin-right: 30px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: left;
+  font: normal normal normal Lato;
+  color: #000000;
+  opacity: 1;
 }
-.recipe-gallery .photo-and-description .card-image {
-  width: 300px;
-  height: 100%;
-  border-radius: 24px;
+
+.recipe-card-holder {
+  position: relative;
+  margin: 20px;
+  padding: 20px;
+}
+
+.recipe-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: auto;
+  max-height: 400px;
+  max-width: 600px;
+}
+.recipe-card .recipe-image {
+  border-radius: 26px;
+  min-width: 300px;
+  height: 263px;
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.recipe-gallery .photo-and-description .card-info {
-  background: white 0% 0% no-repeat padding-box;
+.recipe-card .recipe-info {
+  background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 24px;
-  width: 224px;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-.recipe-gallery .photo-and-description .card-info .info-content {
+  opacity: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -848,57 +783,83 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  text-align: left;
-  border-radius: 24px;
-  /* --------- time and servings icons -------- */
+  padding: 20px;
+  height: auto;
 }
-.recipe-gallery .photo-and-description .card-info .info-content .card-info-title span {
-  font-size: 18px;
+.recipe-card .recipe-info .recipe-title span {
+  font-size: 20px;
+  letter-spacing: 1.5px;
   border-bottom: solid black;
 }
-.recipe-gallery .photo-and-description .card-info .info-content .card-info-text {
-  text-align: left;
+.recipe-card .recipe-description {
   font-size: 11px;
   letter-spacing: 0.9px;
-  width: 80%;
 }
-.recipe-gallery .photo-and-description .card-info .info-content .card-icon {
+.recipe-card .card-icon {
+  background: transparent url("img/time.png") 0% 0% no-repeat padding-box;
+  width: 40%;
+  opacity: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  height: 24px;
-  margin-bottom: 20px;
 }
-.recipe-gallery .photo-and-description .card-info .info-content .card-icon .card-icon-image {
+.recipe-card .card-icon .card-icon-image {
   width: 23px;
+  height: 24px;
+  margin-right: 10px;
 }
-.recipe-gallery .photo-and-description .card-info .info-content .card-icon .card-icon-text {
-  word-wrap: nowrap;
-  font-size: 10px;
+.recipe-card .card-icon .card-icon-text {
+  font-size: 12px;
   letter-spacing: 0.2px;
 }
 
-/* ------------------- recipe images ------------------ */
-.pizza .card-image {
-  background-image: url(../images/recipe-pizza.png);
+/* ------------------------------------------------------ */
+/*                         BUTTONS                        */
+/* ------------------------------------------------------ */
+.gallery-buttons-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
 }
 
-.burger .card-image {
-  background-image: url(../images/recipe-burger.png);
+.buttons {
+  background: #ffd972 0% 0% no-repeat padding-box;
+  -webkit-box-shadow: 0px 10px 6px #00000029;
+          box-shadow: 0px 10px 6px #00000029;
+  border-radius: 26px;
+  opacity: 1;
+  width: 128px;
+  height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 10px;
+  text-align: center;
+  font: normal normal normal 20px/27px;
+  letter-spacing: 2px;
 }
 
-.pilaf .card-image {
-  background-image: url(../images/recipe-pilaf.png);
+/* --------- hides and displays buttons on hover -------- */
+.unhide {
+  display: none;
+  -webkit-transition: height 0.66s ease-out;
+  transition: height 0.66s ease-out;
 }
 
-.chowmein .card-image {
-  background-image: url(../images/recipe-chowmein.png);
+.recipe-card-holder:hover .unhide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 /* ------------------------------------------------------ */
@@ -910,17 +871,16 @@ a {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    margin-top: 10%;
+    margin-top: 20%;
     margin-bottom: 10%;
   }
 }
-body {
+#login-page-body {
   background-color: #ffd972;
 }
 
 .login-page-wrapper {
   height: 100%;
-  background-color: blanchedalmond;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -932,6 +892,7 @@ body {
           justify-content: space-evenly;
 }
 .login-page-wrapper .form-holder {
+  padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

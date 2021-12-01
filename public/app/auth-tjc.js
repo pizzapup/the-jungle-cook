@@ -12,14 +12,12 @@ function initFirebase() {
     if (user) {
       _db = firebase.firestore();
       console.log("auth change logged in");
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
       $(".login-button").html(`
         <button onclick="signOut()">Logout</button>`);
       var uid = user.uid;
-      //   if (user.displayName) {
-      // $(".login-greeting").html(`Hello, ${user.displayName}`);
-      //   }
+      if (user.displayName) {
+        $(".login-greeting").html(`Hello, ${user.displayName}`);
+      }
       userExists = true;
     } else {
       console.log("auth change logged out");

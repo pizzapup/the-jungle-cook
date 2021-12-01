@@ -4,21 +4,21 @@
 @media only screen and (max-width: 960px) {
   .login-page-wrapper {
     flex-direction: column;
-    margin-top: 10%;
+    margin-top: 20%;
     margin-bottom: 10%;
   }
 }
-body {
+#login-page-body {
   background-color: #ffd972;
 }
 .login-page-wrapper {
   height: 100%;
-  background-color: blanchedalmond;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   //
   .form-holder {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
