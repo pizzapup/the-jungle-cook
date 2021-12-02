@@ -199,45 +199,183 @@ var RECIPES = [
 // your recipe holds only the recipes for the user
 function loadRecipes() {
   $.each(RECIPES, function (idx, recipe) {
-    $(".recipe-gallery").append(`
-    <div class="recipe-card-holder">
-  <div id="${idx}" class="recipe-card">
-    <div
-      class="recipe-image"
-      style="background-image: url(images/${recipe.recipeImg})"
-    >
-      <div class="view-button-holder">
-        <div class="buttons view-button unhide">View</div>
-      </div>
-    </div>
-
-    <div class="recipe-info">
-      <h2 class="recipe-title">
-        <span>${recipe.recipeTitle}</span>
-      </h2>
-      <p class="recipe-description">${recipe.recipeDescription}</p>
-      <div class="card-icon time">
-        <div class="card-icon-image">
-          <img src="images/time.svg" alt="time" />
+    $("#recipe-gallery-browse").append(`
+  <div class="recipe-card-holder">
+    <div class="recipe-card">
+      <div
+        class="recipe-image"
+        style="background-image: url(images/${recipe.recipeImg}">
+        <div class="view-button-holder">
+          <button id="${idx}" onclick="viewRecipe();" class="buttons view-button unhide">View</button>
         </div>
-        <div class="card-icon-text">${recipe.totalTime}</div>
       </div>
-      <div class="card-icon servings">
-        <div class="card-icon-image">
-          <img src="images/servings.svg" alt="servings" />
+      <div class="recipe-info">
+        <h2 class="recipe-title">
+          <span>${recipe.recipeTitle}</span>
+        </h2>
+        <p class="recipe-description">${recipe.recipeDescription}</p>
+        <div class="card-icon time">
+          <div class="card-icon-image">
+            <img src="images/time.svg" alt="time" />
+          </div>
+          <div class="card-icon-text">${recipe.totalTime}</div>
         </div>
-        <div class="card-icon-text">${recipe.totalServings} servings</div>
+        <div class="card-icon servings">
+          <div class="card-icon-image">
+            <img src="images/servings.svg" alt="servings" />
+          </div>
+          <div class="card-icon-text">${recipe.totalServings}</div>
+        </div>
       </div>
-    </div>
     </div>
     <div class="gallery-buttons-bottom">
-        <div class="buttons unhide">Edit Recipe</div>
-        <div class="buttons unhide">Delete</div>
+    <button class="buttons unhide">Edit Recipe</button>
+    <button class="buttons unhide">Delete</button>
+  </div>
+  </div>`);
+  });
+}
+
+/* --------------------- view recipe -------------------- */
+// info for one recipe loaded when clicking on "view" button
+// function viewRecipe() {
+//   $(".recipe-card").onclick(function (e) {
+//     let recipeIndex = e.currentTarget.id;
+//     console.log("recipeIndex");
+//     // console.log(campingIndex);
+//     $("#recipe-gallery").html(`
+//     <div class="view-recipe-holder">
+//     <div class="img-and-description">
+//       <div class="view-recipe-title-holder">
+//         <h2 class="view-recipe-title">
+//           <span>${RECIPE[recipeIndex].recipeTitle}</span>
+//         </h2>
+//         <div class="view-recipe-photo-holder">
+//           <img
+//             src="images/${RECIPE[recipeIndex].recipeImg2x}"
+//             alt="${RECIPE[recipeIndex].recipeTitle}"
+//             class="view-recipe-image"
+//           />
+//         </div>
+//       </div>
+//       <section class="description-holder">
+//         <div class="des-top">
+//           <h3>Description:</h3>
+//           <p class="view-recipe-description">
+//           ${RECIPE[recipeIndex].recipeDescription}
+//           </p>
+//         </div>
+//         <div class="des-bottom">
+//           <div class="time-serving-holder">
+//             <h4>Total Time:</h4>
+//             <span class="view-recipe-total">${RECIPE[recipeIndex].totalTime}</span>
+//           </div>
+//           <div class="time-serving-holder">
+//             <h4>Servings:</h4>
+//             <span class="view-recipe-total">${RECIPE[recipeIndex].totalServings}</span>
+//           </div>
+//         </div>
+//       </section>
+//     </div>
+//     <section class="view-list-holder ingredients">
+//       <h3>Ingredients:</h3>
+//     </section>
+//     <section class="view-list-holder instructions">
+//       <h3>Instructions:</h3>
+//     </section>
+//     <div class="view-page-edit-button">
+//       <button id="goToEdit" class="go-to-edit">
+//         <a href="edit-recipe.html"><span>Edit Recipe</span></a>
+//       </button>
+//     </div>
+//   </div>`);
+//     // addCloseListener();
+//   });
+// }
+function toggleHero() {
+  $(".add-class").click(function () {
+    $("body").toggleClass("browse", true);
+  });
+  $(".remove-class").click(function () {
+    $("body").toggleClass("main", false);
+  });
+}
+function viewRecipe() {
+  $(".view-button").click(function (e) {
+    let recipeIndex = e.currentTarget.id;
+    toggleHero();
+    console.log(recipeIndex);
+    console.log(RECIPES[recipeIndex].recipeTitle);
+
+    $("#recipe-gallery-browse").html(`
+    <div class="view-recipe-holder">
+  <div class="img-and-description">
+    <div class="view-recipe-title-holder">
+      <h2 class="view-recipe-title">
+        <span>${RECIPES[recipeIndex].recipeTitle}</span>
+      </h2>
+      <div class="view-recipe-photo-holder">
+        <img
+          src="images/${RECIPES[recipeIndex].recipeImg2x}"
+          alt="${RECIPES[recipeIndex].recipeTitle}"
+          class="view-recipe-image"
+        />
+      </div>
     </div>
+    <section class="description-holder">
+      <div class="des-top">
+        <h3>Description:</h3>
+        <p class="recipe-description">${RECIPES[recipeIndex].Description}</p>
+      </div>
+      <div class="des-bottom">
+        <div class="time-serving-holder">
+          <h4>Total Time:</h4>
+          <span class="recipe-total">${RECIPES[recipeIndex].totalTime}</span>
+        </div>
+        <div class="time-serving-holder">
+          <h4>Servings:</h4>
+          <span class="recipe-total"
+            >${RECIPES[recipeIndex].totalServings}</span
+          >
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="view-list-holder ingredients">
+    <h3>Ingredients:</h3>
+  </div>
+  <div class="view-list-holder instructions">
+    <h3>Instructions:</h3>
+  </div>
+  <div class="button-holder">
+    <button class="view-page-edit-button"></button>
+  </div>
 </div>`);
   });
 }
 
+/* ------------------------------------------------------ */
+function loadIngredients() {
+  let ingredientString = `<ul class="view-ingredients-list">`;
+  $.each(RECIPES.ingredients.ingredient, function (idx, ingredient) {
+    listString += `
+      <li id="${idx}"><>${ingredients.ingredient}</li>`;
+    // += adds to end
+  });
+  ingredientString += `</>`;
+  $(".ingredients").html(ingredientString);
+}
+/* ------------------------------------------------------ */
+function loadInstructions() {
+  let instructionsString = `<ul class="view-instructions-list">`;
+  $.each(RECIPES.instructions, function (idx, instruction) {
+    instructionsString += `
+      <li id="${idx}"><>${instructions.instruction}</li>`;
+  });
+  instructionsString += `</ul>`;
+  $(".instructions").html(instructionsString);
+}
+/* ------------------------------------------------------ */
 $(document).ready(function () {
   loadRecipes();
 });

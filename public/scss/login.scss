@@ -8,17 +8,23 @@
     margin-bottom: 10%;
   }
 }
-#login-page-body {
+.login-body {
   background-color: #ffd972;
+  min-height: 100%;
+}
+.login-hero {
+  background-color: #ffd972;
+  min-height: 100%;
 }
 .login-page-wrapper {
-  height: 100%;
+  // min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+
   //
   .form-holder {
-    padding: 20px;
+    padding: 45px;
     display: flex;
     flex-direction: column;
     align-items: center;

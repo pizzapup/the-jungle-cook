@@ -1,3 +1,6 @@
+<!-- --------------------------------------------------- -->
+<!--                        LOGIN                        -->
+<!-- --------------------------------------------------- -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,29 +9,81 @@
     <title>theJungleCook</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
-  <body>
-    <div class="home-hero-wrapper">
+  <body class="login-body">
+    <div class="hero-wrapper login-hero">
       <nav class="navigation-bar"></nav>
 
       <!-- ----------------------------------------------- -->
       <!-- ----------------------------------------------- -->
       <!--                  MAIN CONTENT                   -->
       <!-- ----------------------------------------------- -->
-      <div class="home-center-content">
-        <div class="yellow-circle">
-          <h2 class="home-content-title">The Jungle Cook</h2>
-          <p class="home-main-paragraph">
-            The home to various recipes of your choice. Add your own recipe
-            today and fill the world with joy!
-          </p>
+      <div class="login-page-wrapper">
+        <div class="form-holder">
+          <div class="login-greeting"></div>
+          <!-- --------------------------------------------- -->
+          <h2>Login Here!</h2>
+          <div class="form-content-wrapper">
+            <input
+              id="loginEmail"
+              type="email"
+              name="email"
+              placeholder="Email Address"
+            />
+            <input
+              id="loginPassword"
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
+            <button
+              class="login-page-buttons"
+              id="loginSubmit"
+              onclick="login()"
+            >
+              Login
+            </button>
+          </div>
         </div>
-        <div class="pink-circle">
-          <p class="home-secondary-paragraph">
-            Want to be a Jungle Cook? Go ahead and the kitchen is yours!
-          </p>
+        <div class="form-holder">
+          <h2 class="signup-heading-text">
+            <span class="span-signup-small">don't have an account?</span>
+            <span>Sign Up!</span>
+          </h2>
+          <div class="form-content-wrapper">
+            <input
+              id="fName"
+              type="text"
+              name="fName"
+              placeholder="First Name"
+            />
+            <input
+              id="lName"
+              type="text"
+              name="lName"
+              placeholder="Last Name"
+            />
+            <input
+              id="signupEmail"
+              type="email"
+              name="email"
+              placeholder="Email Address"
+            />
+            <input
+              id="signupPassword"
+              type="password"
+              name="password"
+              placeholder="Password"
+            />
+            <button
+              class="login-page-buttons"
+              id="signupSubmit"
+              onclick="signUp()"
+            >
+              Sign Up
+            </button>
+          </div>
         </div>
       </div>
-
       <!-- -------------- end main content --------------- -->
       <!-- ----------------------------------------------- -->
       <footer id="footer-content"></footer>
@@ -75,10 +130,12 @@
         -->
       <script defer src="/__/firebase/init.js?useEmulator=true"></script>
       <script src="lib/jquery-3.6.0.min.js"></script>
-      <script src="app/nav-url.js"></script>
+      <!-- <script src="app/nav-url.js"></script> -->
       <script src="app/app.js"></script>
       <script src="app/auth-tjc.js"></script>
       <script src="app/recipe.js"></script>
     </div>
   </body>
 </html>
+
+<!-- ----------------------------------------------- -->

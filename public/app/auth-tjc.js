@@ -20,6 +20,9 @@ function initFirebase() {
         $(".login-button").html(
           `<a href="login.html" class="login-button" onclick="signOut()">Logout</a>`
         );
+        $(".enter-username").html(
+          `Hey, ${user.displayName}here are your recipes!`
+        );
       }
       userExists = true;
     } else {

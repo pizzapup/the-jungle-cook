@@ -26,12 +26,12 @@
   display: flex;
   position: relative;
   flex-wrap: wrap;
-  .recipe-title-holder {
+  .view-recipe-title-holder {
     width: fit-content;
     height: fit-content;
     display: flex;
     align-items: center;
-    .recipe-title {
+    .view-recipe-title {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -42,8 +42,8 @@
         position: absolute;
       }
     }
-    .photo-holder {
-      .recipe-image {
+    .view-recipe-photo-holder {
+      .view-recipe-image {
         width: 468px;
       }
     }
@@ -97,7 +97,7 @@
   }
 }
 
-.list-holder {
+.view-list-holder {
   margin: 2.5%;
   width: 100%;
   //   margin-left: 50px;
@@ -116,7 +116,7 @@
     list-style: none;
   }
 }
-.button-holder {
+.view-page-edit-button {
   width: 80%;
   margin-left: 50px;
   button {
