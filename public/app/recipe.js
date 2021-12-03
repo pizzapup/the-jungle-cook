@@ -1,8 +1,7 @@
-//
 /* ------------------------------------------------------ */
-/*                        VARIABLES                       */
+/*                 BROWSE AND VIEW RECIPES                */
 /* ------------------------------------------------------ */
-
+/* ------------------------------------------------------ */
 /* -------------- variables from prototype -------------- */
 var RECIPES = [
   {
@@ -19,59 +18,48 @@ var RECIPES = [
         // ingredientAmt: "1/4 batch",
         // ingredientNotes: "n/a",
         ingredient: `1/4 batch pizza dough`,
-        checked: false,
       },
       {
         // ingredientAmt: "2 tablespoons",
         // ingredientNotes: "n/a",
         ingredient: `2 tablespoons Last-Minute Pizza Sauce`,
-        checked: false,
       },
       {
         // ingredientAmt: "10 slices",
         // ingredientNotes: "n/a",
         ingredient: `10 slice pepperoni`,
-        checked: false,
       },
       {
         // ingredientAmt: "2",
         // ingredientNotes: "n/a",
         ingredient: `2 large mushrooms, sliced`,
-        checked: false,
       },
       {
         // ingredientAmt: "1/4",
         // ingredientNotes: "n/a",
         ingredient: `1/4 bell pepper, sliced`,
-        checked: false,
       },
       {
         // ingredientAmt: "1 tablespoon",
         // ingredientNotes: "n/a",
         ingredient: `1 tablespoon sliced black olives`,
-        checked: false,
       },
     ],
     instructions: [
       {
         instruction: `Preheat the oven to 475°. Spray pizza pan with nonstick cooking or line a baking sheet with parchment paper.`,
-        checked: false,
       },
       {
         instruction: `Flatten dough into a thin round and place on the pizza pan`,
-        checked: false,
       },
       {
         instruction: `Spread pizza sauce over the dough.`,
-        checked: false,
       },
       {
         instruction: `Layer the toppings over the dough.`,
-        checked: false,
       },
       {
         instruction: `Bake for 8 to 10 minutes or until the crust is crisp and the cheese melted and lightly browned.`,
-        checked: false,
       },
     ],
   },
@@ -92,25 +80,21 @@ var RECIPES = [
         // ingredientAmt: "1/4 batch",
         // ingredientNotes: "n/a",
         ingredient: `Lorem, ipsum dolor.`,
-        checked: false,
       },
       {
         // ingredientAmt: "2 tablespoons",
         // ingredientNotes: "n/a",
         ingredient: `Lorem, ipsum dolor.`,
-        checked: false,
       },
     ],
     instructions: [
       {
         instruction: `Lorem ipsum dolor sit amet consectetur
         adipisicing elit. Ea, laudantium!`,
-        checked: false,
       },
       {
         instruction: `Lorem ipsum dolor sit amet consectetur
         adipisicing elit. Ea, laudantium!`,
-        checked: false,
       },
     ],
   },
@@ -130,25 +114,21 @@ var RECIPES = [
         // ingredientAmt: "1/4 batch",
         // ingredientNotes: "n/a",
         ingredient: `Lorem, ipsum dolor.`,
-        checked: false,
       },
       {
         // ingredientAmt: "2 tablespoons",
         // ingredientNotes: "n/a",
         ingredient: `Lorem, ipsum dolor.`,
-        checked: false,
       },
     ],
     instructions: [
       {
         instruction: `Lorem ipsum dolor sit amet consectetur
         adipisicing elit. Ea, laudantium!`,
-        checked: false,
       },
       {
         instruction: `Lorem ipsum dolor sit amet consectetur
         adipisicing elit. Ea, laudantium!`,
-        checked: false,
       },
     ],
   },
@@ -169,32 +149,28 @@ var RECIPES = [
         // ingredientAmt: "1/4 batch",
         // ingredientNotes: "n/a",
         ingredient: `Lorem, ipsum dolor.`,
-        checked: false,
       },
       {
         // ingredientAmt: "2 tablespoons",
         // ingredientNotes: "n/a",
         ingredient: `Lorem, ipsum dolor.`,
-        checked: false,
       },
     ],
     instructions: [
       {
         instruction: `Lorem ipsum dolor sit amet consectetur
         adipisicing elit. Ea, laudantium!`,
-        checked: false,
       },
       {
         instruction: `Lorem ipsum dolor sit amet consectetur
         adipisicing elit. Ea, laudantium!`,
-        checked: false,
       },
     ],
   },
 ];
 /* ------------------------------------------------------ */
 
-/* ----------------- loads recipe cards ----------------- */
+/* ----------------- load recipe cards ----------------- */
 // browse page holds all recipes
 // your recipe holds only the recipes for the user
 function loadRecipes() {
@@ -236,101 +212,68 @@ function loadRecipes() {
   });
 }
 
-/* --------------------- view recipe -------------------- */
-// info for one recipe loaded when clicking on "view" button
-// function viewRecipe() {
-//   $(".recipe-card").onclick(function (e) {
-//     let recipeIndex = e.currentTarget.id;
-//     console.log("recipeIndex");
-//     // console.log(campingIndex);
-//     $("#recipe-gallery").html(`
-//     <div class="view-recipe-holder">
-//     <div class="img-and-description">
-//       <div class="view-recipe-title-holder">
-//         <h2 class="view-recipe-title">
-//           <span>${RECIPE[recipeIndex].recipeTitle}</span>
-//         </h2>
-//         <div class="view-recipe-photo-holder">
-//           <img
-//             src="images/${RECIPE[recipeIndex].recipeImg2x}"
-//             alt="${RECIPE[recipeIndex].recipeTitle}"
-//             class="view-recipe-image"
-//           />
-//         </div>
-//       </div>
-//       <section class="description-holder">
-//         <div class="des-top">
-//           <h3>Description:</h3>
-//           <p class="view-recipe-description">
-//           ${RECIPE[recipeIndex].recipeDescription}
-//           </p>
-//         </div>
-//         <div class="des-bottom">
-//           <div class="time-serving-holder">
-//             <h4>Total Time:</h4>
-//             <span class="view-recipe-total">${RECIPE[recipeIndex].totalTime}</span>
-//           </div>
-//           <div class="time-serving-holder">
-//             <h4>Servings:</h4>
-//             <span class="view-recipe-total">${RECIPE[recipeIndex].totalServings}</span>
-//           </div>
-//         </div>
-//       </section>
-//     </div>
-//     <section class="view-list-holder ingredients">
-//       <h3>Ingredients:</h3>
-//     </section>
-//     <section class="view-list-holder instructions">
-//       <h3>Instructions:</h3>
-//     </section>
-//     <div class="view-page-edit-button">
-//       <button id="goToEdit" class="go-to-edit">
-//         <a href="edit-recipe.html"><span>Edit Recipe</span></a>
-//       </button>
-//     </div>
-//   </div>`);
-//     // addCloseListener();
-//   });
-// }
-function toggleHero() {
-  $(".add-class").click(function () {
-    $("body").toggleClass("browse", true);
+/* ---------------- get ingredients list ---------------- */
+function getIngredients(recipeIndex) {
+  console.log("GET INGREDIENTS RECIPE INDEX: ", recipeIndex);
+  let ingListString = `<ul>`;
+  $.each(RECIPES[recipeIndex].ingredients, function (idx, value) {
+    let addValue = value.ingredient;
+    ingListString += `<li>${addValue}</li>`;
+    console.log(addValue);
   });
-  $(".remove-class").click(function () {
-    $("body").toggleClass("main", false);
-  });
+  ingListString += `</ul>`;
+  $("#list-holder1").html(ingListString);
 }
-function viewRecipe() {
-  $(".view-button").click(function (e) {
-    let recipeIndex = e.currentTarget.id;
-    toggleHero();
-    console.log(recipeIndex);
-    console.log(RECIPES[recipeIndex].recipeTitle);
 
-    $("#recipe-gallery-browse").html(`
-    <div class="view-recipe-holder">
-  <div class="img-and-description">
-    <div class="view-recipe-title-holder">
-      <h2 class="view-recipe-title">
-        <span>${RECIPES[recipeIndex].recipeTitle}</span>
-      </h2>
+/* --------------- get instructions list --------------- */
+function getInstructions(recipeIndex) {
+  console.log("GET INSTRUCTIONS RECIPE INDEX: ", recipeIndex);
+  let instListString = `<ul>`;
+  $.each(RECIPES[recipeIndex].instructions, function (idx, value) {
+    let addValue = value.instruction;
+    instListString += `<li>${value.instruction}</li>`;
+    console.log(value.instruction);
+    console.log(addValue);
+  });
+  instListString += `</ul>`;
+  console.log(instListString);
+  $("#list-holder2").html(instListString);
+}
+
+/* ---------------- get view "page" info ---------------- */
+function getViewRecipe(recipeIndex) {
+  console.log(recipeIndex);
+  $("#recipe-gallery-browse").html(`
+  <div class="view-page-container">
+  <div class="view-recipe-holder">
+    <div class="photo-and-title">
+      <div class="view-recipe-title-holder">
+        <h2 class="view-recipe-title">
+          <span>${RECIPES[recipeIndex].recipeTitle}</span>
+        </h2>
+      </div>
       <div class="view-recipe-photo-holder">
         <img
-          src="images/${RECIPES[recipeIndex].recipeImg2x}"
+          src="images/recipe-pizza@2x.png"
           alt="${RECIPES[recipeIndex].recipeTitle}"
           class="view-recipe-image"
         />
       </div>
     </div>
-    <section class="description-holder">
+
+    <div class="description-holder">
       <div class="des-top">
         <h3>Description:</h3>
-        <p class="recipe-description">${RECIPES[recipeIndex].Description}</p>
+        <p class="recipe-description">
+          ${RECIPES[recipeIndex].recipeDescription}
+        </p>
       </div>
       <div class="des-bottom">
         <div class="time-serving-holder">
           <h4>Total Time:</h4>
-          <span class="recipe-total">${RECIPES[recipeIndex].totalTime}</span>
+          <span class="recipe-total"
+            >${RECIPES[recipeIndex].totalTime}</span
+          >
         </div>
         <div class="time-serving-holder">
           <h4>Servings:</h4>
@@ -339,42 +282,39 @@ function viewRecipe() {
           >
         </div>
       </div>
-    </section>
+    </div>
   </div>
-  <div class="view-list-holder ingredients">
+
+  <div class="view-list-holder">
     <h3>Ingredients:</h3>
+    <div id="list-holder1"></div>
   </div>
-  <div class="view-list-holder instructions">
+  <div class="view-list-holder">
     <h3>Instructions:</h3>
+    <div id="list-holder2"></div>
   </div>
-  <div class="button-holder">
-    <button class="view-page-edit-button"></button>
+
+  <div class="view-page-button-holder">
+    <button class="view-page-edit-button">edit</button>
   </div>
 </div>`);
+}
+/* -------- view recipe when selected from browse -------- */
+function viewRecipe() {
+  $(".view-button").click(function (e) {
+    $("#heroWrapper").removeClass("browseHero");
+
+    // $("#heroWrapper").attr("class", `view-recipe-hero`);
+    // other page backgrounds are set from onhashchange
+    let recipeIndex = e.currentTarget.id;
+    console.log(recipeIndex);
+    // window.location.hash = "view-recipe";
+    getViewRecipe(recipeIndex);
+    getIngredients(recipeIndex);
+    getInstructions(recipeIndex);
   });
 }
 
-/* ------------------------------------------------------ */
-function loadIngredients() {
-  let ingredientString = `<ul class="view-ingredients-list">`;
-  $.each(RECIPES.ingredients.ingredient, function (idx, ingredient) {
-    listString += `
-      <li id="${idx}"><>${ingredients.ingredient}</li>`;
-    // += adds to end
-  });
-  ingredientString += `</>`;
-  $(".ingredients").html(ingredientString);
-}
-/* ------------------------------------------------------ */
-function loadInstructions() {
-  let instructionsString = `<ul class="view-instructions-list">`;
-  $.each(RECIPES.instructions, function (idx, instruction) {
-    instructionsString += `
-      <li id="${idx}"><>${instructions.instruction}</li>`;
-  });
-  instructionsString += `</ul>`;
-  $(".instructions").html(instructionsString);
-}
 /* ------------------------------------------------------ */
 $(document).ready(function () {
   loadRecipes();

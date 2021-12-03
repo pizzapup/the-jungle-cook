@@ -1,62 +1,144 @@
+<!-- --------------------------------------------------- -->
+<!--                     EDIT RECIPE                     -->
+<!-- --------------------------------------------------- -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>theJungleCook | Edit Recipe</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>theJungleCook</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div class="hero-wrapper edit-recipe">
+    <div id="heroWrapper" class="hero-wrapper">
       <nav class="navigation-bar"></nav>
 
-          <!-- ----------------------------------------- -->
-          <!--               MAIN CONTENT                -->
-          <!-- ----------------------------------------- -->
-          <div class="create-recipe-content-wrapper">
-            <h1>Hey Michael, edit your recipe!</h1>
-            <form class="create-recipe-form">
-              <div class="create-form-section general-info">
-                <div class="file-button-wrap">
-                  <span class="add-image-placeholder">Edit Recipe Image</span>
-                  <div class="file-button-holder">
-                    <span>Attach File</span>
-                    <label for="editFileUpload" id="edit-file-label">
-                      <input type="file" id="editFileUpload" name="editFileUpload">
-                    </label>
-                  </div>
-                </div>
-                <input id="eRecipeName" type="text" name="eRecipeName" placeholder="Recipe Name">
-                <input id="eRecipeDescription" type="text" name="eRecipeDescription" placeholder="Recipe Description">
-                <input id="eTotalTime" type="text" name="eTotalTime" placeholder="Recipe Total Time">
-                <input id="eServingSize" type="text" name="eServingSize" placeholder="Recipe Serving Size">
-              </div>
-              <div class="create-form-section ingredients">
-                <h3>Edit Ingredients:</h3>
-                <input id="eIngredientOne" type="text" name="eIngredientOne" placeholder="Ingredient #1">
-                <input id="eIngredientTwo" type="text" name="eIngredientTwo" placeholder="Ingredient #2">
-                <input id="eIngredientThree" type="text" name="eIngredientThree" placeholder="Ingredient #3">
-              </div>
-              <div class="create-form-section instructionss">
-                <h3>Edit Instructions</h3>
-                <input id="eInstructionOne" type="text" name="eInstructionOne" placeholder="Instruction #1">
-                <input id="eInstructionTwo" type="text" name="eInstructionTwo" placeholder="Instruction #2">
-                <input id="eInstructionThree" type="text" name="eInstructionThree" placeholder="Instruction #3">
-              </div>
-              <a href="view-recipe.html" class="recipe-submit-button" >Submit Changes</a>
-              <!-- <input id="editRecipeSubmit" type="submit" value="Submit Changes" class="recipe-submit-button"/> -->
-            </form>
-          </div>
-          <footer id="footer-content"></footer>
-
-          <!-- ----------------------------------------- -->
-
-            <div id="app">
-            <script src="lib/jquery-3.6.0.min.js"></script>
-            <script src="app/app.js"></script>
+<!-- --------------------------------------------------- -->
+<div class="create-recipe-content-wrapper">
+  <h1>Hey Michael, create your recipe!</h1>
+  <form class="create-recipe-form">
+    <div class="create-form-section general-info">
+      <div class="file-button-wrap">
+        <span class="add-image-placeholder">Add Recipe Image</span>
+        <div class="file-button-holder">
+          <span>Attach File</span>
+          <label for="createFileUpload" 
+            <input type="file"  name="createFileUpload" />
+          </label>
         </div>
       </div>
+      <input
+        type="text"
+        name="recipeName"
+        placeholder="Recipe Name"
+      />
+      <input
+        type="text"
+        name="recipeDescription"
+        placeholder="Recipe Description"
+      />
+      <input
+        type="text"
+        name="totalTime"
+        placeholder="Recipe Total Time"
+      />
+      <input
+        type="text"
+        name="servingSize"
+        placeholder="Recipe Serving Size"
+      />
+    </div>
+    <div class="create-form-section ingredients">
+      <h3>Enter Ingredients:</h3>
+      <input
+        type="text"
+        name="ingredientOne"
+        placeholder="Ingredient #1"
+      />
+      <input
+        type="text"
+        name="ingredientTwo"
+        placeholder="Ingredient #2"
+      />
+      <input
+        type="text"
+        name="ingredientThree"
+        placeholder="Ingredient #3"
+      />
+    </div>
+    <div class="create-form-section instructions">
+      <h3>Enter Instructions</h3>
+      <input
+        type="text"
+        name="instructionOne"
+        placeholder="Instruction #1"
+      />
+      <input
+        type="text"
+        name="instructionTwo"
+        placeholder="Instruction #2"
+      />
+      <input
+        type="text"
+        name="instructionThree"
+        placeholder="Instruction #3"
+      />
+    </div>
+    <button class="recipe-submit-button" >Submit Changes</button>
+    <!-- <input id="createRecipeSubmit" type="submit" value="Create Recipe" class="recipe-submit-button"/> -->
+  </form>
+</div>
+<!-- --------------------------------------------------- -->
+
+      <footer id="footer-content"></footer>
+
+      <!-- ----------------------------------------------- -->
+      <!-- update the version number as needed -->
+      <script defer src="/__/firebase/9.5.0/firebase-app-compat.js"></script>
+      <!-- include only the Firebase features as you need -->
+      <script defer src="/__/firebase/9.5.0/firebase-auth-compat.js"></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-database-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-firestore-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-functions-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-messaging-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-storage-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-analytics-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-remote-config-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-performance-compat.js"
+      ></script>
+      <!-- 
+          initialize the SDK after all desired features are loaded, set useEmulator to false
+          to avoid connecting the SDK to running emulators.
+        -->
+      <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+      <script src="lib/jquery-3.6.0.min.js"></script>
+      <script src="app/nav-url.js"></script>
+      <script src="app/app.js"></script>
+      <script src="app/auth-tjc.js"></script>
+      <script src="app/recipe.js"></script>
     </div>
   </body>
 </html>

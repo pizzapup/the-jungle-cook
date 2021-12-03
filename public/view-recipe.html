@@ -1,133 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <title>theJungleCook | View Recipe</title>
-  </head>
-  <body>
-    <!-- <div class="view-recipe-wrapper"> -->
-    <!-- <nav class="navigation-bar"></nav> -->
-    <!-- <div class="app"> -->
-    <div class="view-recipe-holder">
-      <div class="img-and-description">
-        <div class="view-recipe-title-holder">
-          <h2 class="view-recipe-title">
-            <span>supreme pizza</span>
-          </h2>
-          <div class="view-recipe-photo-holder">
-            <img
-              src="images/recipe-pizza@2x.png"
-              alt="pizza"
-              class="view-recipe-image"
-            />
-          </div>
-        </div>
-        <section class="description-holder">
-          <div class="des-top">
-            <h3>Description:</h3>
-            <p class="recipe-description">
-              Make pizza night super duper out of this world with homemade
-              pizza. This recipe is supreme with vegetables and two types of
-              meat. Yum!
-            </p>
-          </div>
-          <div class="des-bottom">
-            <div class="time-serving-holder">
-              <h4>Total Time:</h4>
-              <span class="recipe-total">1h 24min</span>
-            </div>
-            <div class="time-serving-holder">
-              <h4>Servings:</h4>
-              <span class="recipe-total">4 servings</span>
-            </div>
-          </div>
-        </section>
-      </div>
-      <section class="view-list-holder">
-        <h3>Ingredients:</h3>
-        <!-- <ul class="ingredients-list">
-          <li>1/4 batch pizza dough</li>
-          <li>2 tablespoons Last-Minute Pizza Sauce</li>
-          <li>10 slices pepperoni</li>
-          <li>1 cup cooked and crumbled Italian sausage</li>
-          <li>2 large mushrooms, sliced</li>
-          <li>1/4 bell pepper, sliced</li>
-          <li>1 tablespoon sliced black olives</li>
-          <li>1 cup shredded mozzarella cheese</li>
-        </ul> -->
-      </section>
-      <section class="view-list-holder">
-        <h3>Instructions:</h3>
-        <!-- <ul class="view-instructions-list">
-          <li>
-            1. Preheat the oven to 475°. Spray pizza pan with nonstick cooking
-            or line a baking sheet with parchment paper.
-          </li>
-          <li>
-            2. Flatten dough into a thin round and place on the pizza pan.
-          </li>
-          <li>3. Spread pizza sauce over the dough.</li>
-          <li>4. Layer the toppings over the dough in the order listed.</li>
-          <li>
-            5. Bake for 8 to 10 minutes or until the crust is crisp and the
-            cheese melted and lightly browned.
-          </li>
-        </ul> -->
-      </section>
-      <div class="button-holder">
-        <button class="view-page-edit-button"></button>
-      </div>
-    </div>
-    <!-- </div> -->
-    <!-- </div> -->
-    <!-- <footer class="footer-content"></footer> -->
-  </body>
-</html>
+<!-- --------------------------------------------------- -->
+<!--                     VIEW RECIPE                     -->
 <!-- --------------------------------------------------- -->
 
-<div class="view-recipe-holder">
-  <div class="img-and-description">
-    <div class="view-recipe-title-holder">
-      <h2 class="view-recipe-title">
-        <span>${RECIPES[recipeIndex].recipeTitle}</span>
-      </h2>
-      <div class="view-recipe-photo-holder">
-        <img
-          src="images/${RECIPES[recipeIndex].recipeImg2x}"
-          alt="${RECIPES[recipeIndex].recipeTitle}"
-          class="view-recipe-image"
-        />
-      </div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>theJungleCook</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="view-recipeHero">
+      <nav class="navigation-bar"></nav>
+
+      <footer id="footer-content"></footer>
+      <!-- ----------------------------------------------- -->
+      <!-- update the version number as needed -->
+      <script defer src="/__/firebase/9.5.0/firebase-app-compat.js"></script>
+      <!-- include only the Firebase features as you need -->
+      <script defer src="/__/firebase/9.5.0/firebase-auth-compat.js"></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-database-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-firestore-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-functions-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-messaging-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-storage-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-analytics-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-remote-config-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-performance-compat.js"
+      ></script>
+      <!-- 
+          initialize the SDK after all desired features are loaded, set useEmulator to false
+          to avoid connecting the SDK to running emulators.
+        -->
+      <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+      <script src="lib/jquery-3.6.0.min.js"></script>
+      <script src="app/nav-url.js"></script>
+      <script src="app/app.js"></script>
+      <script src="app/auth-tjc.js"></script>
+      <script src="app/recipe.js"></script>
     </div>
-    <section class="description-holder">
-      <div class="des-top">
-        <h3>Description:</h3>
-        <p class="recipe-description">${RECIPES[recipeIndex].Description}</p>
-      </div>
-      <div class="des-bottom">
-        <div class="time-serving-holder">
-          <h4>Total Time:</h4>
-          <span class="recipe-total">${RECIPES[recipeIndex].totalTime}</span>
-        </div>
-        <div class="time-serving-holder">
-          <h4>Servings:</h4>
-          <span class="recipe-total"
-            >${RECIPES[recipeIndex].totalServings}</span
-          >
-        </div>
-      </div>
-    </section>
-  </div>
-  <div class="view-list-holder view-ingredients-list">
-    <h3>Ingredients:</h3>
-  </div>
-  <div class="view-list-holder view-instructions-list">
-    <h3>Instructions:</h3>
-  </div>
-  <div class="button-holder">
-    <button class="view-page-edit-button"></button>
-  </div>
-</div>
+  </body>
+</html>

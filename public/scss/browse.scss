@@ -80,21 +80,7 @@
 }
 
 /* ------------------------ main ------------------------ */
-.browse-hero {
-  background-attachment: fixed;
-  background-image: linear-gradient(
-      rgba(167, 232, 189, 0.6),
-      rgba(167, 232, 189, 0.6)
-    ),
-    url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
-  background-position: center;
-  background-size: cover !important;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+
 .recipe-page-title {
   width: 80%;
   // padding: 20px;

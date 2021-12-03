@@ -1,30 +1,73 @@
+<!-- --------------------------------------------------- -->
+<!--                     YOUR RECIPE                     -->
+<!-- --------------------------------------------------- -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>theJungleCook | Your Recipes</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>theJungleCook</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div class="hero-wrapper browse">
-      <section id="yourRecipeGallery" class="recipe-gallery">
-        <nav id="navigation-bar"></nav>
-
+    <div id="heroWrapper" class="hero-wrapper">
+      <nav class="navigation-bar"></nav>
+      <!-- --------------------------------------------------- -->
+      <div id="yourRecipeGallery" class="recipe-gallery">
         <div class="recipe-title">
           <h2 class="user-greeting"></h2>
         </div>
-      </section>
-
-      <!-- ----------------------------------------- -->
-      <!-- -------------- end gallery -------------- -->
-
+      </div>
+      <!-- --------------------------------------------------- -->
       <footer id="footer-content"></footer>
+
+      <!-- ----------------------------------------------- -->
+      <!-- update the version number as needed -->
+      <script defer src="/__/firebase/9.5.0/firebase-app-compat.js"></script>
+      <!-- include only the Firebase features as you need -->
+      <script defer src="/__/firebase/9.5.0/firebase-auth-compat.js"></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-database-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-firestore-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-functions-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-messaging-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-storage-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-analytics-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-remote-config-compat.js"
+      ></script>
+      <script
+        defer
+        src="/__/firebase/9.5.0/firebase-performance-compat.js"
+      ></script>
+      <!-- 
+          initialize the SDK after all desired features are loaded, set useEmulator to false
+          to avoid connecting the SDK to running emulators.
+        -->
+      <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+      <script src="lib/jquery-3.6.0.min.js"></script>
+      <script src="app/nav-url.js"></script>
+      <script src="app/app.js"></script>
+      <script src="app/auth-tjc.js"></script>
+      <script src="app/recipe.js"></script>
     </div>
-    <script src="lib/jquery-3.6.0.min.js"></script>
-    <script src="app/app.js"></script>
-    <script src="app/recipe.js"></script>
-    <script src="app/auth.js"></script>
   </body>
 </html>

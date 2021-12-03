@@ -531,13 +531,6 @@ footer .footer-content .footer-social {
 /* ------------------------------------------------------ */
 /*                 HOME | THE JUNGLE COOK                 */
 /* ------------------------------------------------------ */
-.home-hero-wrapper {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(242, 92, 82, 0.6)), to(rgba(242, 92, 82, 0.6))), url(../images/hero.png);
-  background-image: linear-gradient(to bottom, rgba(242, 92, 82, 0.6), rgba(242, 92, 82, 0.6)), url(../images/hero.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .home-center-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -620,6 +613,46 @@ footer .footer-content .footer-social {
   text-align: center;
   font-size: 10px;
   letter-spacing: 1px;
+}
+
+/* ------------------------------------------------------ */
+/*                          HERO                          */
+/* ------------------------------------------------------ */
+.homeHero {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(242, 92, 82, 0.6)), to(rgba(242, 92, 82, 0.6))), url(../images/hero.png);
+  background-image: linear-gradient(to bottom, rgba(242, 92, 82, 0.6), rgba(242, 92, 82, 0.6)), url(../images/hero.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.browseHero {
+  background-attachment: fixed;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(167, 232, 189, 0.6)), to(rgba(167, 232, 189, 0.6))), url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
+  background-image: linear-gradient(rgba(167, 232, 189, 0.6), rgba(167, 232, 189, 0.6)), url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
+  background-position: center;
+  background-size: cover !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+}
+
+.login-hero {
+  background-color: #ffd972;
+  min-height: 100%;
+}
+
+.view-recipeHero {
+  background-color: white;
+  margin: 5%;
 }
 
 /* ------------------------------------------------------ */
@@ -731,26 +764,6 @@ footer .footer-content .footer-social {
   }
 }
 /* ------------------------ main ------------------------ */
-.browse-hero {
-  background-attachment: fixed;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(167, 232, 189, 0.6)), to(rgba(167, 232, 189, 0.6))), url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
-  background-image: linear-gradient(rgba(167, 232, 189, 0.6), rgba(167, 232, 189, 0.6)), url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
-  background-position: center;
-  background-size: cover !important;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  min-height: 100vh;
-}
-
 .recipe-page-title {
   width: 80%;
   margin: 0 auto;
@@ -917,14 +930,11 @@ footer .footer-content .footer-social {
     margin-bottom: 10%;
   }
 }
-.login-body {
-  background-color: #ffd972;
-  min-height: 100%;
-}
-
+.Hero,
+.loginHero,
 .login-hero {
-  background-color: #ffd972;
-  min-height: 100%;
+  background-color: #ffd972 !important;
+  min-height: 100% !important;
 }
 
 .login-page-wrapper {
@@ -1278,34 +1288,44 @@ footer .footer-content .footer-social {
 /* ------------------------------------------------------ */
 /*                          MAIN                          */
 /* ------------------------------------------------------ */
-.view-recipe-holder {
-  margin: 5%;
-  position: relative;
-}
-
-.img-and-description {
+.view-page-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 5%;
 }
-.img-and-description .view-recipe-title-holder {
+
+.view-recipe-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.photo-and-title {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  position: relative;
 }
-.img-and-description .view-recipe-title-holder .view-recipe-title {
+
+.view-recipe-title-holder {
+  width: 418px;
+  height: 421px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  position: absolute;
+  left: -35px;
+}
+.view-recipe-title-holder .view-recipe-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1316,66 +1336,37 @@ footer .footer-content .footer-social {
       -ms-flex-align: center;
           align-items: center;
   white-space: nowrap;
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
-  position: relative;
 }
-.img-and-description .view-recipe-title-holder .view-recipe-title span {
-  position: absolute;
+.view-recipe-photo-holder {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
-.img-and-description .view-recipe-title-holder .view-recipe-photo-holder .view-recipe-image {
+.view-recipe-photo-holder .view-recipe-image {
   width: 468px;
 }
-.img-and-description .description-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+
+.description-holder {
+  margin-left: 50px;
   text-align: left;
-  width: 40%;
-  margin-left: 5%;
 }
-.img-and-description .description-holder .des-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 100%;
-}
-.img-and-description .description-holder .des-top h3 {
+
+.des-top h3 {
   text-align: left;
   font: normal normal normal 25px/33px Lato Black;
   letter-spacing: 5px;
   color: #000000;
   opacity: 1;
 }
-.img-and-description .description-holder .des-top p {
+.des-top p {
   text-align: left;
   font: normal normal normal 20px/27px Caveat;
   letter-spacing: 4px;
   color: #000000;
   opacity: 1;
 }
-.img-and-description .description-holder .des-bottom {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-.img-and-description .description-holder .des-bottom .time-serving-holder {
+
+.des-bottom .time-serving-holder {
   text-align: left;
   font: normal normal normal 20px/27px Lato Black;
   letter-spacing: 4px;
@@ -1391,11 +1382,11 @@ footer .footer-content .footer-social {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  margin-top: 30px;
 }
 
+/* ------------------------------------------------------ */
 .view-list-holder {
-  margin: 2.5%;
-  width: 100%;
   text-align: left;
   font: normal normal normal 25px/33px Lato Black;
   letter-spacing: 5px;
@@ -1411,11 +1402,26 @@ footer .footer-content .footer-social {
   list-style: none;
 }
 
+.view-page-button-holder {
+  background: #ffd972 0% 0% no-repeat padding-box;
+  border-radius: 26px;
+  opacity: 1;
+  width: 128px;
+  height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
 .view-page-edit-button {
   width: 80%;
-  margin-left: 50px;
-}
-.view-page-edit-button button {
   width: 128px;
   height: 42px;
   background: #ffd972 0% 0% no-repeat padding-box;

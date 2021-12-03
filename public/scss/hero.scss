@@ -1,3 +1,51 @@
-//
 /* ------------------------------------------------------ */
 /*                          HERO                          */
+/* ------------------------------------------------------ */
+
+// nav-url.js
+// classes from hashchange
+
+.heroWrapper {
+  //
+}
+.homeHero {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(242, 92, 82, 0.6),
+      rgba(242, 92, 82, 0.6)
+    ),
+    url(../images/hero.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.browseHero {
+  background-attachment: fixed;
+  background-image: linear-gradient(
+      rgba(167, 232, 189, 0.6),
+      rgba(167, 232, 189, 0.6)
+    ),
+    url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
+  background-position: center;
+  background-size: cover !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.login-hero {
+  background-color: #ffd972;
+  min-height: 100%;
+  //
+}
+.create-recipeHero {
+  //
+}
+.edit-recipeHero {
+  //
+}
+.view-recipeHero {
+  background-color: white;
+  margin: 5%;
+  //
+}
