@@ -7,9 +7,13 @@
   .view-recipe-holder {
     padding-top: 11%;
     padding-bottom: 11%;
+    display: block !important;
   }
   .des-top {
     width: 80vw;
+  }
+  .description-holder {
+    margin-left: 0px;
   }
 }
 
@@ -23,14 +27,14 @@
   justify-content: space-between;
   margin: 5%;
 }
-.view-recipe-holder {
-  display: flex;
-}
+
 .photo-and-title {
   width: fit-content;
   position: relative;
 }
-
+.view-recipe-holder {
+  display: flex;
+}
 .view-recipe-title-holder {
   width: 418px;
   height: 421px;
@@ -103,7 +107,16 @@
     letter-spacing: 4px;
     color: #000000;
     opacity: 1;
-    list-style: none;
+  }
+  ul {
+    li {
+      list-style: none;
+    }
+  }
+  ol {
+    li {
+      // list-style: -moz-repeating-linear-gradient();
+    }
   }
 }
 .view-page-button-holder {

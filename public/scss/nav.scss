@@ -65,10 +65,12 @@
 nav {
   width: 100%;
   padding-top: 10px;
-  .page-title-norm {
-    left: 1px;
-    position: fixed;
-  }
+
+  // .page-title-norm {
+  //   left: 1px;
+  //   position: fixed;
+  //   top: 0px;
+  // }
 
   .nav-holder {
     display: flex;
@@ -87,6 +89,7 @@ nav {
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
+    padding-right: 30px;
     margin-left: 45%;
     border: none;
     // white-space: nowrap;
@@ -96,9 +99,16 @@ nav {
     }
   }
   .links.active {
+    // padding: 0px;
+    padding-right: 30px;
+
     height: auto;
-    padding: 2px;
     opacity: 1;
+    // #login-button {
+    //   width: fit-content;
+    //   height: fit-content;
+    //   padding: 10px;
+    // }
   }
 
   .login-button {

@@ -6,26 +6,27 @@
 }
 @media only screen and (max-width: 425px) {
   footer {
-    position: sticky;
+    // position: sticky;
   }
   .footer-links {
     display: block;
   }
 }
+#heroWrapper {
+  position: relative;
+}
 footer {
-  position: fixed;
   // position: sticky;
-
-  bottom: 0;
-  left: 20px;
-  right: 20px;
 
   .footer-content {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
     /* -------------------- copyright ------------------- */
     .copyright-footer {
       //

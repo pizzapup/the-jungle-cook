@@ -1,28 +1,37 @@
 //
 /* ------------- hashchange sets hero class ------------- */
+
 function changeRoute() {
   let hashTag = window.location.hash;
-  console.log(hashTag);
   let pageID = hashTag.replace("#", "");
   let currentHero = $("#heroWrapper").attr("class");
-  console.log("current hero: ", currentHero);
+
   if (pageID != "") {
-    $("#heroWrapper").attr("class", pageID);
+    $.get(`${pageID}.html`, function (data) {
+      console.log("data " + data);
+      $("#pageContentApp").html(data);
+    });
+    if (pageID != "login") {
+      $("#heroWrapper").attr("class", pageID);
+      console.log(
+        "Hero changed. Previous: " + currentHero + ". New: " + pageID
+      );
+      $("body").removeClass("login");
+    } else {
+      console.log("hero not changed");
+      $("#heroWrapper").attr("class", pageID);
+    }
   } else {
-    $("#heroWrapper").attr("class", "home");
+    $.get(`home.html`, function (data) {
+      console.log("data " + data);
+      $("#pageContentApp").html(data);
+    });
   }
-  //   $("nav a").click(function (e) {
-  //     e.preventDefault();
-  //     $("a").removeClass("current-page");
-  //     $(this).addClass("current-page");
-  //   });
 }
 function initURLListener() {
   window.onhashchange = changeRoute;
   changeRoute();
-  console.log(changeRoute);
 }
 $(document).ready(function () {
   initURLListener();
-  //   setNavigation();
 });

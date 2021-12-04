@@ -3,31 +3,63 @@
 /* ------------------------------------------------------ */
 //
 /* ---------------------- variables --------------------- */
+// database that attaches to firestore when user is logged in
 var _db = "";
 var userExists = false;
 var userFullName = "";
 var _userProfileInfo = {};
 /* ------------------------------------------------------ */
-
+function updateUserInfo(userObj) {
+  let id = firebase.auth().currentUser.uid;
+  _db
+    .collection("Users")
+    .doc(id)
+    .update(userObj)
+    .then(() => {
+      console.log("updated doc");
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log("update error ", errorMessage);
+    });
+}
 /* ----------- initfirebase / authstatechange ----------- */
 function initFirebase() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // SIGNED IN
-      console.log("auth change logged in");
-      userLoggedIn();
+      // database attaches to firestore
       _db = firebase.firestore();
+      console.log("auth change logged in");
       var uid = user.uid;
       userExists = true;
+      console.log(_userProfileInfo);
+      /* ------------------------------------------------------ */
+      $(".user-greeting").html(`${user.displayName}`);
+      $(".user-only-content").attr("class", "userLoggedIn");
+      $("#userLoggedInNAV").html(
+        `<a href="your-recipe.html#your-recipe" class="userLoggedInNAV">Your Recipe</a>`
+      );
+      // $(".login-button").html("Logout");
+      $(".load").prop("disabled", true);
       //
     } else {
       // SIGNED OUT
       console.log("auth change logged out");
-      notLoggedIn();
       userExists = false;
       userFullName = "";
+      // database no longer attached to firestore
       _db = "";
       _userProfileInfo = {};
+      /* ------------------------------------------------ */
+      $(".login-greeting").empty();
+      $(".user-only-content").toggleClass("userLoggedOut");
+      $(".userAccessOnly").on("click", function (event) {
+        event.preventDefault();
+        alert("Hello! Please sign up or log in to view this content. ");
+        /* ---------------------------------------------- */
+      });
     }
   });
 }
@@ -38,7 +70,7 @@ function signUp() {
   let lName = $("#lName").val();
   let email = $("#signupEmail").val();
   let password = $("#signupPassword").val();
-  console.log("create");
+  console.log("sign up completed");
   console.log(fName);
   console.log(lName);
   console.log(email);
@@ -66,6 +98,7 @@ function signUp() {
         .set(userObj)
         .then((doc) => {
           console.log("doc added ");
+          // profile information is set to userObj (links local/firebase)
           _userProfileInfo = userObj;
           console.log("create userinfo ", _userProfileInfo);
         })
@@ -106,20 +139,25 @@ function login() {
       $("#loginPassword").empty();
       var user = userCredential.user;
       _db
+        // finds or creates collection called Users
         .collection("Users")
+        // creates document in Users with the user.uid
         .doc(user.uid)
         .get()
         .then((doc) => {
           console.log(doc.data());
+          _userProfileInfo = doc.data();
+
+          console.log("login userinfo: ", _userProfileInfo);
           /* -------------------------------------------- */
-          loadRecipes();
+        })
+        .catch((error) => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log("error ", errorMessage);
         });
+
       // ...
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log("error ", errorMessage);
     });
 }
 function signOut() {
@@ -127,6 +165,7 @@ function signOut() {
     .auth()
     .signOut()
     .then(() => {
+      // $(".login-button").html("Login");
       console.log("signed out");
     })
     .catch((error) => {
@@ -158,37 +197,34 @@ function signIn() {
       // ...
     });
 }
-/* ------------------------------------------------------ */
-/* ---------------- logged in/logged out ---------------- */
-function userLoggedIn() {
-  $(".login-button").html(`
-  <button onclick="signOut()">Logout</button>`);
-  if (user.displayName) {
-    $(".userLoggedInName").html(`${user.displayName}`);
-    $(".userLoggedInClear").html(``);
-    $(".login-button").html(
-      `<a href="login.html" class="login-button" onclick="signOut()">Logout</a>`
-    );
-    $(".enter-username").html(`Hey, ${user.displayName}here are your recipes!`);
-    $(".load").prop("disabled", true);
-  }
-}
-function notLoggedIn() {
-  // change user specific html
-  //prevent the default behaviour of the Link (e.g. redirecting to another page)
-  // alert when clicked on user-only content
-  $(".login-greeting").empty();
-  $(".login-button").html(
-    `<a href="login.html" class="login-button">Login</a>`
-  );
-  $(".userAccessOnly").on("click", function (event) {
-    event.preventDefault();
-    alert("Hello! Please sign up or log in to view this content. ");
-  });
-  console.log("notLoggedIn() completed");
-}
 
 /* ------------------------------------------------------ */
+
+function createRecipe() {
+  let recipeTitle = $("#recipeTitle").val();
+  let recipeDescription = $("#recipeDescription").val();
+  let totalTime = $("#totalTime").val();
+  let totalServings = $("#totalServings").val();
+  let recipeImg = $("#recipeImg").val();
+  let newRecipeObj = {
+    recipeTitle: recipeTitle,
+    recipeDescription: recipeDescription,
+    totalTime: totalTime,
+    totalServings: totalServings,
+    recipeImg: recipeImg,
+    ingredients: [],
+    instructions: [],
+  };
+  console.log(newRecipeObj);
+  _userProfileInfo.recipes.push(newRecipeObj);
+  updateUserInfo(_userProfileInfo);
+  alert("New recipe create: " + recipeTitle);
+}
+function recipeImageUpload() {
+  alert(
+    "Apologies, the file upload portion of the form is still being updated. Please type in the url/image path or leave this input blank for now. Thank you!"
+  );
+}
 $(document).ready(function () {
   try {
     initFirebase();

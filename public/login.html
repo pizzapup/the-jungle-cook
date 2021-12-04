@@ -1,7 +1,7 @@
 <!-- --------------------------------------------------- -->
 <!--                        LOGIN                        -->
 <!-- --------------------------------------------------- -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div id="heroWrapper">
-      <nav class="navigation-bar"></nav>
+    <div id="heroWrapper" class="hero-wrapper">
+      <nav class="navigation-bar"></nav> -->
       <!-- <div id="pageApp" class="page-app"></div> -->
       <div class="login-page-wrapper">
-        <div class="form-holder">
-          <div class="login-greeting">
-            Hello, <span class="userLoggedInName"></span>
+        <div class="form-holder login-form-wrap">
+          <div class="user-only-content">
+            Hello <span></span><span class="user-greeting"></span>
           </div>
           <!-- --------------------------------------------- -->
           <h2>Login Here!</h2>
@@ -44,10 +44,12 @@
         </div>
         <div class="form-holder">
           <h2 class="signup-heading-text">
-            <span class="span-signup-small">don't have an account?</span>
-            <span>Sign Up!</span>
+            <div>
+              <span class="span-signup-small">don't have an account?</span>
+            </div>
+            <div><span>Sign Up!</span></div>
           </h2>
-          <div class="form-content-wrapper">
+          <div class="form-content-wrapper sign-up-form">
             <input
               id="fName"
               type="text"
@@ -83,14 +85,14 @@
         </div>
       </div>
 
-      <footer id="footer-content"></footer>
+      <!-- <footer id="footer-content"></footer> -->
 
       <!-- ----------------------------------------------- -->
       <!-- update the version number as needed -->
-      <script defer src="/__/firebase/9.5.0/firebase-app-compat.js"></script>
+      <!-- <script defer src="/__/firebase/9.5.0/firebase-app-compat.js"></script> -->
       <!-- include only the Firebase features as you need -->
-      <script defer src="/__/firebase/9.5.0/firebase-auth-compat.js"></script>
-      <script
+      <!-- <script defer src="/__/firebase/9.5.0/firebase-auth-compat.js"></script> -->
+      <!-- <script
         defer
         src="/__/firebase/9.5.0/firebase-database-compat.js"
       ></script>
@@ -121,12 +123,12 @@
       <script
         defer
         src="/__/firebase/9.5.0/firebase-performance-compat.js"
-      ></script>
+      ></script> -->
       <!-- 
           initialize the SDK after all desired features are loaded, set useEmulator to false
           to avoid connecting the SDK to running emulators.
         -->
-      <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+      <!-- <script defer src="/__/firebase/init.js?useEmulator=true"></script>
       <script src="lib/jquery-3.6.0.min.js"></script>
       <script src="app/nav-url.js"></script>
       <script src="app/app.js"></script>
@@ -134,4 +136,4 @@
       <script src="app/recipe.js"></script>
     </div>
   </body>
-</html>
+</html> -->

@@ -21,3 +21,10 @@ p {
 button {
   cursor: pointer;
 }
+
+.userLoggedIn {
+  display: block;
+}
+.userLoggedOut {
+  display: none;
+}

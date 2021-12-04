@@ -8,7 +8,8 @@
 .heroWrapper {
   //
 }
-.home {
+.home,
+.homeHero {
   background-image: linear-gradient(
       to bottom,
       rgba(242, 92, 82, 0.6),
@@ -18,7 +19,9 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-.browse {
+.browse,
+.browseHero,
+.your-recipe {
   background-attachment: fixed;
   background-image: linear-gradient(
       rgba(167, 232, 189, 0.6),
@@ -27,16 +30,18 @@
     url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
   background-position: center;
   background-size: cover !important;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: center;
+  // align-items: center;
   min-height: 100vh;
 }
+.loginHero,
+.login-hero,
 .login {
-  background-color: #ffd972;
-  min-height: 100%;
-  //
+  background-color: #ffd972 !important;
+  min-height: 100% !important;
+  min-width: 100% !important;
 }
 .create-recipe {
   //

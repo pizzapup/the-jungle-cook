@@ -1,7 +1,7 @@
 <!-- --------------------------------------------------- -->
 <!--                    CREATE RECIPE                    -->
 <!-- --------------------------------------------------- -->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -10,78 +10,106 @@
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <div id="heroWrapper" class="hero-wrapper">
-      <nav class="navigation-bar"></nav>
-      <div class="create-recipe-content-wrapper">
-        <h1 class="userLoggedInName"></h1>
-        <form class="create-recipe-form">
-          <div class="create-form-section general-info">
-            <div class="file-button-wrap">
-              <span class="add-image-placeholder">Add Recipe Image</span>
-              <div class="file-button-holder">
-                <span>Attach File</span>
-                <label for="createFileUpload" 
+
+    <div id="heroWrapper" class="hero-wrapper create-recipeHero">
+      <nav class="navigation-bar"></nav> -->
+<div class="create-recipe-content-wrapper">
+  <input
+    type="submit"
+    name="createRecipe"
+    onclick="createRecipe()"
+    value="create"
+  />
+  <h1>Hey <span class="user-greeting"></span>, create your recipe!</h1>
+  <div class="recipe-form">
+    <div class="create-form-section general-info">
+      <div class="file-button-wrap">
+        <input
+          type="text"
+          id="recipeImg"
+          name="recipe-image"
+          placeholder="Add Recipe Image"
+        />
+        <!-- <span class="add-image-placeholder">Add Recipe Image</span> -->
+        <div onclick="recipeImageUpload();" class="file-button-holder">
+          <span>Attach File</span>
+          <!-- asking user for image url for now -->
+          <!-- <label for="createFileUpload" 
                   <input type="file" id="recipeImg"  name="createFileUpload" />
-                </label>
-              </div>
-            </div>
-            <input
-            id="recipeTitle"
-              type="text"
-              name="recipeName"
-              placeholder="Recipe Name"
-            />
-            <input
-            id="recipeDescription"
-              type="text"
-              name="recipeDescription"
-              placeholder="Recipe Description"
-            />
-            <input
-            id="totalTime"
-              type="text"
-              name="totalTime"
-              placeholder="Recipe Total Time"
-            />
-            <input
-            id="totalServings"
-              type="text"
-              name="servingSize"
-              placeholder="Recipe Serving Size"
-            />
-          </div>
-          <!-- ----------------------------------------- -->
-          <div class="create-form-section ingredients">
-            <h3>Enter Ingredients:</h3>
-            <input
-              type="text"
-              name="ingredientOne"
-              placeholder="Ingredient #1"
-              id="addIngredient"
-            />
-          </div>
-          <div class="create-form-section instructions">
-            <h3>Enter Instructions</h3>
-            <input
-            id="addInstruction"
-              type="text"
-              name="instructionOne"
-              placeholder="Instruction #1"
-            />
-          </div>
-          <!-- ----------------------------------------- -->
-          <!-- <button class="recipe-submit-button" id="recipeSubmit" href="view-recipe.html" onclick="">Create Recipe</button> -->
-          <input id="createRecipeSubmit" type="submit" value="Create Recipe" class="recipe-submit-button" onclick="createRecipe();"/>
-        </form>
+                </label> -->
+        </div>
       </div>
+      <input
+        id="recipeTitle"
+        type="text"
+        name="recipeName"
+        placeholder="Recipe Name"
+      />
+      <input
+        id="recipeDescription"
+        type="text"
+        name="recipeDescription"
+        placeholder="Recipe Description"
+      />
+      <input
+        id="totalTime"
+        type="text"
+        name="totalTime"
+        placeholder="Recipe Total Time"
+      />
+      <input
+        id="totalServings"
+        type="text"
+        name="servingSize"
+        placeholder="Recipe Serving Size"
+      />
+    </div>
+    <!-- ----------------------------------------- -->
+    <div class="create-form-section ingredients">
+      <h3>Enter Ingredients:</h3>
+      <div class="list-holder1"></div>
+      <button onclick="addIngredient();">add ingredient</button>
+      <input
+        type="text"
+        name="ingredientOne"
+        placeholder="Ingredient #1"
+        id="addIngredient"
+      />
+      <button
+        class="addButton"
+        type="submit"
+        onclick="addIngredient();"
+      ></button>
+    </div>
+    <div class="create-form-section instructions">
+      <h3>Enter Instructions</h3>
+      <input
+        id="addInstruction"
+        type="text"
+        name="instructionOne"
+        placeholder="Instruction #1"
+        onclick="addInstruction();"
+      />
+    </div>
+    <!-- ----------------------------------------- -->
+    <!-- <button class="recipe-submit-button" id="recipeSubmit" href="view-recipe.html" onclick="">Create Recipe</button> -->
+    <input
+      id="createRecipeSubmit"
+      type="submit"
+      value="Create Recipe"
+      class="recipe-submit-button"
+      onclick="createRecipe();"
+    />
+  </div>
+</div>
 
-      <footer id="footer-content"></footer>
+<!-- <footer id="footer-content"></footer> -->
 
-      <!-- ----------------------------------------------- -->
-      <!-- update the version number as needed -->
-      <script defer src="/__/firebase/9.5.0/firebase-app-compat.js"></script>
-      <!-- include only the Firebase features as you need -->
-      <script defer src="/__/firebase/9.5.0/firebase-auth-compat.js"></script>
+<!-- ----------------------------------------------- -->
+<!-- update the version number as needed -->
+<!-- <script defer src="/__/firebase/9.5.0/firebase-app-compat.js"></script> -->
+<!-- include only the Firebase features as you need -->
+<!-- <script defer src="/__/firebase/9.5.0/firebase-auth-compat.js"></script>
       <script
         defer
         src="/__/firebase/9.5.0/firebase-database-compat.js"
@@ -113,17 +141,17 @@
       <script
         defer
         src="/__/firebase/9.5.0/firebase-performance-compat.js"
-      ></script>
-      <!-- 
+      ></script> -->
+<!-- 
           initialize the SDK after all desired features are loaded, set useEmulator to false
           to avoid connecting the SDK to running emulators.
         -->
-      <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+<!-- <script defer src="/__/firebase/init.js?useEmulator=true"></script>
       <script src="lib/jquery-3.6.0.min.js"></script>
+      <script src="app/auth-tjc.js"></script>
       <script src="app/nav-url.js"></script>
       <script src="app/app.js"></script>
-      <script src="app/auth-tjc.js"></script>
       <script src="app/recipe.js"></script>
     </div>
   </body>
-</html>
+</html> -->

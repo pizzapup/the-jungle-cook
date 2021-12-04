@@ -3,19 +3,17 @@
 /* ------------------------------------------------------ */
 @media only screen and (max-width: 960px) {
   .login-page-wrapper {
-    flex-direction: column;
-    margin-top: 20%;
-    margin-bottom: 10%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .login-form-wrap {
+    margin-top: 50px;
+  }
+  .sign-up-form {
+    margin-bottom: 50px;
   }
 }
-
-.loginHero,
-.login-hero {
-  background-color: #ffd972 !important;
-  min-height: 100% !important;
-}
 .login-page-wrapper {
-  // min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -23,9 +21,10 @@
   //
   .form-holder {
     padding: 45px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+
     h2 {
       text-align: left;
       font: normal normal normal 30px/40px Lato Black;
@@ -35,10 +34,11 @@
     }
     .signup-heading-text {
       width: 100%;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: flex-start;
+      white-space: nowrap;
+      // display: flex;
+      // justify-content: center;
+      // flex-direction: column;
+      // align-items: flex-start;
       .span-signup-small {
         text-align: left;
         font: italic normal normal 12px/15px Lato;

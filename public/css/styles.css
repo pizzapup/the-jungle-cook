@@ -26,6 +26,14 @@ button {
   cursor: pointer;
 }
 
+.userLoggedIn {
+  display: block;
+}
+
+.userLoggedOut {
+  display: none;
+}
+
 /* ------------------------------------------------------ */
 /*                       NAVIGATION                       */
 /* ------------------------------------------------------ */
@@ -101,10 +109,6 @@ nav {
   width: 100%;
   padding-top: 10px;
 }
-nav .page-title-norm {
-  left: 1px;
-  position: fixed;
-}
 nav .nav-holder {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -131,6 +135,7 @@ nav .links {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  padding-right: 30px;
   margin-left: 45%;
   border: none;
 }
@@ -139,8 +144,8 @@ nav .links a {
   text-decoration: none;
 }
 nav .links.active {
+  padding-right: 30px;
   height: auto;
-  padding: 2px;
   opacity: 1;
 }
 nav .login-button {
@@ -255,20 +260,14 @@ nav #logo-title h1 {
 /*                         FOOTER                         */
 /* ------------------------------------------------------ */
 @media only screen and (max-width: 425px) {
-  footer {
-    position: sticky;
-  }
-
   .footer-links {
     display: block;
   }
 }
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 20px;
-  right: 20px;
+#heroWrapper {
+  position: relative;
 }
+
 footer .footer-content {
   width: 100%;
   display: -webkit-box;
@@ -280,6 +279,10 @@ footer .footer-content {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
   /* -------------------- copyright ------------------- */
   /* ---------------------- links --------------------- */
   /* ------------------ social media ------------------ */
@@ -357,7 +360,8 @@ footer .footer-content .footer-social {
   width: 80%;
   text-align: left;
 }
-.create-recipe-content-wrapper form {
+.create-recipe-content-wrapper .create-recipe-form,
+.create-recipe-content-wrapper .recipe-form {
   padding-bottom: 7%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -377,13 +381,16 @@ footer .footer-content .footer-social {
   /*                 FORM SUBMIT BUTTON                 */
   /* -------------------------------------------------- */
 }
-.create-recipe-content-wrapper form input[type=text] {
+.create-recipe-content-wrapper .create-recipe-form input[type=text],
+.create-recipe-content-wrapper .recipe-form input[type=text] {
   padding-bottom: 1%;
 }
-.create-recipe-content-wrapper form input[type=text]:focus {
+.create-recipe-content-wrapper .create-recipe-form input[type=text]:focus,
+.create-recipe-content-wrapper .recipe-form input[type=text]:focus {
   outline: none;
 }
-.create-recipe-content-wrapper form .create-form-section {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section,
+.create-recipe-content-wrapper .recipe-form .create-form-section {
   margin-top: 7%;
   margin-bottom: 7%;
   display: -webkit-box;
@@ -404,7 +411,8 @@ footer .footer-content .footer-social {
   /*                 ADD RECIPE IMAGE                 */
   /* ------------------------------------------------ */
 }
-.create-recipe-content-wrapper form .create-form-section input {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input,
+.create-recipe-content-wrapper .recipe-form .create-form-section input {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -417,49 +425,56 @@ footer .footer-content .footer-social {
   width: 100%;
   margin-top: 6%;
 }
-.create-recipe-content-wrapper form .create-form-section input input::-webkit-input-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::-webkit-input-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input::-webkit-input-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input::-moz-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::-moz-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input::-moz-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input:-ms-input-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input:-ms-input-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input:-ms-input-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input::-ms-input-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::-ms-input-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input::-ms-input-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input::placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::placeholder,
+.create-recipe-content-wrapper .recipe-form .create-form-section input input::placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input h3 {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input h3,
+.create-recipe-content-wrapper .recipe-form .create-form-section input h3 {
   text-align: left;
   font: normal normal normal 20px/27px Lato Black;
   letter-spacing: 2px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section #recipeImg,
+.create-recipe-content-wrapper .recipe-form .create-form-section #recipeImg {
+  border: none;
+}
+.create-recipe-content-wrapper .create-recipe-form .create-form-section .file-button-wrap,
+.create-recipe-content-wrapper .recipe-form .create-form-section .file-button-wrap {
   border-bottom: solid black;
   width: 100%;
   display: -webkit-box;
@@ -478,14 +493,16 @@ footer .footer-content .footer-social {
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .add-image-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section .file-button-wrap .add-image-placeholder,
+.create-recipe-content-wrapper .recipe-form .create-form-section .file-button-wrap .add-image-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section .file-button-wrap .file-button-holder,
+.create-recipe-content-wrapper .recipe-form .create-form-section .file-button-wrap .file-button-holder {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -503,16 +520,19 @@ footer .footer-content .footer-social {
   border-radius: 26px;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder input[type=file] {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section .file-button-wrap .file-button-holder input[type=file],
+.create-recipe-content-wrapper .recipe-form .create-form-section .file-button-wrap .file-button-holder input[type=file] {
   display: none;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder input[type=file]::-webkit-file-upload-button {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section .file-button-wrap .file-button-holder input[type=file]::-webkit-file-upload-button, .create-recipe-content-wrapper .recipe-form .create-form-section .file-button-wrap .file-button-holder input[type=file]::-webkit-file-upload-button {
   display: none;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder input[type=file]::file-selector-button {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section .file-button-wrap .file-button-holder input[type=file]::file-selector-button,
+.create-recipe-content-wrapper .recipe-form .create-form-section .file-button-wrap .file-button-holder input[type=file]::file-selector-button {
   display: none;
 }
-.create-recipe-content-wrapper form .recipe-submit-button {
+.create-recipe-content-wrapper .create-recipe-form .recipe-submit-button,
+.create-recipe-content-wrapper .recipe-form .recipe-submit-button {
   text-align: center;
   font: normal normal normal 25px/33px Lato;
   font-size: 1.5vw;
@@ -619,36 +639,31 @@ footer .footer-content .footer-social {
 /* ------------------------------------------------------ */
 /*                          HERO                          */
 /* ------------------------------------------------------ */
-.home {
+.home,
+.homeHero {
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(242, 92, 82, 0.6)), to(rgba(242, 92, 82, 0.6))), url(../images/hero.png);
   background-image: linear-gradient(to bottom, rgba(242, 92, 82, 0.6), rgba(242, 92, 82, 0.6)), url(../images/hero.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.browse {
+.browse,
+.browseHero,
+.your-recipe {
   background-attachment: fixed;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(167, 232, 189, 0.6)), to(rgba(167, 232, 189, 0.6))), url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
   background-image: linear-gradient(rgba(167, 232, 189, 0.6), rgba(167, 232, 189, 0.6)), url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
   background-position: center;
   background-size: cover !important;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   min-height: 100vh;
 }
 
+.loginHero,
+.login-hero,
 .login {
-  background-color: #ffd972;
-  min-height: 100%;
+  background-color: #ffd972 !important;
+  min-height: 100% !important;
+  min-width: 100% !important;
 }
 
 .view-recipe {
@@ -726,19 +741,6 @@ footer .footer-content .footer-social {
   }
 }
 @media only screen and (max-width: 960px) {
-  .bars {
-    display: block;
-  }
-
-  .links {
-    height: 0px;
-    opacity: 0;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-
   .recipe-gallery {
     margin: 0 auto;
     display: -webkit-box;
@@ -767,7 +769,6 @@ footer .footer-content .footer-social {
 /* ------------------------ main ------------------------ */
 .recipe-page-title {
   width: 80%;
-  margin: 0 auto;
   /* -------------- page title/heading ------------- */
 }
 .recipe-page-title h2 {
@@ -923,20 +924,21 @@ footer .footer-content .footer-social {
 /* ------------------------------------------------------ */
 @media only screen and (max-width: 960px) {
   .login-page-wrapper {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    margin-top: 20%;
-    margin-bottom: 10%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  .login-form-wrap {
+    margin-top: 50px;
+  }
+
+  .sign-up-form {
+    margin-bottom: 50px;
   }
 }
-.loginHero,
-.login-hero {
-  background-color: #ffd972 !important;
-  min-height: 100% !important;
-}
-
 .login-page-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -950,16 +952,6 @@ footer .footer-content .footer-social {
 }
 .login-page-wrapper .form-holder {
   padding: 45px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 .login-page-wrapper .form-holder h2 {
   text-align: left;
@@ -970,19 +962,7 @@ footer .footer-content .footer-social {
 }
 .login-page-wrapper .form-holder .signup-heading-text {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  white-space: nowrap;
 }
 .login-page-wrapper .form-holder .signup-heading-text .span-signup-small {
   text-align: left;
@@ -1099,7 +1079,8 @@ footer .footer-content .footer-social {
   width: 80%;
   text-align: left;
 }
-.create-recipe-content-wrapper form {
+.create-recipe-content-wrapper .create-recipe-form,
+.create-recipe-content-wrapper .recipe-form {
   padding-bottom: 7%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1119,13 +1100,16 @@ footer .footer-content .footer-social {
   /*                 FORM SUBMIT BUTTON                 */
   /* -------------------------------------------------- */
 }
-.create-recipe-content-wrapper form input[type=text] {
+.create-recipe-content-wrapper .create-recipe-form input[type=text],
+.create-recipe-content-wrapper .recipe-form input[type=text] {
   padding-bottom: 1%;
 }
-.create-recipe-content-wrapper form input[type=text]:focus {
+.create-recipe-content-wrapper .create-recipe-form input[type=text]:focus,
+.create-recipe-content-wrapper .recipe-form input[type=text]:focus {
   outline: none;
 }
-.create-recipe-content-wrapper form .create-form-section {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section,
+.create-recipe-content-wrapper .recipe-form .create-form-section {
   margin-top: 7%;
   margin-bottom: 7%;
   display: -webkit-box;
@@ -1146,7 +1130,8 @@ footer .footer-content .footer-social {
   /*                 ADD RECIPE IMAGE                 */
   /* ------------------------------------------------ */
 }
-.create-recipe-content-wrapper form .create-form-section input {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input,
+.create-recipe-content-wrapper .recipe-form .create-form-section input {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -1159,49 +1144,56 @@ footer .footer-content .footer-social {
   width: 100%;
   margin-top: 6%;
 }
-.create-recipe-content-wrapper form .create-form-section input input::-webkit-input-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::-webkit-input-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input::-webkit-input-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input::-moz-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::-moz-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input::-moz-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input:-ms-input-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input:-ms-input-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input:-ms-input-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input::-ms-input-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::-ms-input-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input::-ms-input-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input::placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::placeholder,
+.create-recipe-content-wrapper .recipe-form .create-form-section input input::placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input h3 {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input h3,
+.create-recipe-content-wrapper .recipe-form .create-form-section input h3 {
   text-align: left;
   font: normal normal normal 20px/27px Lato Black;
   letter-spacing: 2px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section #recipeImg,
+.create-recipe-content-wrapper .recipe-form .create-form-section #recipeImg {
+  border: none;
+}
+.create-recipe-content-wrapper .create-recipe-form .create-form-section .file-button-wrap,
+.create-recipe-content-wrapper .recipe-form .create-form-section .file-button-wrap {
   border-bottom: solid black;
   width: 100%;
   display: -webkit-box;
@@ -1220,14 +1212,16 @@ footer .footer-content .footer-social {
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .add-image-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section .file-button-wrap .add-image-placeholder,
+.create-recipe-content-wrapper .recipe-form .create-form-section .file-button-wrap .add-image-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section .file-button-wrap .file-button-holder,
+.create-recipe-content-wrapper .recipe-form .create-form-section .file-button-wrap .file-button-holder {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1245,16 +1239,19 @@ footer .footer-content .footer-social {
   border-radius: 26px;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder input[type=file] {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section .file-button-wrap .file-button-holder input[type=file],
+.create-recipe-content-wrapper .recipe-form .create-form-section .file-button-wrap .file-button-holder input[type=file] {
   display: none;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder input[type=file]::-webkit-file-upload-button {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section .file-button-wrap .file-button-holder input[type=file]::-webkit-file-upload-button, .create-recipe-content-wrapper .recipe-form .create-form-section .file-button-wrap .file-button-holder input[type=file]::-webkit-file-upload-button {
   display: none;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder input[type=file]::file-selector-button {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section .file-button-wrap .file-button-holder input[type=file]::file-selector-button,
+.create-recipe-content-wrapper .recipe-form .create-form-section .file-button-wrap .file-button-holder input[type=file]::file-selector-button {
   display: none;
 }
-.create-recipe-content-wrapper form .recipe-submit-button {
+.create-recipe-content-wrapper .create-recipe-form .recipe-submit-button,
+.create-recipe-content-wrapper .recipe-form .recipe-submit-button {
   text-align: center;
   font: normal normal normal 25px/33px Lato;
   font-size: 1.5vw;
@@ -1279,10 +1276,15 @@ footer .footer-content .footer-social {
   .view-recipe-holder {
     padding-top: 11%;
     padding-bottom: 11%;
+    display: block !important;
   }
 
   .des-top {
     width: 80vw;
+  }
+
+  .description-holder {
+    margin-left: 0px;
   }
 }
 /* ------------------------------------------------------ */
@@ -1304,17 +1306,17 @@ footer .footer-content .footer-social {
   margin: 5%;
 }
 
-.view-recipe-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .photo-and-title {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   position: relative;
+}
+
+.view-recipe-holder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .view-recipe-title-holder {
@@ -1399,9 +1401,10 @@ footer .footer-content .footer-social {
   letter-spacing: 4px;
   color: #000000;
   opacity: 1;
+}
+.view-list-holder ul li {
   list-style: none;
 }
-
 .view-page-button-holder {
   background: #ffd972 0% 0% no-repeat padding-box;
   border-radius: 26px;
