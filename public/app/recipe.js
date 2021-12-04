@@ -1,7 +1,7 @@
 /* ------------------------------------------------------ */
-/*                 BROWSE AND VIEW RECIPES                */
+/*                         RECIPES                        */
 /* ------------------------------------------------------ */
-/* ------------------------------------------------------ */
+
 /* -------------- variables from prototype -------------- */
 var RECIPES = [
   {
@@ -181,8 +181,8 @@ function loadRecipes() {
       <div
         class="recipe-image"
         style="background-image: url(images/${recipe.recipeImg}">
-        <div class="view-button-holder">
-          <button id="${idx}" onclick="viewRecipe();" class="buttons view-button unhide">View</button>
+        <div id="#heroview" class="view-button-holder">
+          <button id="${idx}" class="buttons view-button unhide" ><a onclick="viewRecipe();" href="#view-recipe"><span>View</span></a></button>
         </div>
       </div>
       <div class="recipe-info">
@@ -314,7 +314,92 @@ function viewRecipe() {
     getInstructions(recipeIndex);
   });
 }
+/* ------------------------------------------------------ */
+/* ------------------------------------------------------ */
+/*                      CREATE RECIPE                     */
+/* ------------------------------------------------------ */
+function createRecipe() {
+  // adding object from user input
+  let recipeTitle = $("#recipeTitle").val();
+  let recipeTitle = $("#recipeTitle").val();
+  let recipeDescription = $("#recipeDescription").val();
+  let totalTime = $("#totalTime").val();
+  let totalServings = $("#totalServings").val();
+  let recipeImg = $("#recipeImg").val();
+  let newRecipeObj = {
+    recipeTitle: recipeTitle,
+    recipeDescription: recipeDescription,
+    totalTime: totalTime,
+    totalServings: totalServings,
+    recipeImg: recipeImg,
+    ingredients: [],
+    instructions: [],
+  };
+  _userProfileInfo.lists.push(newListObj);
+  updateUserInfo(_userProfileInfo);
+  loadRecipes();
+  $("#recipeTitle").val("");
+}
 
+/* ------------------------------------------------------ */
+function addIngredient(recipeIndex) {
+  // adding object from user input
+  let newIngName = $("#addIngredient").val();
+  let ingredient = {
+    name: newIngName,
+    category: "",
+  };
+  RECIPES[recipeIndex].ingredients.push(ingredient);
+  getIngredients(recipeIndex);
+}
+function addInstruction(recipeIndex) {
+  // adding object from user input
+  let newInstName = $("#addInstruction").val();
+  let instruction = {
+    name: newInstName,
+    category: "",
+  };
+  RECIPES[recipeIndex].instructions.push(instruction);
+  getInstructions(recipeIndex);
+}
+
+/* ------------------------------------------------------ */
+// delete list
+function deleteRecipe(RECIPES, idx) {
+  RECIPES.splice(idx, 1);
+  // only removes 1
+  loadRecipes();
+}
+// delete ingredient
+function deleteIngredient(recipeIndex, idx) {
+  RECIPES[recipeIndex].ingredients.splice(idx, 1);
+  // only removes 1
+  getIngredients(listIndex);
+}
+// delete instruction
+function deleteInstruction(recipeIndex, idx) {
+  RECIPES[recipeIndex].instructions.splice(idx, 1);
+  // only removes 1
+  getInstructions(listIndex);
+}
+/* ------------------------------------------------------ */
+
+/* ------------------ update user info ------------------ */
+function updateUserInfo(userObj) {
+  let id = firebase.auth().currentUser.uid;
+  _db
+    .collection("Users")
+    .doc(id)
+    .update(userObj)
+    .then(() => {
+      console.log("updated doc");
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log("update error ", errorMessage);
+    });
+}
 /* ------------------------------------------------------ */
 $(document).ready(function () {
   loadRecipes();

@@ -116,6 +116,9 @@ nav .nav-holder {
       -ms-flex-align: center;
           align-items: center;
 }
+nav .current-page {
+  border-bottom: solid black;
+}
 nav .links {
   margin-top: 10px;
   display: -webkit-box;
@@ -129,13 +132,11 @@ nav .links {
           align-items: center;
   width: 100%;
   margin-left: 45%;
+  border: none;
 }
 nav .links a {
   font-size: 25px;
   text-decoration: none;
-}
-nav .links .current-page {
-  border-bottom: solid black;
 }
 nav .links.active {
   height: auto;
@@ -618,14 +619,13 @@ footer .footer-content .footer-social {
 /* ------------------------------------------------------ */
 /*                          HERO                          */
 /* ------------------------------------------------------ */
-.homeHero {
+.home div {
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(242, 92, 82, 0.6)), to(rgba(242, 92, 82, 0.6))), url(../images/hero.png);
   background-image: linear-gradient(to bottom, rgba(242, 92, 82, 0.6), rgba(242, 92, 82, 0.6)), url(../images/hero.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-.browseHero {
+.browse {
   background-attachment: fixed;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(167, 232, 189, 0.6)), to(rgba(167, 232, 189, 0.6))), url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
   background-image: linear-gradient(rgba(167, 232, 189, 0.6), rgba(167, 232, 189, 0.6)), url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
@@ -645,12 +645,12 @@ footer .footer-content .footer-social {
   min-height: 100vh;
 }
 
-.login-hero {
+.login {
   background-color: #ffd972;
   min-height: 100%;
 }
 
-.view-recipeHero {
+.view-recipe {
   background-color: white;
   margin: 5%;
 }
@@ -930,7 +930,6 @@ footer .footer-content .footer-social {
     margin-bottom: 10%;
   }
 }
-.Hero,
 .loginHero,
 .login-hero {
   background-color: #ffd972 !important;

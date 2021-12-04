@@ -78,6 +78,9 @@ nav {
       //
     }
   }
+  .current-page {
+    border-bottom: solid black;
+  }
   .links {
     margin-top: 10px;
     display: flex;
@@ -85,15 +88,11 @@ nav {
     align-items: center;
     width: 100%;
     margin-left: 45%;
+    border: none;
     // white-space: nowrap;
     a {
       font-size: 25px;
       text-decoration: none;
-    }
-    .not-current-link {
-    }
-    .current-page {
-      border-bottom: solid black;
     }
   }
   .links.active {

@@ -13,7 +13,60 @@
   <body>
     <div class="view-recipeHero">
       <nav class="navigation-bar"></nav>
+      <div class="view-page-container">
+        <div class="view-recipe-holder">
+          <div class="photo-and-title">
+            <div class="view-recipe-title-holder">
+              <h2 class="view-recipe-title">
+                <span>${RECIPES[recipeIndex].recipeTitle}</span>
+              </h2>
+            </div>
+            <div class="view-recipe-photo-holder">
+              <img
+                src="images/recipe-pizza@2x.png"
+                alt="${RECIPES[recipeIndex].recipeTitle}"
+                class="view-recipe-image"
+              />
+            </div>
+          </div>
 
+          <div class="description-holder">
+            <div class="des-top">
+              <h3>Description:</h3>
+              <p class="recipe-description">
+                ${RECIPES[recipeIndex].recipeDescription}
+              </p>
+            </div>
+            <div class="des-bottom">
+              <div class="time-serving-holder">
+                <h4>Total Time:</h4>
+                <span class="recipe-total"
+                  >${RECIPES[recipeIndex].totalTime}</span
+                >
+              </div>
+              <div class="time-serving-holder">
+                <h4>Servings:</h4>
+                <span class="recipe-total"
+                  >${RECIPES[recipeIndex].totalServings}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="view-list-holder">
+          <h3>Ingredients:</h3>
+          <div id="list-holder1"></div>
+        </div>
+        <div class="view-list-holder">
+          <h3>Instructions:</h3>
+          <div id="list-holder2"></div>
+        </div>
+
+        <div class="view-page-button-holder">
+          <button class="view-page-edit-button">edit</button>
+        </div>
+      </div>
       <footer id="footer-content"></footer>
       <!-- ----------------------------------------------- -->
       <!-- update the version number as needed -->
