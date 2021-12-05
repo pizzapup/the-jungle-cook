@@ -764,6 +764,24 @@ footer .footer-content .footer-social {
     position: static !important;
   }
 }
+.loadRButtn {
+  background: none;
+  border: none;
+  color: black;
+  margin: 20px;
+}
+.loadRButtn span {
+  text-align: left;
+  font-weight: bold;
+  font: normal normal 300 20px/25px Gill Sans;
+  letter-spacing: 2px;
+  color: #ffffff;
+  opacity: 1;
+  background: #efa7a7 0% 0% no-repeat padding-box;
+  opacity: 1;
+  border: none;
+}
+
 @media only screen and (max-width: 960px) {
   .recipe-gallery {
     margin: 0 auto;

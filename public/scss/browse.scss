@@ -52,6 +52,28 @@
     position: static !important;
   }
 }
+.loadRButtn {
+  background: none;
+  // opacity: 1;
+  // // height: 38px;
+  border: none;
+  color: rgba(0, 0, 0, 1);
+  // // border-radius: 50%;
+  margin: 20px;
+  span {
+    text-align: left;
+    font-weight: bold;
+    font: normal normal 300 20px/25px Gill Sans;
+    letter-spacing: 2px;
+    color: #ffffff;
+    opacity: 1;
+    background: #efa7a7 0% 0% no-repeat padding-box;
+    opacity: 1;
+    // height: 38px;
+    border: none;
+    // border-radius: 50%;
+  }
+}
 //
 @media only screen and (max-width: 960px) {
   // .bars {
