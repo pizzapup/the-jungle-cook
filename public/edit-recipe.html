@@ -1,146 +1,82 @@
 <!-- --------------------------------------------------- -->
 <!--                     EDIT RECIPE                     -->
 <!-- --------------------------------------------------- -->
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>theJungleCook</title>
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <div id="heroWrapper" class="hero-wrapper edit-recipeHero">
-      <nav class="navigation-bar"></nav> -->
 
-<!-- --------------------------------------------------- -->
 <div class="create-recipe-content-wrapper">
-  <h1 class="user-only-content">Hey <span class="user-greeting"></span>, edit your recipe!</h1>
-  <div class="create-recipe-form">
+  <h1>Hey <span class="user-greeting"></span>, edit your recipe!</h1>
+  <div class="recipe-form">
     <div class="create-form-section general-info">
       <div class="file-button-wrap">
-        <span class="add-image-placeholder">Add Recipe Image</span>
-        <div class="file-button-holder">
+        <input
+          type="text"
+          id="erecipeImg"
+          name="recipe-image"
+          placeholder="Add Recipe Image"
+        />
+        <div onclick="recipeImageUpload();" class="file-button-holder">
           <span>Attach File</span>
-          <label for="createFileUpload" 
-            <input type="file"  name="createFileUpload" />
-          </label>
         </div>
       </div>
       <input
+        id="erecipeTitle"
         type="text"
         name="recipeName"
         placeholder="Recipe Name"
       />
       <input
+        id="erecipeDescription"
         type="text"
         name="recipeDescription"
         placeholder="Recipe Description"
       />
       <input
+        id="etotalTime"
         type="text"
         name="totalTime"
         placeholder="Recipe Total Time"
       />
       <input
+        id="etotalServings"
         type="text"
         name="servingSize"
         placeholder="Recipe Serving Size"
       />
     </div>
+    <!-- ----------------------------------------- -->
     <div class="create-form-section ingredients">
       <h3>Enter Ingredients:</h3>
+      <div class="list-holder1"></div>
+      <button class="addButton" type="submit" onclick="addIngredient()">
+        <span>+</span>
+      </button>
       <input
         type="text"
-        name="ingredientOne"
-        placeholder="Ingredient #1"
-      />
-      <input
-        type="text"
-        name="ingredientTwo"
-        placeholder="Ingredient #2"
-      />
-      <input
-        type="text"
-        name="ingredientThree"
-        placeholder="Ingredient #3"
+        name="ingredient"
+        placeholder="Ingredient"
+        id="eaddedIngredient"
       />
     </div>
     <div class="create-form-section instructions">
       <h3>Enter Instructions</h3>
+      <div class="list-holder2"></div>
+      <button class="addButton" type="submit" onclick="addInstruction();">
+        <span>+</span>
+      </button>
       <input
+        id="eaddedInstructions"
         type="text"
         name="instructionOne"
-        placeholder="Instruction #1"
-      />
-      <input
-        type="text"
-        name="instructionTwo"
-        placeholder="Instruction #2"
-      />
-      <input
-        type="text"
-        name="instructionThree"
-        placeholder="Instruction #3"
+        placeholder="Instruction"
       />
     </div>
-
-
-    <!-- <button class="recipe-submit-button" >Submit Changes</button> -->
-    <!-- <input id="createRecipeSubmit" type="submit" value="Create Recipe" class="recipe-submit-button"/> -->
+    <!-- ----------------------------------------- -->
+    <!-- <button class="recipe-submit-button" id="recipeSubmit" href="view-recipe.html" onclick="">Create Recipe</button> -->
+    <input
+      id="ecreateRecipeSubmit"
+      type="submit"
+      value="Create Recipe"
+      class="recipe-submit-button"
+      onclick="editRecipe();"
+    />
   </div>
 </div>
-<!-- --------------------------------------------------- -->
-
-      <!-- <footer id="footer-content"></footer> -->
-
-      <!-- ----------------------------------------------- -->
-      <!-- update the version number as needed -->
-      <!-- <script defer src="/__/firebase/9.5.0/firebase-app-compat.js"></script> -->
-      <!-- include only the Firebase features as you need -->
-      <!-- <script defer src="/__/firebase/9.5.0/firebase-auth-compat.js"></script> -->
-      <!-- <script
-        defer
-        src="/__/firebase/9.5.0/firebase-database-compat.js"
-      ></script>
-      <script
-        defer
-        src="/__/firebase/9.5.0/firebase-firestore-compat.js"
-      ></script>
-      <script
-        defer
-        src="/__/firebase/9.5.0/firebase-functions-compat.js"
-      ></script>
-      <script
-        defer
-        src="/__/firebase/9.5.0/firebase-messaging-compat.js"
-      ></script>
-      <script
-        defer
-        src="/__/firebase/9.5.0/firebase-storage-compat.js"
-      ></script>
-      <script
-        defer
-        src="/__/firebase/9.5.0/firebase-analytics-compat.js"
-      ></script>
-      <script
-        defer
-        src="/__/firebase/9.5.0/firebase-remote-config-compat.js"
-      ></script>
-      <script
-        defer
-        src="/__/firebase/9.5.0/firebase-performance-compat.js"
-      ></script> -->
-      <!-- 
-          initialize the SDK after all desired features are loaded, set useEmulator to false
-          to avoid connecting the SDK to running emulators.
-        -->
-      <!-- <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-      <script src="lib/jquery-3.6.0.min.js"></script>
-      <script src="app/nav-url.js"></script>
-      <script src="app/app.js"></script>
-      <script src="app/auth-tjc.js"></script>
-      <script src="app/recipe.js"></script>
-    </div>
-  </body>
-</html> -->
