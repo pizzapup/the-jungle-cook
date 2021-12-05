@@ -31,8 +31,6 @@ function changeRoute() {
 function initURLListener() {
   window.onhashchange = changeRoute;
   changeRoute();
-  loadRecipes();
-  browseRecipes();
 }
 
 /* ------------------------------------------------------ */

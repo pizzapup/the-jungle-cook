@@ -179,7 +179,7 @@ var RECIPES = [
 /* ------------------------------------------------------ */
 
 function browseRecipes() {
-  $("#loadRcButton").empty();
+  $("#loadRButtn").empty();
   $.each(RECIPES, function (idx, recipe) {
     $("#recipe-gallery-browse").append(`
       <div class="recipe-card-holder">
@@ -217,10 +217,16 @@ function browseRecipes() {
       </div>`);
   });
 }
-function loadRecipes() {
-  $("#loadRcButton").empty();
-  $.each(_userProfileInfo.recipes, function (idx, recipe) {
-    $("#recipe-gallery-browse").append(`
+function loadBrowseRecipes() {
+  loadRecipes(RECIPES);
+}
+function loadYourRecipes() {
+  loadRecipes(_userProfileInfo.recipes);
+}
+function loadRecipes(list) {
+  $("#loadListButton").empty();
+  $.each(list, function (idx, recipe) {
+    $("#recipe-gallery").append(`
       <div class="recipe-card-holder">
         <div class="recipe-card">
           <div
@@ -250,7 +256,7 @@ function loadRecipes() {
           </div>
         </div>
         <div class="gallery-buttons-bottom">
-        <button class="buttons unhide">Edit Recipe</button>
+        <button class="buttons unhide" id="editRecipeB"><a href="#edit-recipe">Edit Recipe</a></button>
         <button class="buttons unhide">Delete</button>
       </div>
       </div>`);
@@ -266,31 +272,31 @@ function deleteInstruction(recipeIndex, idx) {
   updateUserInfo(_userProfileInfo);
   getInstructions(recipeIndex);
 }
-function addIngredient(recipeIndex) {
-  let inputIngList = [];
-  // adding object from user input
-  let newIngName = $("#addedIngredient").val();
-  let newIngObj = {
-    ingredient: newIngName,
-    category: "",
-  };
-  _userProfileInfo.recipes[recipeIndex].ingredients.push(newIngObj);
-  updateUserInfo(_userProfileInfo);
-  getIngredients(recipeIndex);
-}
+// function addIngredient(recipeIndex) {
+//   let inputIngList = [];
+//   // adding object from user input
+//   let newIngName = $("#addedIngredient").val();
+//   let newIngObj = {
+//     ingredient: newIngName,
+//     category: "",
+//   };
+//   _userProfileInfo.recipes[recipeIndex].ingredients.push(newIngObj);
+//   updateUserInfo(_userProfileInfo);
+//   getIngredients(recipeIndex);
+// }
 
-function addInstruction(recipeIndex) {
-  let inputInstList = [];
-  // adding object from user input
-  let newInstName = $("#addedInstruction").val();
-  let newInstObj = {
-    instruction: newInstName,
-    category: "",
-  };
-  _userProfileInfo.recipes[recipeIndex].instructions.push(newInstObj);
-  updateUserInfo(_userProfileInfo);
-  getInstructions(recipeIndex);
-}
+// function addInstruction(recipeIndex) {
+//   let inputInstList = [];
+//   // adding object from user input
+//   let newInstName = $("#addedInstruction").val();
+//   let newInstObj = {
+//     instruction: newInstName,
+//     category: "",
+//   };
+//   _userProfileInfo.recipes[recipeIndex].instructions.push(newInstObj);
+//   updateUserInfo(_userProfileInfo);
+//   getInstructions(recipeIndex);
+// }
 /* ------------------ CREATE NEW RECIPE ----------------- */
 // createRecipe creates a "newRecipeObj" from the form input and the ingredient/instruction arrays created using the create recipe form
 function addItems() {
@@ -321,56 +327,60 @@ function createRecipe() {
   let totalTime = $("#totalTime").val();
   let totalServings = $("#totalServings").val();
   // let recipeImg = $("#recipeImg").val();
-  let recipeImg = `recipe-pizza.png`,;
+  let recipeImg = `recipe-pizza.png`;
+  let ingredientsL = inputIngList;
+  let instructionsL = inputInstList;
   let newRecipeObj = {
     recipeTitle: recipeTitle,
     recipeDescription: recipeDescription,
     totalTime: totalTime,
     totalServings: totalServings,
     recipeImg: recipeImg,
-    // ingredients: inputIngList,
-    // instructions: inputInstList,
-    ingredients: [],
-    instructions: [],
+    // ingredients: [],
+    // instructions: [],
+    ingredients: ingredientsL,
+    instructions: instructionsL,
   };
   console.log(newRecipeObj);
   _userProfileInfo.recipes.push(newRecipeObj);
   updateUserInfo(_userProfileInfo);
-  console.log("New recipe create: " + recipeTitle);
+  console.log("New recipe created: " + recipeTitle);
+  alert("New recipe created!");
   // $(".enable-addItems").prop("disabled", true);
 }
 function editRecipe() {
-  $(".edit-button").click(function (e) {
-    let recipeIndex = e.currentTarget.id;
-    let oldRecipeObj = _userProfileInfo.recipes[recipeIndex];
-    // set "placeholder" info
-    $("#erecipeTitle").val(oldRecipeObj.recipeTitle);
-    $("#etotalTime").val(oldRecipeObj.recipeTitle);
-    $("#etotalServings").val(oldRecipeObj.recipeTitle);
-    getIngredients(recipeIndex);
-    getInstructions(recipeIndex);
-    // get user input
-    let recipeTitle = $("#erecipeTitle").val();
-    let recipeDescription = $("#erecipeDescription").val();
-    let totalTime = $("#etotalTime").val();
-    let totalServings = $("#etotalServings").val();
-    let recipeImg = $("#erecipeImg").val();
-    // create new recipe object
-    let newRecipeObj = {
-      recipeTitle: recipeTitle,
-      recipeDescription: recipeDescription,
-      totalTime: totalTime,
-      totalServings: totalServings,
-      recipeImg: recipeImg,
-      ingredients: oldRecipeObj.ingredients,
-      instructions: oldRecipeObj.instructions,
-    };
-    // update user information with new object
-    console.log(newRecipeObj);
-    _userProfileInfo.recipes.push(newRecipeObj);
-    updateUserInfo(_userProfileInfo);
-    console.log("New recipe create: " + recipeTitle);
-  });
+  userID = firebase.auth().currentUser.uid;
+  // $(".editButton").click(function (e) {
+  // let recipeIndex = e.currentTarget.id;
+  let oldRecipeObj = _userProfileInfo.recipes[recipeIndex];
+  // set "placeholder" info
+  $("#erecipeTitle").val(oldRecipeObj.recipeTitle);
+  $("#etotalTime").val(oldRecipeObj.recipeTitle);
+  $("#etotalServings").val(oldRecipeObj.recipeTitle);
+  getIngredients(recipeIndex);
+  getInstructions(recipeIndex);
+  // get user input
+  let recipeTitle = $("#erecipeTitle").val();
+  let recipeDescription = $("#erecipeDescription").val();
+  let totalTime = $("#etotalTime").val();
+  let totalServings = $("#etotalServings").val();
+  let recipeImg = $("#erecipeImg").val();
+  // create new recipe object
+  let newRecipeObj = {
+    recipeTitle: recipeTitle,
+    recipeDescription: recipeDescription,
+    totalTime: totalTime,
+    totalServings: totalServings,
+    recipeImg: recipeImg,
+    ingredients: oldRecipeObj.ingredients,
+    instructions: oldRecipeObj.instructions,
+  };
+  // update user information with new object
+  console.log(newRecipeObj);
+  _userProfileInfo.recipes.push(newRecipeObj);
+  updateUserInfo(_userProfileInfo);
+  console.log("New recipe create: " + recipeTitle);
+  // });
 }
 function addEnableButton() {
   $(".addEnable").prop("disabled", true);
@@ -385,22 +395,22 @@ function deleteRecipe(recipes, idx) {
 }
 /* --------------------- VIEW RECIPE -------------------- */
 // getViewRecipe pulls together all the information needed to view a single recipe displayed like the "view-recipe" page in the prototype
-function getViewRecipe(recipeIndex) {
-  console.log(recipeIndex);
+function getViewRecipe(recipeList, recipeIndex) {
+  console.log(recipeList, recipeIndex);
   // does not reload other pages properly when back button is click
-  $("#recipe-gallery-browse").html(`
+  $("#recipe-gallery").html(`
     <div class="view-page-container">
     <div class="view-recipe-holder">
       <div class="photo-and-title">
         <div class="view-recipe-title-holder">
           <h2 class="view-recipe-title">
-            <span>${RECIPES[recipeIndex].recipeTitle}</span>
+            <span>${recipeList[recipeIndex].recipeTitle}</span>
           </h2>
         </div>
         <div class="view-recipe-photo-holder">
           <img
             src="images/recipe-pizza@2x.png"
-            alt="${RECIPES[recipeIndex].recipeTitle}"
+            alt="${recipeList[recipeIndex].recipeTitle}"
             class="view-recipe-image"
           />
         </div>
@@ -410,20 +420,20 @@ function getViewRecipe(recipeIndex) {
         <div class="des-top">
           <h3>Description:</h3>
           <p class="recipe-description">
-            ${RECIPES[recipeIndex].recipeDescription}
+            ${recipeList[recipeIndex].recipeDescription}
           </p>
         </div>
         <div class="des-bottom">
           <div class="time-serving-holder">
             <h4>Total Time:</h4>
             <span class="recipe-total"
-              >${RECIPES[recipeIndex].totalTime}</span
+              >${recipeList[recipeIndex].totalTime}</span
             >
           </div>
           <div class="time-serving-holder">
             <h4>Servings:</h4>
             <span class="recipe-total"
-              >${RECIPES[recipeIndex].totalServings}</span
+              >${recipeList[recipeIndex].totalServings}</span
             >
           </div>
         </div>
@@ -440,10 +450,70 @@ function getViewRecipe(recipeIndex) {
     </div>
   
     <div class="view-page-button-holder">
-      <button class="view-page-edit-button" onclick="goEditRecipe(${RECIPES[recipeIndex]})">edit</button>
+      <button class="view-page-edit-button" onclick="goEditRecipe(${recipeList[recipeIndex]})">edit</button>
     </div>
   </div>`);
 }
+
+// function getViewRecipe(recipeIndex) {
+//   console.log(recipeIndex);
+//   // does not reload other pages properly when back button is click
+//   $("#recipe-gallery").html(`
+//     <div class="view-page-container">
+//     <div class="view-recipe-holder">
+//       <div class="photo-and-title">
+//         <div class="view-recipe-title-holder">
+//           <h2 class="view-recipe-title">
+//             <span>${_userProfileInfo.recipes[recipeIndex].recipeTitle}</span>
+//           </h2>
+//         </div>
+//         <div class="view-recipe-photo-holder">
+//           <img
+//             src="images/recipe-pizza@2x.png"
+//             alt="${_userProfileInfo.recipes[recipeIndex].recipeTitle}"
+//             class="view-recipe-image"
+//           />
+//         </div>
+//       </div>
+
+//       <div class="description-holder">
+//         <div class="des-top">
+//           <h3>Description:</h3>
+//           <p class="recipe-description">
+//             ${_userProfileInfo.recipes[recipeIndex].recipeDescription}
+//           </p>
+//         </div>
+//         <div class="des-bottom">
+//           <div class="time-serving-holder">
+//             <h4>Total Time:</h4>
+//             <span class="recipe-total"
+//               >${_userProfileInfo.recipes[recipeIndex].totalTime}</span
+//             >
+//           </div>
+//           <div class="time-serving-holder">
+//             <h4>Servings:</h4>
+//             <span class="recipe-total"
+//               >${_userProfileInfo.recipes[recipeIndex].totalServings}</span
+//             >
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+
+//     <div class="view-list-holder">
+//       <h3>Ingredients:</h3>
+//       <div class="list-holder1"></div>
+//     </div>
+//     <div class="view-list-holder">
+//       <h3>Instructions:</h3>
+//       <div class="list-holder2"></div>
+//     </div>
+
+//     <div class="view-page-button-holder">
+//       <button class="view-page-edit-button" onclick="goEditRecipe(${_userProfileInfo.recipes[recipeIndex]})">edit</button>
+//     </div>
+//   </div>`);
+// }
 function viewRecipe() {
   $(".view-button").click(function (e) {
     $("#heroWrapper").removeClass("browseHero");
@@ -452,8 +522,51 @@ function viewRecipe() {
     getViewRecipe(recipeIndex);
     getIngredients(recipeIndex);
     getInstructions(recipeIndex);
+    //
+    //
   });
 }
+function editRecipe() {
+  $("#editRecipeB").click(function (e) {
+    // $("#heroWrapper").removeClass("browseHero");
+    let recipeIndex = e.currentTarget.id;
+    console.log(recipeIndex);
+    function editRecipe() {
+      $(".edit-button").click(function (e) {
+        let recipeIndex = e.currentTarget.id;
+        let oldRecipeObj = _userProfileInfo.recipes[recipeIndex];
+        // set "placeholder" info
+        $("#erecipeTitle").val(oldRecipeObj.recipeTitle);
+        $("#etotalTime").val(oldRecipeObj.recipeTitle);
+        $("#etotalServings").val(oldRecipeObj.recipeTitle);
+        getIngredients(recipeIndex);
+        getInstructions(recipeIndex);
+        // get user input
+        let recipeTitle = $("#erecipeTitle").val();
+        let recipeDescription = $("#erecipeDescription").val();
+        let totalTime = $("#etotalTime").val();
+        let totalServings = $("#etotalServings").val();
+        let recipeImg = $("#erecipeImg").val();
+        // create new recipe object
+        let newRecipeObj = {
+          recipeTitle: recipeTitle,
+          recipeDescription: recipeDescription,
+          totalTime: totalTime,
+          totalServings: totalServings,
+          recipeImg: recipeImg,
+          ingredients: oldRecipeObj.ingredients,
+          instructions: oldRecipeObj.instructions,
+        };
+        // update user information with new object
+        console.log(newRecipeObj);
+        _userProfileInfo.recipes.push(newRecipeObj);
+        updateUserInfo(_userProfileInfo);
+        console.log("New recipe create: " + recipeTitle);
+      });
+    }
+  });
+}
+
 function getIngredients(recipeIndex) {
   let ingListString = `<ul>`;
   $.each(RECIPES[recipeIndex].ingredients, function (idx, value) {
@@ -513,6 +626,8 @@ function signUp() {
       // Signed in
       var user = userCredential.user;
       console.log("created");
+      alert("Welcome!");
+
       firebase.auth().currentUser.updateProfile({
         displayName: fullName,
       });
@@ -523,6 +638,7 @@ function signUp() {
         .set(userObj)
         .then((doc) => {
           console.log("doc added ");
+          alert("doc added ");
           // profile information is set to userObj (links local/firebase)
           _userProfileInfo = userObj;
           console.log("create userinfo ", _userProfileInfo);
@@ -531,6 +647,7 @@ function signUp() {
           var errorCode = error.code;
           var errorMessage = error.message;
           console.log("error ", errorMessage);
+          alert("error ", errorMessage);
 
           // ..
         });
@@ -547,6 +664,7 @@ function signUp() {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log("error ", errorMessage);
+      alert("hmm.. something went wrong");
 
       // ..
     });
@@ -556,10 +674,12 @@ function login() {
   let password = $("#loginPassword").val();
   firebase
     .auth()
+
     .signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
       // Signed in
       console.log("logged in");
+      alert("Welcome back!");
       $("#loginEmail").empty();
       $("#loginPassword").empty();
       var user = userCredential.user;
@@ -571,7 +691,6 @@ function login() {
         .then((doc) => {
           console.log(doc.data());
           _userProfileInfo = doc.data();
-
           console.log("login user profile info ", _userProfileInfo);
         });
     })
@@ -590,12 +709,14 @@ function signOut() {
     .then(() => {
       signOutActions();
       console.log("signed out");
+      alert("signed out");
     })
     .catch((error) => {
       var errorCode = error.code;
       var errorMessage = error.message;
       console.log("error signing out");
       console.log("error ", errorMessage);
+      alert("hmm.. something went wrong signing out");
 
       // ..
     });
@@ -653,14 +774,15 @@ function initFirebase() {
       _db = firebase.firestore();
       console.log("auth change logged in");
       console.log("login userinfo ", _userProfileInfo);
-      uid = user.uid;
+      var uid = user.uid;
       userRecipes = uid.recipes;
 
       console.log("user recipes: ", uid.recipes);
       if (user.displayName) {
         $(".load-button").prop("disabled", false);
       }
-      $(".user-greeting").html(`<span>${user.displayName}</span>`);
+      $(".user-greeting").html(`${user.firstName}` + ` ` + `${user.lastName}`);
+      // $(".user-greeting").html(`${user.displayName}`);
       $("#change-logBtn").html(
         `<a href="#login" class="login-button" onclick="signOut()">Logout</a>`
       );
@@ -672,6 +794,8 @@ function initFirebase() {
       userExists = true;
       console.log("login userinfo ", _userProfileInfo);
       loadRecipes();
+      // return uid;
+      // return _userProfileInfo;
     } else {
       // SIGNED OUT
       console.log("auth change logged out");
@@ -683,7 +807,7 @@ function initFirebase() {
     }
   });
 }
-
+// uid = initFirebase;
 $(document).ready(function () {
   try {
     initFirebase();
