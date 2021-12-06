@@ -368,7 +368,8 @@ function createRecipe() {
   let recipeDescription = $("#recipeDescription").val();
   let totalTime = $("#totalTime").val();
   let totalServings = $("#totalServings").val();
-  let recipeImg = `recipe-pizza.png`;
+  let recipeImg = $("#recipeImg").val();
+  // let recipeImg = `recipe-pizza.png`;
   // create object
   let newRecipeObj = {
     recipeTitle: recipeTitle,
@@ -384,6 +385,8 @@ function createRecipe() {
   _userProfileInfo.recipes.push(newRecipeObj);
   updateUserInfo(_userProfileInfo);
   console.log("New recipe created: " + recipeTitle);
+  console.dir(newRecipeObj);
+  console.table(newRecipeObj);
   alert("Success! \n New recipe created: " + recipeTitle);
 }
 
@@ -523,17 +526,6 @@ function getInstructions(list, recipeIndex) {
   console.log("getInstructions complete");
 }
 //
-function recipeImageUpload() {
-  alert(
-    "Apologies, the file upload portion of the form is still being updated. Please type in the url/image path or leave this input blank for now. Thank you!"
-  );
-}
-// function browseRecipes() {
-//   loadRecipes(RECIPES);
-// }
-// function yourRecipes() {
-//   loadRecipes(_userProfileInfo.recipes);
-// }
 /* ------------------- authentication ------------------- */
 
 function signUp() {

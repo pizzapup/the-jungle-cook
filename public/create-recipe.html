@@ -6,40 +6,41 @@
   <h1>Hey <span class="user-greeting"></span>, create your recipe!</h1>
   <div class="recipe-form">
     <div class="create-form-section general-info">
-      <div class="file-button-wrap">
-        <input
-          type="text"
-          id="recipeImg"
-          name="recipe-image"
-          placeholder="Add Recipe Image"
-        />
-        <!-- <span class="add-image-placeholder">Add Recipe Image</span> -->
-        <div onclick="recipeImageUpload();" class="file-button-holder">
+      <!-- --------------------------------------------- -->
+      <div class="create-form-section recipeImageInputDiv">
+        <div class="recipeImgFileHolder"></div>
+        <label for="recipeImage" class="recipeImgLabel"
+          ><span>Add Recipe Image</span></label
+        >
+        <span class="recipeImgFileButton" id="recipeImgFileButton">
           <span>Attach File</span>
-          <!-- asking user for image url for now -->
-          <!-- <label for="createFileUpload" 
-                  <input type="file" id="recipeImg"  name="createFileUpload" />
-                </label> -->
-        </div>
+        </span>
+
+        <input id="recipeImageInput" type="file" name="recipeImageUpload" />
       </div>
+      <!-- --------------------------------------------- -->
+      <label for="recipeName"></label>
       <input
         id="recipeTitle"
         type="text"
         name="recipeName"
         placeholder="Recipe Name"
       />
+      <label for="recipeDescription"></label>
       <input
         id="recipeDescription"
         type="text"
         name="recipeDescription"
         placeholder="Recipe Description"
       />
+      <label for="totalTime"></label>
       <input
         id="totalTime"
         type="text"
         name="totalTime"
         placeholder="Recipe Total Time"
       />
+      <label for="totalServings"></label>
       <input
         id="totalServings"
         type="text"
@@ -54,6 +55,8 @@
       <button class="addButton" id="addIngButton" onclick="createIngredient()">
         <span>+</span>
       </button>
+      <label for="recipeDescription"></label>
+
       <input
         type="text"
         name="ingredient"
@@ -71,6 +74,8 @@
       >
         <span>+</span>
       </button>
+      <label for="recipeDescription"></label>
+
       <input
         id="addedInstructions"
         type="text"

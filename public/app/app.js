@@ -58,7 +58,7 @@ $(".navigation-bar").html(`
 <span id="change-logBtn" ><a href="#login" class="login-button">Login</a></span></div>
 </div>
 `);
-
+/* ------------------------------------------------------ */
 /* ------------------------------------------------------ */
 $(document).ready(function () {
   hamburger();
