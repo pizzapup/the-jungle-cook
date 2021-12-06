@@ -11,15 +11,18 @@ function changeRoute() {
     if (pageID != "view-recipe") {
       $.get(`${pageID}.html`, function (data) {
         $("#pageContentApp").html(data);
-        console.log("NAV URL", _userProfileInfo);
-        console.log("NAV URL");
         if (_userProfileInfo.firstName) {
           $(".user-greeting").html(
             `${_userProfileInfo.firstName}` +
               ` ` +
               `${_userProfileInfo.lastName}`
           );
-          // $(".user-greeting").html(`${_userProfileInfo}`);
+          if ((pageID = "your-recipe")) {
+            $(".loadRButtn").click();
+          }
+          if ((pageID = "browse")) {
+            $(".loadRButtn").click();
+          }
         }
       });
     }

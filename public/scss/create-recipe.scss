@@ -178,3 +178,47 @@
     opacity: 1;
   }
 }
+.deleteItem {
+  opacity: 1;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    text-align: left;
+    font-weight: bold;
+    font: normal normal 300 20px/25px Gill Sans;
+    letter-spacing: 2px;
+    opacity: 1;
+  }
+}
+
+.list-holder1,
+.list-holder2 {
+  width: 60%;
+  margin: 2px;
+  // display: flex;
+  // justify-content: space-evenly;
+  // align-items: center;
+}
+
+.showItems {
+  width: 100%;
+  margin: 2px;
+  // display: flex;
+  // justify-content: space-evenly;
+  // align-items: center;
+}
+.showItemsLi {
+  width: 100%;
+  margin: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+li:nth-child(odd) {
+  background-color: #00000029;
+}

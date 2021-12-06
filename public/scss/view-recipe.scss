@@ -15,25 +15,44 @@
   .description-holder {
     margin-left: 0px;
   }
+  .photo-and-title {
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+  .view-recipe-photo-holder {
+    // width: fit-content;
+    // width: 468px;
+    width: auto;
+    margin-bottom: 20px;
+
+    .view-recipe-image {
+      width: auto;
+
+      // width: 468px;
+    }
+  }
 }
 
 /* ------------------------------------------------------ */
 /*                          MAIN                          */
 /* ------------------------------------------------------ */
-.view-page-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 5%;
+.view-recipe {
+  // hero
 }
 
 .photo-and-title {
   width: fit-content;
   position: relative;
+  // margin-left: 40px;
 }
 .view-recipe-holder {
+  margin-top: 4%;
+
   display: flex;
+  justify-content: space-around;
+  max-width: 1280px;
+  flex-wrap: wrap;
+  // margin: 10px;
 }
 .view-recipe-title-holder {
   width: 418px;
@@ -41,7 +60,6 @@
   transform: rotate(-90deg);
   position: absolute;
   left: -35px;
-
   .view-recipe-title {
     display: flex;
     justify-content: center;
@@ -52,7 +70,9 @@
   }
 }
 .view-recipe-photo-holder {
-  width: fit-content;
+  // width: fit-content;
+  width: 468px;
+  margin-bottom: 20px;
 
   .view-recipe-image {
     width: 468px;
@@ -60,7 +80,7 @@
 }
 
 .description-holder {
-  margin-left: 50px;
+  // margin-left: 50px;
   text-align: left;
 }
 .des-top {
@@ -95,6 +115,7 @@
 
 /* ------------------------------------------------------ */
 .view-list-holder {
+  min-height: 100px;
   text-align: left;
   font: normal normal normal 25px/33px Lato Black;
   letter-spacing: 5px;
@@ -145,4 +166,14 @@
   color: #000000;
   opacity: 1;
   border: none;
+}
+.bottom-of-page {
+  margin: 2%;
+
+  display: flex;
+  justify-content: space-around;
+  max-width: 1280px;
+}
+.bottom-of-page2 {
+  width: 100%;
 }

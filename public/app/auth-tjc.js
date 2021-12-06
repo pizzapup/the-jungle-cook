@@ -172,85 +172,31 @@ var RECIPES = [
     ],
   },
 ];
+var currentList = "";
 /* ------------------------------------------------------ */
 
 /* ------------------------------------------------------ */
 /*                         RECIPES                        */
 /* ------------------------------------------------------ */
 function loadBrowseRecipes() {
+  // var currentList = RECIPES;
   loadRecipes(RECIPES);
 }
-function getViewRecipeBrowse(recipeIndex) {
-  $("#recipe-gallery").html(`
-    <div class="view-page-container">
-    <div class="view-recipe-holder">
-      <div class="photo-and-title">
-        <div class="view-recipe-title-holder">
-          <h2 class="view-recipe-title">
-            <span>${RECIPES[recipeIndex].recipeTitle}</span>
-          </h2>
-        </div>
-        <div class="view-recipe-photo-holder">
-          <img
-            src="${RECIPES[recipeIndex].recipeImg}"
-            alt="${RECIPES[recipeIndex].recipeTitle}"
-            class="view-recipe-image"
-          />
-        </div>
-      </div>
-  
-      <div class="description-holder">
-        <div class="des-top">
-          <h3>Description:</h3>
-          <p class="recipe-description">
-            ${RECIPES[recipeIndex].recipeDescription}
-          </p>
-        </div>
-        <div class="des-bottom">
-          <div class="time-serving-holder">
-            <h4>Total Time:</h4>
-            <span class="recipe-total"
-              >${RECIPES[recipeIndex].totalTime}</span
-            >
-          </div>
-          <div class="time-serving-holder">
-            <h4>Servings:</h4>
-            <span class="recipe-total"
-              >${RECIPES[recipeIndex].totalServings}</span
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="view-list-holder">
-      <h3>Ingredients:</h3>
-      <div class="list-holder1"></div>
-    </div>
-    <div class="view-list-holder">
-      <h3>Instructions:</h3>
-      <div class="list-holder2"></div>
-    </div>
-  
-    <div class="view-page-button-holder">
-      <button class="view-page-edit-button" onclick="editRecipe(${RECIPES[recipeIndex]})">edit</button>
-    </div>
-  </div>`);
-}
 function loadYourRecipes() {
+  // var currentList = _userProfileInfo.recipes;
   loadRecipes(_userProfileInfo.recipes);
 }
-function loadRecipes(list) {
+function loadRecipes(currentList) {
   $("#loadListButton").empty();
-  $.each(list, function (idx, recipe) {
+  $.each(currentList, function (idx, recipe) {
     $("#recipe-gallery").append(`
       <div class="recipe-card-holder">
         <div class="recipe-card">
           <div
             class="recipe-image"
             style="background-image: url(images/${recipe.recipeImg}">
-            <div id="#heroview" class="view-button-holder">
-              <button id="${idx}" class="buttons view-button unhide" ><a onclick="viewRecipe();" href="#view-recipe"><span>View</span></a></button>
+            <div id="#heroview" class="view-button-holder"><button id="${idx}" onclick="viewRecipe(${idx})" class="buttons view-button unhide" ><a href="#view-recipe"><span>View</span></a></button>
+            
             </div>
           </div>
           <div class="recipe-info">
@@ -273,47 +219,13 @@ function loadRecipes(list) {
           </div>
         </div>
         <div class="gallery-buttons-bottom">
-        <button class="buttons unhide" id="editRecipeB"><a href="#edit-recipe" onclick="editRecipe(${list}, ${idx})">Edit Recipe</a></button>
-        <button class="buttons unhide" onclick="deleteList(${list}, ${idx})">Delete</button>
+        <button class="buttons unhide" id="editRecipeB"><a href="#edit-recipe" onclick="editRecipe(${currentList}, ${idx})">Edit Recipe</a></button>
+        <button class="buttons unhide" onclick="deleteList(${currentList}, ${idx})">Delete</button>
       </div>
       </div>`);
   });
 }
-function deleteIngredient(recipeIndex, idx) {
-  _userProfileInfo.ingredients[recipeIndex].ingredient.splice(idx, 1);
-  updateUserInfo(_userProfileInfo);
-  getIngredients(recipeIndex);
-}
-function deleteInstruction(recipeIndex, idx) {
-  _userProfileInfo.instructions[recipeIndex].ingredient.splice(idx, 1);
-  updateUserInfo(_userProfileInfo);
-  getInstructions(recipeIndex);
-}
-// function addIngredient(recipeIndex) {
-//   let inputIngList = [];
-//   // adding object from user input
-//   let newIngName = $("#addedIngredient").val();
-//   let newIngObj = {
-//     ingredient: newIngName,
-//     category: "",
-//   };
-//   _userProfileInfo.recipes[recipeIndex].ingredients.push(newIngObj);
-//   updateUserInfo(_userProfileInfo);
-//   getIngredients(recipeIndex);
-// }
 
-// function addInstruction(recipeIndex) {
-//   let inputInstList = [];
-//   // adding object from user input
-//   let newInstName = $("#addedInstruction").val();
-//   let newInstObj = {
-//     instruction: newInstName,
-//     category: "",
-//   };
-//   _userProfileInfo.recipes[recipeIndex].instructions.push(newInstObj);
-//   updateUserInfo(_userProfileInfo);
-//   getInstructions(recipeIndex);
-// }
 /* ------------------ CREATE NEW RECIPE ----------------- */
 // "create" / add ingredients to recipe
 let instructionInputObj = [];
@@ -325,9 +237,10 @@ function createIngredient() {
     ingredient: ingredient,
     category: "",
   };
-  console.log("Ingredient added: ", newItemObjIng.ingredient);
   ingredientInputObj.push(newItemObjIng);
   showIngredients(ingredientInputObj);
+  console.log("Ingredient added: ", newItemObjIng.ingredient);
+  $("#addedIngredient").empty();
 }
 function createInstruction() {
   let instruction = $("#addedInstructions").val();
@@ -338,15 +251,31 @@ function createInstruction() {
   instructionInputObj.push(newItemObjInst);
   showInstructions(instructionInputObj);
   console.log("Instruction added: ", newItemObjInst.instruction);
+  $("#addedInstructions").empty();
 
   // return instructionInputObj;
 }
+// delete ingredients during recipe creation
+function deleteCreateIngredient(idx) {
+  console.log("ingredient deleted: ", idx);
+  alert("ingredient deleted: ", idx);
+  ingredientInputObj.splice(idx, 1);
+  showIngredients(ingredientInputObj);
+}
+function deleteCreateInstruction(idx) {
+  console.log("instruction deleted: ", idx);
+  alert("instruction deleted: ", idx);
+  instructionInputObj.splice(idx, 1);
+  showInstructions(instructionInputObj);
+}
 // display ingredients as they are added
 function showIngredients(ingredientInputObj) {
-  let showIng = `<ul>`;
+  let showIng = `<ul class="showItems">`;
   $.each(ingredientInputObj, function (idx, value) {
     let addValue = value.ingredient;
-    showIng += `<li>${addValue}</li>`;
+    showIng += `
+    
+    <li class="showItemsLi"><span>${addValue}</span> <button class="deleteItem" onclick="deleteCreateIngredient(${idx})"><span>x</span></button></li>`;
     console.log(addValue);
   });
   showIng += `</ul>`;
@@ -356,7 +285,7 @@ function showInstructions(instructionInputObj) {
   let showInst = `<ol>`;
   $.each(instructionInputObj, function (idx, value) {
     let addValue = value.instruction;
-    showInst += `<li>${addValue}</li>`;
+    showInst += `<li class="showItemsLi"><span>${addValue}</span> <button class="deleteItem" onclick="deleteCreateIngredient(${idx})"><span>x</span></button></li>`;
   });
   showInst += `</ol>`;
   $(".list-holder2").html(showInst);
@@ -368,8 +297,8 @@ function createRecipe() {
   let recipeDescription = $("#recipeDescription").val();
   let totalTime = $("#totalTime").val();
   let totalServings = $("#totalServings").val();
-  let recipeImg = $("#recipeImg").val();
-  // let recipeImg = `recipe-pizza.png`;
+  // let recipeImg = $("#recipeImg").val();
+  let recipeImg = `recipe-pizza.png`;
   // create object
   let newRecipeObj = {
     recipeTitle: recipeTitle,
@@ -385,11 +314,24 @@ function createRecipe() {
   _userProfileInfo.recipes.push(newRecipeObj);
   updateUserInfo(_userProfileInfo);
   console.log("New recipe created: " + recipeTitle);
-  console.dir(newRecipeObj);
   console.table(newRecipeObj);
   alert("Success! \n New recipe created: " + recipeTitle);
+  console.dir(
+    "recipe objects are sent to firebase with recipe-pizza.png replacing the user file input"
+  );
+  // clear contents after submit
+  $("#recipeTitle").val(``);
+  $("#recipeDescription").val(``);
+  $("#totalTime").val(``);
+  $("#totalServings").val(``);
+  $("#addedIngredient").val(``);
+  $("#addedInstructions").val(``);
+  instructionInputObj = [];
+  ingredientInputObj = [];
+  showInstructions();
+  showIngredients();
+  console.log("form cleared");
 }
-
 /* --------------------- edit recipe -------------------- */
 function editRecipe(list, recipeIndex) {
   let oldRecipeObj = list[recipeIndex];
@@ -430,51 +372,56 @@ function deleteRecipe(recipes, idx) {
   // only removes 1
   loadRecipes(_userProfileInfo.recipes);
 }
+// delete items after recipe creation (Delete from firebase)
+function deleteIngredient(recipeIndex, idx) {
+  _userProfileInfo.ingredients[recipeIndex].ingredient.splice(idx, 1);
+  updateUserInfo(_userProfileInfo);
+  getIngredients(recipeIndex);
+}
+function deleteInstruction(recipeIndex, idx) {
+  _userProfileInfo.instructions[recipeIndex].ingredient.splice(idx, 1);
+  updateUserInfo(_userProfileInfo);
+  getInstructions(recipeIndex);
+}
 /* --------------------- view recipe -------------------- */
 // view-recipe buttons are found on the browse/your-recipe gallery cards
 function getViewRecipe(recipeIndex) {
   $("#recipe-gallery").html(`
-    <div class="view-page-container">
-    <div class="view-recipe-holder">
-      <div class="photo-and-title">
-        <div class="view-recipe-title-holder">
-          <h2 class="view-recipe-title">
-            <span>${_userProfileInfo.recipes[recipeIndex].recipeTitle}</span>
-          </h2>
-        </div>
-        <div class="view-recipe-photo-holder">
-          <img
-            src="${_userProfileInfo.recipes[recipeIndex].recipeImg}"
-            alt="${_userProfileInfo.recipes[recipeIndex].recipeTitle}"
-            class="view-recipe-image"
-          />
-        </div>
+  <div class="view-recipe-holder">
+  <div class="photo-and-title">
+    <div class="view-recipe-title-holder">
+      <h2 class="view-recipe-title">
+        <span>${currentList[recipeIndex].recipeTitle}</span>
+      </h2>
+    </div>
+    <div class="view-recipe-photo-holder">
+      <img
+        src="images/recipe-burger@2x.png"
+        alt="${currentList[recipeIndex].recipeTitle}"
+        class="view-recipe-image"
+      />
+    </div>
+  </div>
+
+  <div class="description-holder">
+    <div class="des-top">
+      <h3>Description:</h3>
+      <p class="recipe-description">${currentList[recipeIndex].recipeDescription}</p>
+    </div>
+    <div class="des-bottom">
+      <div class="time-serving-holder">
+        <h4>Total Time:</h4>
+        <span class="recipe-total">${currentList[recipeIndex].totalTime}</span>
       </div>
-  
-      <div class="description-holder">
-        <div class="des-top">
-          <h3>Description:</h3>
-          <p class="recipe-description">
-            ${_userProfileInfo.recipes[recipeIndex].recipeDescription}
-          </p>
-        </div>
-        <div class="des-bottom">
-          <div class="time-serving-holder">
-            <h4>Total Time:</h4>
-            <span class="recipe-total"
-              >${_userProfileInfo.recipes[recipeIndex].totalTime}</span
-            >
-          </div>
-          <div class="time-serving-holder">
-            <h4>Servings:</h4>
-            <span class="recipe-total"
-              >${_userProfileInfo.recipes[recipeIndex].totalServings}</span
-            >
-          </div>
-        </div>
+      <div class="time-serving-holder">
+        <h4>Servings:</h4>
+        <span class="recipe-total">${currentList[recipeIndex].totalServings}</span>
       </div>
     </div>
-  
+  </div>
+</div>
+<div class="bottom-of-page">
+  <div class="bottom-of-page2">
     <div class="view-list-holder">
       <h3>Ingredients:</h3>
       <div class="list-holder1"></div>
@@ -483,42 +430,50 @@ function getViewRecipe(recipeIndex) {
       <h3>Instructions:</h3>
       <div class="list-holder2"></div>
     </div>
-  
+
     <div class="view-page-button-holder">
-      <button class="view-page-edit-button" onclick="editRecipe(${_userProfileInfo.recipes[recipeIndex]})">edit</button>
+      <button
+        class="view-page-edit-button"
+        onclick="editRecipe(${currentList[recipeIndex]})"
+      >
+        edit
+      </button>
     </div>
-  </div>`);
+  </div>
+</div>`);
 }
-function viewRecipe() {
+function viewRecipe(recipeIndex) {
   $(".view-button").click(function (e) {
     $("#heroWrapper").removeClass("browseHero");
     let recipeIndex = e.currentTarget.id;
+    if ((window.location.hash = "#your-recipe")) {
+      currentList = _userProfileInfo.recipes;
+    }
+    if ((window.location.hash = "#browse")) {
+      currentList = RECIPES;
+    }
     console.log("viewRecipe: recipeIndex: ", recipeIndex);
     getViewRecipe(recipeIndex);
     getIngredients(recipeIndex);
     getInstructions(recipeIndex);
   });
-  console.log("viewRecipe complete");
 }
 // displays ingredients/instructions on view page
-function getIngredients(list, recipeIndex) {
+function getIngredients(recipeIndex) {
   let ingListString = `<ul>`;
-  $.each(list[recipeIndex].ingredients, function (idx, value) {
+  $.each(currentList[recipeIndex].ingredients, function (idx, value) {
     let addValue = value.ingredient;
     ingListString += `<li>${addValue}</li>`;
-    console.log(addValue);
   });
   ingListString += `</ul>`;
   $(".list-holder1").html(ingListString);
   console.log("getIngredients complete");
 }
-function getInstructions(list, recipeIndex) {
+function getInstructions(recipeIndex) {
   let instListString = `<ol>`;
-  $.each(list[recipeIndex].instructions, function (idx, value) {
+  $.each(currentList[recipeIndex].instructions, function (idx, value) {
     let addValue = value.instruction;
     instListString += `<li>${value.instruction}</li>`;
-    console.log(value.instruction);
-    console.log(addValue);
   });
   instListString += `</ol>`;
   console.log(instListString);
