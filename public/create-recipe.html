@@ -51,7 +51,7 @@
     <div class="create-form-section ingredients">
       <h3>Enter Ingredients:</h3>
       <div class="list-holder1"></div>
-      <button class="addButton" id="addIngButton" type="submit">
+      <button class="addButton" id="addIngButton" onclick="createIngredient()">
         <span>+</span>
       </button>
       <input
@@ -64,7 +64,11 @@
     <div class="create-form-section instructions">
       <h3>Enter Instructions</h3>
       <div class="list-holder2"></div>
-      <button class="addButton" id="addInstButton" type="submit">
+      <button
+        class="addButton"
+        id="addInstButton"
+        onclick="createInstruction()"
+      >
         <span>+</span>
       </button>
       <input
