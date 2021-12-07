@@ -216,7 +216,7 @@ function loadRecipes(currentList) {
         </div>
         <div class="gallery-buttons-bottom">
         <button class="buttons unhide" id="editRecipeB"><a href="#edit-recipe" onclick="editRecipe(${idx})">Edit Recipe</a></button>
-        <button class="buttons unhide" onclick="deleteList(${idx})">Delete</button>
+        <button class="buttons unhide" onclick="deleteRecipe(${idx})">Delete</button>
       </div>
       </div>`);
   });
@@ -372,27 +372,27 @@ function editRecipe(recipeIndex) {
   // console.log("Recipe Updated: " + recipeTitle);
   // });
 }
-function editIngredients() {
-  let _ingredientsList = _userProfileInfo.recipes[recipeIndex].ingredients;
-  let eIngredient = $("#eaddedIngredient").val();
-  let eIngredientObj = {
-    ingredient: eIngredient,
-    category: "",
-  };
-  _ingredientsList.push(eIngredientObj);
-  updateUserInfo(_userProfileInfo);
-}
-function editInstructions() {
-  let _instructionsList = _userProfileInfo.recipes[recipeIndex].instructions;
-  let eInstruction = $("#eaddedInstructions").val();
-  let eInstructionObj = {
-    ingredient: eInstruction,
-    category: "",
-  };
-  _instructionsList.push(eInstructionObj);
-  updateUserInfo(_userProfileInfo);
-  showEditedInstructions(_instructionsList);
-}
+// function editIngredients() {
+//   let _ingredientsList = _userProfileInfo.recipes[recipeIndex].ingredients;
+//   let eIngredient = $("#eaddedIngredient").val();
+//   let eIngredientObj = {
+//     ingredient: eIngredient,
+//     category: "",
+//   };
+// _ingredientsList.push(eIngredientObj);
+// updateUserInfo(_userProfileInfo);
+// }
+// function editInstructions() {
+//   let _instructionsList = _userProfileInfo.recipes[recipeIndex].instructions;
+//   let eInstruction = $("#eaddedInstructions").val();
+//   let eInstructionObj = {
+//     ingredient: eInstruction,
+//     category: "",
+//   };
+//   _instructionsList.push(eInstructionObj);
+//   updateUserInfo(_userProfileInfo);
+//   showEditedInstructions(_instructionsList);
+// }
 function showEditedIngredients(_ingredientsList) {
   let ingString = `<ul class="showItems">`;
   $.each(_ingredientsList, function (idx, value) {
@@ -419,10 +419,12 @@ function showEditedInstructions(_instructionsList) {
 }
 
 /* -------------------- delete recipe ------------------- */
-function deleteRecipe(recipes, idx) {
+function deleteRecipe(idx) {
   _userProfileInfo.recipes.splice(idx, 1);
   // only removes 1
+  updateUserInfo(_userProfileInfo);
   loadRecipes(_userProfileInfo.recipes);
+  console.log("recipe deleted");
 }
 // delete items after recipe creation (Delete from firebase)
 function deleteIngredient(recipeIndex) {
@@ -722,9 +724,8 @@ function initFirebase() {
         .then((doc) => {
           setUserData(doc);
           console.log("auth change logged in");
-          console.log("login userinfo ", _userProfileInfo);
+          console.log("user signed in: ", user.displayName);
           var uid = user.uid;
-          console.log("SETTING USERGREETING");
           $(".user-greeting").html(`${user.displayName}`);
           console.log(user.uid);
           console.log(_userProfileInfo);
@@ -732,17 +733,16 @@ function initFirebase() {
             `<a href="#login" class="login-button" onclick="signOut()">Logout</a>`
           );
           $(".user-only-content").attr("class", "userLoggedIn");
-          loadRecipes(_userProfileInfo.recipes);
-          // $(".login-button").html("Logout");
           $(".load").prop("disabled", true);
-          // $("#userAccessOnly").attr("class", "");
           userExists = true;
-          console.log("login userinfo ", _userProfileInfo);
-          loadRecipes();
         });
     } else {
       // SIGNED OUT
+      // noUserHash();
       console.log("auth change logged out");
+      // $(".createRecipeSubmit").prop("disabled", false);
+      // $(".loadRButtn").prop("disabled", false);
+
       userExists = false;
       userFullName = "";
       _db = "";

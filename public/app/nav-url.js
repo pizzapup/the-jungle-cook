@@ -1,5 +1,6 @@
-//
-
+/* ------------------------------------------------------ */
+/*                       HASHCHANGE                       */
+/* ------------------------------------------------------ */
 //
 /* --------- changeRoute() based on hash change: -------- */
 function changeRoute() {
@@ -11,18 +12,22 @@ function changeRoute() {
     if (pageID != "view-recipe") {
       $.get(`${pageID}.html`, function (data) {
         $("#pageContentApp").html(data);
+        if ((pageID = "browse")) {
+          $(".loadRButtn").click();
+        }
         if (_userProfileInfo.firstName) {
+          $(".loadRButtn").prop("disabled", true);
+          $(".createRecipeSubmit").prop("disabled", true);
+
           $(".user-greeting").html(
             `${_userProfileInfo.firstName}` +
               ` ` +
               `${_userProfileInfo.lastName}`
           );
-          if ((pageID = "your-recipe")) {
-            $(".loadRButtn").click();
-          }
-          if ((pageID = "browse")) {
-            $(".loadRButtn").click();
-          }
+          //
+        }
+        if ((pageID = "your-recipe")) {
+          $(".loadRButtn").click();
         }
       });
     }
@@ -36,6 +41,18 @@ function initURLListener() {
   window.onhashchange = changeRoute;
   changeRoute();
 }
+
+// function noUserHash() {
+//   if ((pageID = "your-recipe")) {
+//     alert("Sign up or login to view your recipes!");
+//     $(".recipe-gallery").html("Sign up or login to view your recipes");
+//   }
+//   if ((pageID = "create-recipe")) {
+//     $(".createRecipeSubmit").prop("disabled", true);
+//     alert("Sign up or login to view your recipes!");
+//     $(input).prop("disabled", false);
+//   }
+// }
 
 /* ------------------------------------------------------ */
 

@@ -1,3 +1,7 @@
+/* ------------------------------------------------------ */
+/*                     HAMBURGER MENU                     */
+/* ------------------------------------------------------ */
+// hamburger menu for screens under 960px
 function hamburger() {
   $(".bars").click(function (e) {
     $(".bars").toggleClass("active");
@@ -8,6 +12,7 @@ function hamburger() {
     $(".links").toggleClass("active");
   });
 }
+
 /* -------------- menu nav logo and footer -------------- */
 /* ------------------- footer content ------------------- */
 $("#footer-content").html(`
