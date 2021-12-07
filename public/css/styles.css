@@ -22,6 +22,18 @@ p {
   margin-bottom: 16px;
 }
 
+button {
+  cursor: pointer;
+}
+
+.userLoggedIn {
+  display: block;
+}
+
+.userLoggedOut {
+  display: none;
+}
+
 /* ------------------------------------------------------ */
 /*                       NAVIGATION                       */
 /* ------------------------------------------------------ */
@@ -97,10 +109,6 @@ nav {
   width: 100%;
   padding-top: 10px;
 }
-nav .page-title-norm {
-  left: 1px;
-  position: fixed;
-}
 nav .nav-holder {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -111,6 +119,9 @@ nav .nav-holder {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+nav .current-page {
+  border-bottom: solid black;
 }
 nav .links {
   margin-top: 10px;
@@ -124,18 +135,17 @@ nav .links {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  padding-right: 30px;
   margin-left: 45%;
+  border: none;
 }
 nav .links a {
   font-size: 25px;
   text-decoration: none;
 }
-nav .links .current-page {
-  border-bottom: solid black;
-}
 nav .links.active {
+  padding-right: 30px;
   height: auto;
-  padding: 2px;
   opacity: 1;
 }
 nav .login-button {
@@ -249,10 +259,18 @@ nav #logo-title h1 {
 /* ------------------------------------------------------ */
 /*                         FOOTER                         */
 /* ------------------------------------------------------ */
+@media only screen and (max-width: 425px) {
+  .footer-links {
+    display: block;
+  }
+}
+#heroWrapper {
+  position: relative;
+}
+
 footer {
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
+  margin-top: 18%;
+  padding-top: 6%;
 }
 footer .footer-content {
   width: 100%;
@@ -265,6 +283,10 @@ footer .footer-content {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
   /* -------------------- copyright ------------------- */
   /* ---------------------- links --------------------- */
   /* ------------------ social media ------------------ */
@@ -287,45 +309,27 @@ footer .footer-content .footer-social {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
-footer .footer-content .footer-social .social {
+
+.social {
   height: 19px;
   width: 19px;
 }
-footer .footer-content .footer-social .facebook {
+
+.facebook {
   margin-left: 40px;
   margin-right: 30px;
 }
-footer .footer-content .footer-social .instagram {
+
+.instagram {
   margin-left: 40px;
   margin-right: 30px;
-}
-
-/* ------------------------------------------------------ */
-/*                          HERO                          */
-/* ------------------------------------------------------ */
-.hero-wrapper {
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* ------------------- home page hero ------------------- */
-.home {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(242, 92, 82, 0.6)), to(rgba(242, 92, 82, 0.6))), url(../images/hero.png);
-  background-image: linear-gradient(to bottom, rgba(242, 92, 82, 0.6), rgba(242, 92, 82, 0.6)), url(../images/hero.png);
-}
-
-/* ------------------ browse page hero ------------------ */
-.browse {
-  min-height: 100%;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(167, 232, 189, 0.6)), to(rgba(167, 232, 189, 0.6))), url(../images/f967b1be89502f15f69bc109368673fc@2x.png);
-  background-image: linear-gradient(rgba(167, 232, 189, 0.6), rgba(167, 232, 189, 0.6)), url(../images/f967b1be89502f15f69bc109368673fc@2x.png);
 }
 
 /* ------------------------------------------------------ */
@@ -360,7 +364,8 @@ footer .footer-content .footer-social .instagram {
   width: 80%;
   text-align: left;
 }
-.create-recipe-content-wrapper form {
+.create-recipe-content-wrapper .create-recipe-form,
+.create-recipe-content-wrapper .recipe-form {
   padding-bottom: 7%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -376,17 +381,23 @@ footer .footer-content .footer-social .instagram {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 80%;
+  /* ------------------------------------------------ */
+  /*                 ADD RECIPE IMAGE                 */
+  /* ------------------------------------------------ */
   /* -------------------------------------------------- */
   /*                 FORM SUBMIT BUTTON                 */
   /* -------------------------------------------------- */
 }
-.create-recipe-content-wrapper form input[type=text] {
+.create-recipe-content-wrapper .create-recipe-form input[type=text],
+.create-recipe-content-wrapper .recipe-form input[type=text] {
   padding-bottom: 1%;
 }
-.create-recipe-content-wrapper form input[type=text]:focus {
+.create-recipe-content-wrapper .create-recipe-form input[type=text]:focus,
+.create-recipe-content-wrapper .recipe-form input[type=text]:focus {
   outline: none;
 }
-.create-recipe-content-wrapper form .create-form-section {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section,
+.create-recipe-content-wrapper .recipe-form .create-form-section {
   margin-top: 7%;
   margin-bottom: 7%;
   display: -webkit-box;
@@ -403,11 +414,13 @@ footer .footer-content .footer-social .instagram {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
-  /* ------------------------------------------------ */
-  /*                 ADD RECIPE IMAGE                 */
-  /* ------------------------------------------------ */
 }
-.create-recipe-content-wrapper form .create-form-section input {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section label,
+.create-recipe-content-wrapper .recipe-form .create-form-section label {
+  margin-top: 6%;
+}
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input,
+.create-recipe-content-wrapper .recipe-form .create-form-section input {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -418,86 +431,78 @@ footer .footer-content .footer-social .instagram {
   color: #000000;
   opacity: 1;
   width: 100%;
-  margin-top: 6%;
 }
-.create-recipe-content-wrapper form .create-form-section input input::-webkit-input-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::-webkit-input-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input::-webkit-input-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input::-moz-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::-moz-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input::-moz-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input:-ms-input-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input:-ms-input-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input:-ms-input-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input::-ms-input-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::-ms-input-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input::-ms-input-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input::placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::placeholder,
+.create-recipe-content-wrapper .recipe-form .create-form-section input input::placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input h3 {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input h3,
+.create-recipe-content-wrapper .recipe-form .create-form-section input h3 {
   text-align: left;
   font: normal normal normal 20px/27px Lato Black;
   letter-spacing: 2px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap {
-  border-bottom: solid black;
-  width: 100%;
+.create-recipe-content-wrapper .create-recipe-form input[type=file]::-webkit-file-upload-button, .create-recipe-content-wrapper .recipe-form input[type=file]::-webkit-file-upload-button {
+  opacity: 0;
+}
+.create-recipe-content-wrapper .create-recipe-form input[type=file]::file-selector-button,
+.create-recipe-content-wrapper .recipe-form input[type=file]::file-selector-button {
+  opacity: 0;
+}
+.create-recipe-content-wrapper .create-recipe-form input[type=file],
+.create-recipe-content-wrapper .recipe-form input[type=file] {
+  opacity: 0;
+}
+.create-recipe-content-wrapper .create-recipe-form .recipeImageInputDiv,
+.create-recipe-content-wrapper .recipe-form .recipeImageInputDiv {
+  margin: 0;
+  border-bottom: black solid;
+}
+.create-recipe-content-wrapper .create-recipe-form .recipeImgFileButton,
+.create-recipe-content-wrapper .recipe-form .recipeImgFileButton {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-bottom: 1%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  text-align: center;
-  font: normal normal normal 16px/21px Lato;
-  letter-spacing: 1.6px;
-  color: #000000;
-  opacity: 1;
-}
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .add-image-placeholder {
-  text-align: left;
-  font: normal normal normal 16px/21px Lato Light;
-  letter-spacing: 1.6px;
-  color: #000000;
-  opacity: 1;
-}
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 121px;
   height: 36px;
   background: #efa7a7 0% 0% no-repeat padding-box;
@@ -505,17 +510,36 @@ footer .footer-content .footer-social .instagram {
           box-shadow: 0px 10px 6px #00000029;
   border-radius: 26px;
   opacity: 1;
+  border: none;
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder input[type=file] {
-  display: none;
+.create-recipe-content-wrapper .create-recipe-form .recipeImgFileButton span,
+.create-recipe-content-wrapper .recipe-form .recipeImgFileButton span {
+  text-align: center;
+  font: normal normal normal 17px/22px Caveat;
+  letter-spacing: 1.7px;
+  color: #000000;
+  opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder input[type=file]::-webkit-file-upload-button {
-  display: none;
+.create-recipe-content-wrapper .create-recipe-form .recipeImgLabel,
+.create-recipe-content-wrapper .recipe-form .recipeImgLabel {
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  border: none;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder input[type=file]::file-selector-button {
-  display: none;
+.create-recipe-content-wrapper .create-recipe-form .recipeImgLabel span,
+.create-recipe-content-wrapper .recipe-form .recipeImgLabel span {
+  text-align: left;
+  font: normal normal normal 16px/21px Lato Light;
+  letter-spacing: 1.6px;
+  color: #000000;
+  opacity: 1;
 }
-.create-recipe-content-wrapper form .recipe-submit-button {
+.create-recipe-content-wrapper .create-recipe-form .recipe-submit-button,
+.create-recipe-content-wrapper .recipe-form .recipe-submit-button {
   text-align: center;
   font: normal normal normal 25px/33px Lato;
   font-size: 1.5vw;
@@ -532,73 +556,81 @@ footer .footer-content .footer-social .instagram {
   border: none;
 }
 
-/* ------------------------------------------------------ */
-/*                         BUTTONS                        */
-/* ------------------------------------------------------ */
-@media only screen and (max-width: 960px) {
-  .recipe-card .view {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-  .recipe-card .view .button {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  }
-}
-/* ------------------------------------------------------ */
-.button-holder {
-  height: 42px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 20px;
+.create-form-section {
+  position: relative;
 }
 
-a {
-  text-decoration: none;
+.addButton {
+  background: #efa7a7 0% 0% no-repeat padding-box;
+  opacity: 1;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
 }
-
-.button {
-  text-align: center;
-  font: normal normal normal 20px/27px;
+.addButton span {
+  text-align: left;
+  font-weight: bold;
+  font: normal normal 300 20px/25px Gill Sans;
   letter-spacing: 2px;
-  color: #000000;
+  color: #ffffff;
   opacity: 1;
-  background: #ffd972 0% 0% no-repeat;
-  -webkit-box-shadow: 0px 10px 6px #00000029;
-          box-shadow: 0px 10px 6px #00000029;
-  border-radius: 26px;
+}
+
+.deleteItem {
   opacity: 1;
-  cursor: pointer;
-  width: 128px;
-  height: 42px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 10px;
-  text-decoration: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.deleteItem span {
+  text-align: left;
+  font-weight: bold;
+  font: normal normal 300 20px/25px Gill Sans;
+  letter-spacing: 2px;
+  opacity: 1;
 }
 
-/* --------- hides and displays buttons on hover -------- */
-.view {
-  display: none;
+.list-holder1,
+.list-holder2 {
+  width: 60%;
+  margin: 2px;
 }
 
-.recipe-card:hover .view {
+.showItems {
+  width: 100%;
+  margin: 2px;
+}
+
+.showItemsLi {
+  width: 100%;
+  margin: 2px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+li:nth-child(odd) {
+  background-color: #00000029;
 }
 
 /* ------------------------------------------------------ */
@@ -689,24 +721,83 @@ a {
 }
 
 /* ------------------------------------------------------ */
+/*                          HERO                          */
+/* ------------------------------------------------------ */
+.home,
+.homeHero {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(242, 92, 82, 0.6)), to(rgba(242, 92, 82, 0.6))), url(../images/hero.png);
+  background-image: linear-gradient(to bottom, rgba(242, 92, 82, 0.6), rgba(242, 92, 82, 0.6)), url(../images/hero.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.browse,
+.browseHero,
+.your-recipe {
+  background-attachment: fixed;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(167, 232, 189, 0.6)), to(rgba(167, 232, 189, 0.6))), url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
+  background-image: linear-gradient(rgba(167, 232, 189, 0.6), rgba(167, 232, 189, 0.6)), url(../images/f967b1be89502f15f69bc109368673fc@2x.png) !important;
+  background-position: center;
+  background-size: cover !important;
+  min-height: 100vh;
+}
+
+.loginHero,
+.login-hero,
+.login {
+  background-color: #ffd972 !important;
+  min-height: 100% !important;
+  min-width: 100% !important;
+}
+
+.view-recipe {
+  background-color: white;
+}
+
+/* ------------------------------------------------------ */
 /*                    BROWSE | RECIPES                    */
 /* ------------------------------------------------------ */
-@media only screen and (max-width: 400px) {
-  .bars {
-    display: block;
-  }
-
-  .links {
-    height: 0px;
-    opacity: 0;
+/* -------------------- media queries ------------------- */
+@media only screen and (max-width: 425px) {
+  .recipe-card-holder {
+    margin: 0 auto;
+    padding: 0px;
+    position: static !important;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    min-width: 100%;
   }
 
-  .recipe-gallery {
-    margin: 0 auto;
+  .recipe-card {
+    min-height: 400px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  .recipe-image {
+    width: auto;
+    height: 149px;
+    background-position: center;
+    background-size: cover;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -716,36 +807,41 @@ a {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    position: static !important;
   }
 
-  .photo-and-description {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    margin-bottom: 5%;
+  .recipe-info {
+    border-radius: 24px;
+    min-width: 100%;
+    height: 169px;
+    margin: 0 auto;
+    position: static !important;
+    display: block !important;
   }
-  .photo-and-description .card-info {
-    min-width: 300px;
+
+  .gallery-buttons-bottom {
+    position: static !important;
   }
 }
+.loadRButtn {
+  background: none;
+  border: none;
+  color: black;
+  margin: 20px;
+}
+.loadRButtn span {
+  text-align: left;
+  font-weight: bold;
+  font: normal normal 300 20px/25px Gill Sans;
+  letter-spacing: 2px;
+  color: #ffffff;
+  opacity: 1;
+  background: #efa7a7 0% 0% no-repeat padding-box;
+  opacity: 1;
+  border: none;
+}
+
 @media only screen and (max-width: 960px) {
-  .bars {
-    display: block;
-  }
-
-  .links {
-    height: 0px;
-    opacity: 0;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-
   .recipe-gallery {
     margin: 0 auto;
     display: -webkit-box;
@@ -758,147 +854,170 @@ a {
         -ms-flex-pack: center;
             justify-content: center;
   }
+
+  .recipe-card {
+    height: 263px !important;
+  }
+
+  .unhide {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-transition: none;
+    transition: none;
+  }
 }
-/* ------------------------------------------------------ */
-/*                          MAIN                          */
-/* ------------------------------------------------------ */
-.recipe-title {
+/* ------------------------ main ------------------------ */
+.recipe-page-title {
   width: 80%;
-  padding: 20px;
-  margin: 0 auto;
   /* -------------- page title/heading ------------- */
 }
-.recipe-title h2 {
-  text-align: left;
-  font: normal normal bold 25px/33px;
+.recipe-page-title h2 {
+  font-size: 33px;
   letter-spacing: 2.5px;
   color: black;
-  opacity: 1;
 }
 
-/* ---------------------------------------------------- */
-/*                        GALLERY                       */
-/* ---------------------------------------------------- */
+/* ------- recipe gallery (holds all recipe cards) ------ */
+/* ---------------- loaded from recipe.js --------------- */
 .recipe-gallery {
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-bottom: 100px;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  min-height: 100vh;
-  min-height: 350px;
-  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: left;
+  font: normal normal normal Lato;
+  color: #000000;
+  opacity: 1;
 }
-.recipe-gallery .photo-and-description {
-  width: 100%;
-  height: 263px;
+.recipe-gallery .recipe-card-holder {
+  position: relative;
+  margin: 20px;
+  padding: 20px;
+}
+.recipe-gallery .recipe-card-holder .recipe-card {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left: 30px;
-  margin-right: 30px;
+  height: auto;
 }
-.recipe-gallery .photo-and-description .card-image {
-  width: 300px;
-  height: 100%;
-  border-radius: 24px;
+.recipe-gallery .recipe-card-holder .recipe-card .recipe-image {
+  border-radius: 26px;
+  min-width: 300px;
+  height: 263px;
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.recipe-gallery .photo-and-description .card-info {
-  background: white 0% 0% no-repeat padding-box;
+.recipe-gallery .recipe-card-holder .recipe-card .recipe-info {
+  background: #ffffff 0% 0% no-repeat padding-box;
   border-radius: 24px;
+  opacity: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 20px;
   width: 224px;
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  height: auto;
 }
-.recipe-gallery .photo-and-description .card-info .info-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-align: left;
-  border-radius: 24px;
-  /* --------- time and servings icons -------- */
-}
-.recipe-gallery .photo-and-description .card-info .info-content .card-info-title span {
-  font-size: 18px;
+.recipe-gallery .recipe-card-holder .recipe-card .recipe-info .recipe-title span {
+  font-size: 20px;
+  letter-spacing: 1.5px;
   border-bottom: solid black;
 }
-.recipe-gallery .photo-and-description .card-info .info-content .card-info-text {
-  text-align: left;
+.recipe-gallery .recipe-card-holder .recipe-card .recipe-description {
   font-size: 11px;
   letter-spacing: 0.9px;
-  width: 80%;
 }
-.recipe-gallery .photo-and-description .card-info .info-content .card-icon {
+.recipe-gallery .recipe-card-holder .recipe-card .card-icon {
+  background: transparent url("img/time.png") 0% 0% no-repeat padding-box;
+  width: 40%;
+  opacity: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  height: 24px;
-  margin-bottom: 20px;
 }
-.recipe-gallery .photo-and-description .card-info .info-content .card-icon .card-icon-image {
+.recipe-gallery .recipe-card-holder .recipe-card .card-icon .card-icon-image {
   width: 23px;
+  height: 24px;
+  margin-right: 10px;
 }
-.recipe-gallery .photo-and-description .card-info .info-content .card-icon .card-icon-text {
-  word-wrap: nowrap;
-  font-size: 10px;
+.recipe-gallery .recipe-card-holder .recipe-card .card-icon .card-icon-text {
+  font-size: 12px;
   letter-spacing: 0.2px;
 }
 
-/* ------------------- recipe images ------------------ */
-.pizza .card-image {
-  background-image: url(../images/recipe-pizza.png);
+/* ----------------------- buttons ---------------------- */
+.gallery-buttons-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
 }
 
-.burger .card-image {
-  background-image: url(../images/recipe-burger.png);
+.buttons {
+  background: #ffd972 0% 0% no-repeat padding-box;
+  -webkit-box-shadow: 0px 10px 6px #00000029;
+          box-shadow: 0px 10px 6px #00000029;
+  border-radius: 26px;
+  opacity: 1;
+  width: 128px;
+  height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 10px;
+  text-align: center;
+  font: normal normal normal 20px/27px;
+  letter-spacing: 2px;
+  border: none;
 }
 
-.pilaf .card-image {
-  background-image: url(../images/recipe-pilaf.png);
+.unhide {
+  display: none;
+  -webkit-transition: height 0.66s ease-out;
+  transition: height 0.66s ease-out;
 }
 
-.chowmein .card-image {
-  background-image: url(../images/recipe-chowmein.png);
+.recipe-card-holder:hover .unhide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 /* ------------------------------------------------------ */
@@ -906,21 +1025,22 @@ a {
 /* ------------------------------------------------------ */
 @media only screen and (max-width: 960px) {
   .login-page-wrapper {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  .login-form-wrap {
+    margin-top: 50px;
+  }
+
+  .sign-up-form {
+    margin-bottom: 50px;
   }
 }
-body {
-  background-color: #ffd972;
-}
-
 .login-page-wrapper {
-  height: 100%;
-  background-color: blanchedalmond;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -932,16 +1052,7 @@ body {
           justify-content: space-evenly;
 }
 .login-page-wrapper .form-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  padding: 45px;
 }
 .login-page-wrapper .form-holder h2 {
   text-align: left;
@@ -952,19 +1063,7 @@ body {
 }
 .login-page-wrapper .form-holder .signup-heading-text {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  white-space: nowrap;
 }
 .login-page-wrapper .form-holder .signup-heading-text .span-signup-small {
   text-align: left;
@@ -1081,7 +1180,8 @@ body {
   width: 80%;
   text-align: left;
 }
-.create-recipe-content-wrapper form {
+.create-recipe-content-wrapper .create-recipe-form,
+.create-recipe-content-wrapper .recipe-form {
   padding-bottom: 7%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1097,17 +1197,23 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 80%;
+  /* ------------------------------------------------ */
+  /*                 ADD RECIPE IMAGE                 */
+  /* ------------------------------------------------ */
   /* -------------------------------------------------- */
   /*                 FORM SUBMIT BUTTON                 */
   /* -------------------------------------------------- */
 }
-.create-recipe-content-wrapper form input[type=text] {
+.create-recipe-content-wrapper .create-recipe-form input[type=text],
+.create-recipe-content-wrapper .recipe-form input[type=text] {
   padding-bottom: 1%;
 }
-.create-recipe-content-wrapper form input[type=text]:focus {
+.create-recipe-content-wrapper .create-recipe-form input[type=text]:focus,
+.create-recipe-content-wrapper .recipe-form input[type=text]:focus {
   outline: none;
 }
-.create-recipe-content-wrapper form .create-form-section {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section,
+.create-recipe-content-wrapper .recipe-form .create-form-section {
   margin-top: 7%;
   margin-bottom: 7%;
   display: -webkit-box;
@@ -1124,11 +1230,13 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
-  /* ------------------------------------------------ */
-  /*                 ADD RECIPE IMAGE                 */
-  /* ------------------------------------------------ */
 }
-.create-recipe-content-wrapper form .create-form-section input {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section label,
+.create-recipe-content-wrapper .recipe-form .create-form-section label {
+  margin-top: 6%;
+}
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input,
+.create-recipe-content-wrapper .recipe-form .create-form-section input {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -1139,86 +1247,78 @@ body {
   color: #000000;
   opacity: 1;
   width: 100%;
-  margin-top: 6%;
 }
-.create-recipe-content-wrapper form .create-form-section input input::-webkit-input-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::-webkit-input-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input::-webkit-input-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input::-moz-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::-moz-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input::-moz-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input:-ms-input-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input:-ms-input-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input:-ms-input-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input::-ms-input-placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::-ms-input-placeholder, .create-recipe-content-wrapper .recipe-form .create-form-section input input::-ms-input-placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input input::placeholder {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input input::placeholder,
+.create-recipe-content-wrapper .recipe-form .create-form-section input input::placeholder {
   text-align: left;
   font: normal normal normal 16px/21px Lato Light;
   letter-spacing: 1.6px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section input h3 {
+.create-recipe-content-wrapper .create-recipe-form .create-form-section input h3,
+.create-recipe-content-wrapper .recipe-form .create-form-section input h3 {
   text-align: left;
   font: normal normal normal 20px/27px Lato Black;
   letter-spacing: 2px;
   color: #000000;
   opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap {
-  border-bottom: solid black;
-  width: 100%;
+.create-recipe-content-wrapper .create-recipe-form input[type=file]::-webkit-file-upload-button, .create-recipe-content-wrapper .recipe-form input[type=file]::-webkit-file-upload-button {
+  opacity: 0;
+}
+.create-recipe-content-wrapper .create-recipe-form input[type=file]::file-selector-button,
+.create-recipe-content-wrapper .recipe-form input[type=file]::file-selector-button {
+  opacity: 0;
+}
+.create-recipe-content-wrapper .create-recipe-form input[type=file],
+.create-recipe-content-wrapper .recipe-form input[type=file] {
+  opacity: 0;
+}
+.create-recipe-content-wrapper .create-recipe-form .recipeImageInputDiv,
+.create-recipe-content-wrapper .recipe-form .recipeImageInputDiv {
+  margin: 0;
+  border-bottom: black solid;
+}
+.create-recipe-content-wrapper .create-recipe-form .recipeImgFileButton,
+.create-recipe-content-wrapper .recipe-form .recipeImgFileButton {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-bottom: 1%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  text-align: center;
-  font: normal normal normal 16px/21px Lato;
-  letter-spacing: 1.6px;
-  color: #000000;
-  opacity: 1;
-}
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .add-image-placeholder {
-  text-align: left;
-  font: normal normal normal 16px/21px Lato Light;
-  letter-spacing: 1.6px;
-  color: #000000;
-  opacity: 1;
-}
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 121px;
   height: 36px;
   background: #efa7a7 0% 0% no-repeat padding-box;
@@ -1226,17 +1326,36 @@ body {
           box-shadow: 0px 10px 6px #00000029;
   border-radius: 26px;
   opacity: 1;
+  border: none;
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder input[type=file] {
-  display: none;
+.create-recipe-content-wrapper .create-recipe-form .recipeImgFileButton span,
+.create-recipe-content-wrapper .recipe-form .recipeImgFileButton span {
+  text-align: center;
+  font: normal normal normal 17px/22px Caveat;
+  letter-spacing: 1.7px;
+  color: #000000;
+  opacity: 1;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder input[type=file]::-webkit-file-upload-button {
-  display: none;
+.create-recipe-content-wrapper .create-recipe-form .recipeImgLabel,
+.create-recipe-content-wrapper .recipe-form .recipeImgLabel {
+  position: absolute;
+  bottom: 10px;
+  left: 5px;
+  border: none;
 }
-.create-recipe-content-wrapper form .create-form-section .file-button-wrap .file-button-holder input[type=file]::file-selector-button {
-  display: none;
+.create-recipe-content-wrapper .create-recipe-form .recipeImgLabel span,
+.create-recipe-content-wrapper .recipe-form .recipeImgLabel span {
+  text-align: left;
+  font: normal normal normal 16px/21px Lato Light;
+  letter-spacing: 1.6px;
+  color: #000000;
+  opacity: 1;
 }
-.create-recipe-content-wrapper form .recipe-submit-button {
+.create-recipe-content-wrapper .create-recipe-form .recipe-submit-button,
+.create-recipe-content-wrapper .recipe-form .recipe-submit-button {
   text-align: center;
   font: normal normal normal 25px/33px Lato;
   font-size: 1.5vw;
@@ -1253,6 +1372,83 @@ body {
   border: none;
 }
 
+.create-form-section {
+  position: relative;
+}
+
+.addButton {
+  background: #efa7a7 0% 0% no-repeat padding-box;
+  opacity: 1;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+}
+.addButton span {
+  text-align: left;
+  font-weight: bold;
+  font: normal normal 300 20px/25px Gill Sans;
+  letter-spacing: 2px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.deleteItem {
+  opacity: 1;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.deleteItem span {
+  text-align: left;
+  font-weight: bold;
+  font: normal normal 300 20px/25px Gill Sans;
+  letter-spacing: 2px;
+  opacity: 1;
+}
+
+.list-holder1,
+.list-holder2 {
+  width: 60%;
+  margin: 2px;
+}
+
+.showItems {
+  width: 100%;
+  margin: 2px;
+}
+
+.showItemsLi {
+  width: 100%;
+  margin: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+li:nth-child(odd) {
+  background-color: #00000029;
+}
+
 /* ------------------------------------------------------ */
 /*                       view RECIPE                      */
 /* ------------------------------------------------------ */
@@ -1261,43 +1457,61 @@ body {
   .view-recipe-holder {
     padding-top: 11%;
     padding-bottom: 11%;
+    display: block !important;
   }
 
   .des-top {
     width: 80vw;
   }
+
+  .description-holder {
+    margin-left: 0px;
+  }
+
+  .photo-and-title {
+    margin-right: 10%;
+    margin-left: 10%;
+  }
+
+  .view-recipe-photo-holder {
+    width: auto;
+    margin-bottom: 20px;
+  }
+  .view-recipe-photo-holder .view-recipe-image {
+    width: auto;
+  }
 }
 /* ------------------------------------------------------ */
 /*                          MAIN                          */
 /* ------------------------------------------------------ */
-.view-recipe-holder {
-  margin: 5%;
-  position: relative;
-}
-
-.img-and-description {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-.img-and-description .recipe-title-holder {
+.photo-and-title {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  position: relative;
+}
+
+.view-recipe-holder {
+  margin-top: 4%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  max-width: 1280px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
-.img-and-description .recipe-title-holder .recipe-title {
+
+.view-recipe-title-holder {
+  width: 418px;
+  height: 421px;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  position: absolute;
+  left: -35px;
+}
+.view-recipe-title-holder .view-recipe-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1308,66 +1522,35 @@ body {
       -ms-flex-align: center;
           align-items: center;
   white-space: nowrap;
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
-  position: relative;
 }
-.img-and-description .recipe-title-holder .recipe-title span {
-  position: absolute;
+.view-recipe-photo-holder {
+  width: 468px;
+  margin-bottom: 20px;
 }
-.img-and-description .recipe-title-holder .photo-holder .recipe-image {
+.view-recipe-photo-holder .view-recipe-image {
   width: 468px;
 }
-.img-and-description .description-holder {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+
+.description-holder {
   text-align: left;
-  width: 40%;
-  margin-left: 5%;
 }
-.img-and-description .description-holder .des-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  height: 100%;
-}
-.img-and-description .description-holder .des-top h3 {
+
+.des-top h3 {
   text-align: left;
   font: normal normal normal 25px/33px Lato Black;
   letter-spacing: 5px;
   color: #000000;
   opacity: 1;
 }
-.img-and-description .description-holder .des-top p {
+.des-top p {
   text-align: left;
   font: normal normal normal 20px/27px Caveat;
   letter-spacing: 4px;
   color: #000000;
   opacity: 1;
 }
-.img-and-description .description-holder .des-bottom {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  height: 100%;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-.img-and-description .description-holder .des-bottom .time-serving-holder {
+
+.des-bottom .time-serving-holder {
   text-align: left;
   font: normal normal normal 20px/27px Lato Black;
   letter-spacing: 4px;
@@ -1383,31 +1566,48 @@ body {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  margin-top: 30px;
 }
 
-.list-holder {
-  margin: 2.5%;
-  width: 100%;
+/* ------------------------------------------------------ */
+.view-list-holder {
+  min-height: 100px;
   text-align: left;
   font: normal normal normal 25px/33px Lato Black;
   letter-spacing: 5px;
   color: #000000;
   opacity: 1;
 }
-.list-holder li {
+.view-list-holder li {
   text-align: left;
   font: normal normal normal 20px/27px Caveat;
   letter-spacing: 4px;
   color: #000000;
   opacity: 1;
+}
+.view-list-holder ul li {
   list-style: none;
 }
-
-.button-holder {
-  width: 80%;
-  margin-left: 50px;
+.view-page-button-holder {
+  background: #ffd972 0% 0% no-repeat padding-box;
+  border-radius: 26px;
+  opacity: 1;
+  width: 128px;
+  height: 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
 }
-.button-holder button {
+
+.view-page-edit-button {
+  width: 80%;
   width: 128px;
   height: 42px;
   background: #ffd972 0% 0% no-repeat padding-box;
@@ -1419,4 +1619,18 @@ body {
   color: #000000;
   opacity: 1;
   border: none;
+}
+
+.bottom-of-page {
+  margin: 2%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  max-width: 1280px;
+}
+
+.bottom-of-page2 {
+  width: 100%;
 }

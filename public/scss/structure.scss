@@ -18,3 +18,13 @@ h6,
 p {
   margin-bottom: 16px;
 }
+button {
+  cursor: pointer;
+}
+
+.userLoggedIn {
+  display: block;
+}
+.userLoggedOut {
+  display: none;
+}

@@ -3,36 +3,28 @@
 /* ------------------------------------------------------ */
 @media only screen and (max-width: 960px) {
   .login-page-wrapper {
-    flex-direction: column;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  // .login-content-wrapper {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: center;
-  //   .form-login {
-  //     margin-bottom: 10%;
-  //   }
-  //   .form-signup {
-  //     margin-bottom: 10%;
-  //   }
-  // }
-}
-body {
-  background-color: #ffd972;
+  .login-form-wrap {
+    margin-top: 50px;
+  }
+  .sign-up-form {
+    margin-bottom: 50px;
+  }
 }
 .login-page-wrapper {
-  height: 100%;
-  background-color: blanchedalmond;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+
   //
   .form-holder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 45px;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+
     h2 {
       text-align: left;
       font: normal normal normal 30px/40px Lato Black;
@@ -42,10 +34,11 @@ body {
     }
     .signup-heading-text {
       width: 100%;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: flex-start;
+      white-space: nowrap;
+      // display: flex;
+      // justify-content: center;
+      // flex-direction: column;
+      // align-items: flex-start;
       .span-signup-small {
         text-align: left;
         font: italic normal normal 12px/15px Lato;
