@@ -6,39 +6,45 @@
   <h1>Hey <span class="user-greeting"></span>, edit your recipe!</h1>
   <div class="recipe-form">
     <div class="create-form-section general-info">
-      <div class="file-button-wrap">
-        <input
-          type="text"
-          id="erecipeImg"
-          name="recipe-image"
-          placeholder="Add Recipe Image"
-        />
-        <div onclick="recipeImageUpload();" class="file-button-holder">
+      <!-- --------------------------------------------- -->
+      <div class="create-form-section recipeImageInputDiv">
+        <div class="recipeImgFileHolder"></div>
+        <label for="recipeImage" class="recipeImgLabel"
+          ><span>Add Recipe Image</span></label
+        >
+        <span class="recipeImgFileButton" id="erecipeImgFileButton">
           <span>Attach File</span>
-        </div>
+        </span>
+
+        <input id="erecipeImageInput" type="file" name="erecipeImageInput" />
       </div>
+      <!-- --------------------------------------------- -->
+      <label for="recipeName"></label>
       <input
         id="erecipeTitle"
         type="text"
-        name="recipeName"
+        name="erecipeTitle"
         placeholder="Recipe Name"
       />
+      <label for="recipeDescription"></label>
       <input
         id="erecipeDescription"
         type="text"
-        name="recipeDescription"
+        name="erecipeDescription"
         placeholder="Recipe Description"
       />
+      <label for="totalTime"></label>
       <input
         id="etotalTime"
         type="text"
-        name="totalTime"
+        name="etotalTime"
         placeholder="Recipe Total Time"
       />
+      <label for="totalServings"></label>
       <input
         id="etotalServings"
         type="text"
-        name="servingSize"
+        name="etotalServings"
         placeholder="Recipe Serving Size"
       />
     </div>
@@ -46,12 +52,14 @@
     <div class="create-form-section ingredients">
       <h3>Enter Ingredients:</h3>
       <div class="list-holder1"></div>
-      <button class="addButton" type="submit" onclick="addIngredient()">
+      <button class="addButton" id="eaddIngButton" onclick="editIngredients()">
         <span>+</span>
       </button>
+      <label for="recipeDescription"></label>
+
       <input
         type="text"
-        name="ingredient"
+        name="eaddedIngredient"
         placeholder="Ingredient"
         id="eaddedIngredient"
       />
@@ -59,13 +67,20 @@
     <div class="create-form-section instructions">
       <h3>Enter Instructions</h3>
       <div class="list-holder2"></div>
-      <button class="addButton" type="submit" onclick="addInstruction();">
+      <button
+        class="addButton"
+        id="eaddInstButton"
+        onclick="editInstructions()"
+        name="eaddInstButton"
+      >
         <span>+</span>
       </button>
+      <label for="recipeDescription"></label>
+
       <input
         id="eaddedInstructions"
         type="text"
-        name="instructionOne"
+        name="eaddedInstructions"
         placeholder="Instruction"
       />
     </div>
@@ -74,9 +89,10 @@
     <input
       id="ecreateRecipeSubmit"
       type="submit"
-      value="Create Recipe"
+      value="Update Recipe"
       class="recipe-submit-button"
-      onclick="editRecipe();"
+      onclick="editRecipe()"
+      name="ecreateRecipeSubmit"
     />
   </div>
 </div>
