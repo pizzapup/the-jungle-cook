@@ -41,7 +41,8 @@
 }
 
 .photo-and-title {
-  width: fit-content;
+  // width: fit-content;
+  width: 100%;
   position: relative;
   // margin-left: 40px;
 }
@@ -73,7 +74,6 @@
   // width: fit-content;
   width: 468px;
   margin-bottom: 20px;
-
   .view-recipe-image {
     width: 468px;
   }

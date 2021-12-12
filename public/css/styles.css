@@ -1095,6 +1095,7 @@ li:nth-child(odd) {
   border-left: none;
   border-right: none;
   border-bottom: black solid;
+  padding: 5px;
 }
 .login-page-wrapper .form-holder .form-content-wrapper input::-webkit-input-placeholder {
   text-align: left;
@@ -1485,9 +1486,7 @@ li:nth-child(odd) {
 /*                          MAIN                          */
 /* ------------------------------------------------------ */
 .photo-and-title {
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 100%;
   position: relative;
 }
 
