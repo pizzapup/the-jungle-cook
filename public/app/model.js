@@ -174,6 +174,24 @@ var RECIPES = [
 ];
 var currentList = "";
 /* ------------------------------------------------------ */
+// window.onscroll = function () {
+//   scrollFunction();
+// };
+
+// function scrollFunction() {
+// if ($(window).width() > 960) {
+// if (
+// document.body.scrollTop > 20 ||
+// document.documentElement.scrollTop > 20
+// ) {
+// document.getElementById("navbar").style.top = "0";
+// changeNavStylesHam();
+// } else {
+// changeNavStylesReg();
+// document.getElementById("navbar").style.top = "-50px";
+// }
+// }
+// }
 
 function hamburger() {
   $(".bars").click(function (e) {
@@ -185,6 +203,7 @@ function hamburger() {
     $(".links").toggleClass("active");
   });
 }
+
 /* ------------------- footer content ------------------- */
 $("#footer-content").html(`
 <div class="footer-content">
@@ -220,20 +239,61 @@ $(".navigation-bar").html(`
   <h1>The Jungle Cook</h1>
 </div>
 </a>
-<div class="nav-holder">
+<!-- begin nav menu -->
+<div id="menuToggle" class="nav-holder">
 <div class="bars">
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
+<!-- hamburger spans -->
+<span class="bar"></span>
+<span class="bar"></span>
+<span class="bar"></span>
 </div>
-<div class="links" >
-<a href="#home">Home</a>
-<a href="#browse">Browse</a>
-<a href="#create-recipe">Create Recipe</a>
-<a href="#your-recipe">Your Recipes</a>
-<span id="change-logBtn" ><a href="#login" class="login-button">Login</a></span></div>
+<ul id="menu" class="links navLi">
+  <a href="#home"><li >Home</li></a>
+  <a href="#browse"><li >Browse</li></a>
+  <a href="#create-recipe"><li >Create Recipe</li></a>
+  <a href="#your-recipe" ><li>Your Recipes</li></a>
+  <a href="#login" class="login-button"
+    ><li id="change-logBtn"><span>Login</span></li></a
+  >
+</ul>
 </div>
+
 `);
+// Change nav on scroll
+$(function () {
+  // var header = $(".nav-holder");
+
+  $(window).scroll(function () {
+    var scroll = $(window).scrollTop();
+    if (scroll >= 200) {
+      $("nav").addClass("nav-scrolled");
+      $(".nav-holder").addClass("nav-holder-scrolled");
+      $(".bars").addClass("bars-scrolled");
+      $(".links").addClass("links-scrolled");
+      $("a").addClass("a-scrolled");
+    } else {
+      $("nav").removeClass("nav-scrolled");
+      $(".nav-holder").removeClass("nav-holder-scrolled");
+      $(".bars").removeClass("bars-scrolled");
+      $(".links").removeClass("links-scrolled");
+      $("a").removeClass("a-scrolled");
+    }
+  });
+});
+// `<div class="nav-holder">
+// <div class="bars">
+//   <span class="bar"></span>
+//   <span class="bar"></span>
+//   <span class="bar"></span>
+// </div>
+// <div class="links" >
+// <a href="#home">Home</a>
+// <a href="#browse">Browse</a>
+// <a href="#create-recipe">Create Recipe</a>
+// <a href="#your-recipe">Your Recipes</a>
+// <span id="change-logBtn" ><a href="#login" class="login-button">Login</a></span></div>
+// </div>`
+
 $(document).ready(function () {
   hamburger();
 });
@@ -593,7 +653,6 @@ function getInstructions(recipeIndex) {
     instListString += `<li>${value.instruction}</li>`;
   });
   instListString += `</ol>`;
-  console.log(instListString);
   $(".list-holder2").html(instListString);
   console.log("getInstructions complete");
 }
@@ -749,7 +808,7 @@ function signIn() {
     });
 }
 function signOutActions() {
-  $("#change-logBtn").html(`<a href="#login" class="login-button">Login</a>`);
+  $("#change-logBtn").html(`<span>Login</span>`);
   $(".user-greeting").empty();
   console.log("EMPTY USERGREETING");
   $(".login-greeting").empty();
@@ -792,9 +851,7 @@ function initFirebase() {
           $(".user-greeting").html(`${user.displayName}`);
           console.log(user.uid);
           console.log(_userProfileInfo);
-          $("#change-logBtn").html(
-            `<a href="#login" class="login-button" onclick="signOut()">Logout</a>`
-          );
+          $("#change-logBtn").html(`<span onclick="signOut()">Logout</span>`);
           $(".user-only-content").attr("class", "userLoggedIn");
           $(".load").prop("disabled", true);
           userExists = true;

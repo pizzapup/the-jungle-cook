@@ -7,8 +7,11 @@
 @media only screen and (max-width: 425px) {
   .recipe-gallery {
     //
+    padding-top: 100px;
   }
-
+  // h2 {
+  //   display: none;
+  // }
   .recipe-card-holder {
     margin: 0 auto;
     padding: 0px;
