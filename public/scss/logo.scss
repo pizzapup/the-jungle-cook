@@ -1,67 +1,70 @@
 /* ------------------------------------------------------ */
 /*                 LOGO | THE JUNGLE COOK                 */
 /* ------------------------------------------------------ */
-nav {
-  #logo-title {
-    position: relative;
-    display: flex;
-    span {
-      position: absolute;
-      border-radius: 50%;
-      background: 0% 0% no-repeat padding-box;
-      opacity: 1;
-    }
-    .blue {
-      background-color: #c7eae4;
-      width: 32px;
-      height: 32px;
-      //   top: 38px; size in XD file
-      top: 11px;
-      //   left: 52px; size in XD file
-      left: 22px;
-    }
-    .yellow {
-      background-color: #ffd972;
-      width: 30px;
-      height: 30px;
-      //   top: 54px; size in XD file
-      top: 27px;
-      //   left: 76px; size in XD file
-      left: 46px;
-    }
-    .green {
-      background-color: #a7e8bd;
-      width: 54px;
-      height: 54px;
-      // top: 39px; size in XD file
-      top: 12px;
-      //   left: 103px; size in XD file
-      left: 73px;
-    }
-    .pink {
-      background-color: #efa7a7;
-      //   top: 57px; size in XD file
-      top: 30px;
-      //   left: 185px; size in XD file
-      left: 155px;
-      width: 24px;
-      height: 24px;
-    }
-    h1 {
-      position: absolute;
-      //   font-family: Caveat; font in XD file
-      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-        sans-serif;
-      font-size: 25px;
-      text-align: left;
-      color: #000;
-      white-space: nowrap;
-      //   top: 47px; size in XD file
-      top: 20px;
-      //   left: 50px; size in XD file
-      left: 20px;
-      width: 217px;
-      height: 33px;
-    }
+// .logo-scrolled {
+//   top: -10px;
+// }
+
+#logo-title {
+  position: relative;
+  display: flex;
+  transition: 0.7s;
+  padding-bottom: 3px;
+  top: -3px;
+  span {
+    position: absolute;
+    border-radius: 50%;
+    background: 0% 0% no-repeat padding-box;
+    opacity: 1;
+  }
+  .blue {
+    background-color: #c7eae4;
+    width: 32px;
+    height: 32px;
+    //   top: 38px; size in XD file
+    top: 11px;
+    //   left: 52px; size in XD file
+    left: 22px;
+  }
+  .yellow {
+    background-color: #ffd972;
+    width: 30px;
+    height: 30px;
+    //   top: 54px; size in XD file
+    top: 27px;
+    //   left: 76px; size in XD file
+    left: 46px;
+  }
+  .green {
+    background-color: #a7e8bd;
+    width: 54px;
+    height: 54px;
+    // top: 39px; size in XD file
+    top: 12px;
+    //   left: 103px; size in XD file
+    left: 73px;
+  }
+  .pink {
+    background-color: #efa7a7;
+    //   top: 57px; size in XD file
+    top: 30px;
+    //   left: 185px; size in XD file
+    left: 155px;
+    width: 24px;
+    height: 24px;
+  }
+  h1 {
+    position: absolute;
+    //   font-family: Caveat; font in XD file
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+    font-size: 25px;
+    text-align: left;
+    color: #000;
+    white-space: nowrap;
+    top: 20px;
+    left: 20px;
+    width: 217px;
+    height: 33px;
   }
 }

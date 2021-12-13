@@ -7,7 +7,7 @@
 }
 html,
 body {
-  height: 100vh;
+  min-height: 100vh;
 }
 h1,
 h2,
@@ -27,4 +27,8 @@ button {
 }
 .userLoggedOut {
   display: none;
+}
+#pageContentApp {
+  //
+  padding: 24px;
 }

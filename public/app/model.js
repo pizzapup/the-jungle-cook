@@ -174,24 +174,6 @@ var RECIPES = [
 ];
 var currentList = "";
 /* ------------------------------------------------------ */
-// window.onscroll = function () {
-//   scrollFunction();
-// };
-
-// function scrollFunction() {
-// if ($(window).width() > 960) {
-// if (
-// document.body.scrollTop > 20 ||
-// document.documentElement.scrollTop > 20
-// ) {
-// document.getElementById("navbar").style.top = "0";
-// changeNavStylesHam();
-// } else {
-// changeNavStylesReg();
-// document.getElementById("navbar").style.top = "-50px";
-// }
-// }
-// }
 
 function hamburger() {
   $(".bars").click(function (e) {
@@ -203,30 +185,49 @@ function hamburger() {
     $(".links").toggleClass("active");
   });
 }
-
-/* ------------------- footer content ------------------- */
-$("#footer-content").html(`
-<div class="footer-content">
-<div class="copyright-footer">Copyright © 2019 The Jungle Cook</div>
-<div class="footer-links">
-  <a href="#login">Login</a>
-  <a href="#browse">Recipes by Category</a>
-  <a href="">Privacy and Copyright</a>
-  <a href="#create-recipe" >Create Recipe</a>
-  <a href="#view-recipe">Your Recipes</a>
-</div>
-  <div class="social facebook">
-    <a href=""
-      ><img src="images/facebook.svg" alt="Facebook.com"
-    /></a>
-  </div>
-  <div class="social facebook">
-    <a href=""
-      ><img src="images/instagram.svg" alt="instagram.com"
-    /></a>
-  </div>
-</div>`);
-
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function () {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("logo-title").style.top = "0";
+  } else {
+    document.getElementById("logo-title").style.top = "-200px";
+  }
+  prevScrollpos = currentScrollPos;
+};
+// NAVBAR TO HAMBURGER ON SCROLL
+$(function () {
+  $(window).scroll(function () {
+    var scroll = $(window).scrollTop();
+    if (scroll >= 80) {
+      $("#navbar").addClass("nav-scrolled");
+      $("#logo-title").addClass("logo-scrolled");
+    } else {
+      $("#navbar").removeClass("nav-scrolled");
+      $("#logo-title").removeClass("logo-scrolled");
+    }
+  });
+});
+// NAVBAR TO HAMBURGER ON SCROLL
+$(function () {
+  $(window).scroll(function () {
+    var scroll = $(window).scrollTop();
+    if (scroll >= 200) {
+      $("nav").addClass("nav-scrolled");
+      $(".nav-holder").addClass("nav-holder-scrolled");
+      $(".bars").addClass("bars-scrolled");
+      $(".links").addClass("links-scrolled");
+      $("a").addClass("a-scrolled");
+    } else {
+      $("nav").removeClass("nav-scrolled");
+      $(".nav-holder").removeClass("nav-holder-scrolled");
+      $(".bars").removeClass("bars-scrolled");
+      $(".links").removeClass("links-scrolled");
+      $("a").removeClass("a-scrolled");
+      $("#logo-title").addClass("slidein");
+    }
+  });
+});
 /* --------------------- navigation --------------------- */
 $(".navigation-bar").html(`
 <!-- ---------------- logo ----------------- -->
@@ -259,41 +260,28 @@ $(".navigation-bar").html(`
 </div>
 
 `);
-// Change nav on scroll
-$(function () {
-  // var header = $(".nav-holder");
-
-  $(window).scroll(function () {
-    var scroll = $(window).scrollTop();
-    if (scroll >= 200) {
-      $("nav").addClass("nav-scrolled");
-      $(".nav-holder").addClass("nav-holder-scrolled");
-      $(".bars").addClass("bars-scrolled");
-      $(".links").addClass("links-scrolled");
-      $("a").addClass("a-scrolled");
-    } else {
-      $("nav").removeClass("nav-scrolled");
-      $(".nav-holder").removeClass("nav-holder-scrolled");
-      $(".bars").removeClass("bars-scrolled");
-      $(".links").removeClass("links-scrolled");
-      $("a").removeClass("a-scrolled");
-    }
-  });
-});
-// `<div class="nav-holder">
-// <div class="bars">
-//   <span class="bar"></span>
-//   <span class="bar"></span>
-//   <span class="bar"></span>
-// </div>
-// <div class="links" >
-// <a href="#home">Home</a>
-// <a href="#browse">Browse</a>
-// <a href="#create-recipe">Create Recipe</a>
-// <a href="#your-recipe">Your Recipes</a>
-// <span id="change-logBtn" ><a href="#login" class="login-button">Login</a></span></div>
-// </div>`
-
+/* ------------------- footer content ------------------- */
+$("#footer-content").html(`
+<div class="footer-content">
+<div class="copyright-footer">Copyright © 2019 The Jungle Cook</div>
+<div class="footer-links">
+  <a href="#login">Login</a>
+  <a href="#browse">Recipes by Category</a>
+  <a href="">Privacy and Copyright</a>
+  <a href="#create-recipe" >Create Recipe</a>
+  <a href="#view-recipe">Your Recipes</a>
+</div>
+  <div class="social facebook">
+    <a href=""
+      ><img src="images/facebook.svg" alt="Facebook.com"
+    /></a>
+  </div>
+  <div class="social facebook">
+    <a href=""
+      ><img src="images/instagram.svg" alt="instagram.com"
+    /></a>
+  </div>
+</div>`);
 $(document).ready(function () {
   hamburger();
 });
@@ -344,7 +332,6 @@ function loadRecipes(currentList) {
       </div>`);
   });
 }
-
 /* -------------------- create recipe ------------------- */
 // "create" / add ingredients to recipe
 let instructionInputObj = [];
@@ -452,7 +439,6 @@ function createRecipe() {
   console.log("form cleared");
 }
 /* --------------------- edit recipe -------------------- */
-
 function editRecipe(recipeIndex) {
   console.log("content loaded");
   console.log("test");
@@ -466,56 +452,7 @@ function editRecipe(recipeIndex) {
     "userprofileinfo.recipes[].ingredients",
     _userProfileInfo.recipes[recipeIndex].ingredients
   );
-  // let oldRecipeObj = _userProfileInfo.recipes[recipeIndex];
-  // $("#erecipeTitle").val(oldRecipeObj.recipeTitle);
-  // $("#etotalTime").val(oldRecipeObj.recipeTitle);
-  $("#etotalTime").val("test");
-  // $("#etotalServings").val(oldRecipeObj.recipeTitle);
-
-  // get user input
-  // let recipeTitle = $("#erecipeTitle").val();
-  // let recipeDescription = $("#erecipeDescription").val();
-  // let totalTime = $("#etotalTime").val();
-  // let totalServings = $("#etotalServings").val();
-  // // let recipeImg = $("#erecipeImg").val();
-  // let recipeImg = `recipe-chowmein.png`;
-  // // create new recipe object
-  // let newRecipeObj = {
-  //   recipeTitle: recipeTitle,
-  //   recipeDescription: recipeDescription,
-  //   totalTime: totalTime,
-  //   totalServings: totalServings,
-  //   recipeImg: recipeImg,
-  //   ingredients: oldRecipeObj.ingredients,
-  //   instructions: oldRecipeObj.instructions,
-  // };
-  // // update user information with new object
-  // _userProfileInfo.recipes.push(newRecipeObj);
-  // updateUserInfo(_userProfileInfo);
-  // console.log("Recipe Updated: " + recipeTitle);
-  // });
 }
-// function editIngredients() {
-//   let _ingredientsList = _userProfileInfo.recipes[recipeIndex].ingredients;
-//   let eIngredient = $("#eaddedIngredient").val();
-//   let eIngredientObj = {
-//     ingredient: eIngredient,
-//     category: "",
-//   };
-// _ingredientsList.push(eIngredientObj);
-// updateUserInfo(_userProfileInfo);
-// }
-// function editInstructions() {
-//   let _instructionsList = _userProfileInfo.recipes[recipeIndex].instructions;
-//   let eInstruction = $("#eaddedInstructions").val();
-//   let eInstructionObj = {
-//     ingredient: eInstruction,
-//     category: "",
-//   };
-//   _instructionsList.push(eInstructionObj);
-//   updateUserInfo(_userProfileInfo);
-//   showEditedInstructions(_instructionsList);
-// }
 function showEditedIngredients(_ingredientsList) {
   let ingString = `<ul class="showItems">`;
   $.each(_ingredientsList, function (idx, value) {

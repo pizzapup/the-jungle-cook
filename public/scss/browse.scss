@@ -6,12 +6,7 @@
 // max-width 425px photo and text are stacked on top of each other with edit and delete buttons underneath
 @media only screen and (max-width: 425px) {
   .recipe-gallery {
-    //
-    padding-top: 100px;
   }
-  // h2 {
-  //   display: none;
-  // }
   .recipe-card-holder {
     margin: 0 auto;
     padding: 0px;
@@ -22,7 +17,6 @@
     justify-content: center;
     min-width: 100%;
   }
-
   .recipe-card {
     min-height: 400px;
     flex-direction: column;
@@ -47,7 +41,6 @@
     position: static !important;
     display: block !important;
   }
-
   .gallery-buttons-bottom {
     position: static !important;
   }
@@ -86,8 +79,9 @@
 }
 
 /* ------------------------ main ------------------------ */
-.recipe-page-title {
-  width: 80%;
+#browseRecipeGallery,
+#yourRecipeGallery {
+  padding-top: 80px;
   /* -------------- page title/heading ------------- */
   h2 {
     font-size: 33px;
@@ -95,7 +89,6 @@
     color: rgba(0, 0, 0, 1);
   }
 }
-
 /* ------- recipe gallery (holds all recipe cards) ------ */
 /* ---------------- loaded from recipe.js --------------- */
 .recipe-gallery {
